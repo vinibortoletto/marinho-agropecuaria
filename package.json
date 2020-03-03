@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
+    "flickity": "^2.2.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0"
@@ -30,5 +31,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-slick": "^0.25.2",
+    "sass": "^1.26.1",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.0.1"
   }
 }
