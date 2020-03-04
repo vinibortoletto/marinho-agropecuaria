@@ -6,6 +6,19 @@ export const Styles = styled.section`
     margin: 0 -5vw var(--m_lg) -5vw;
   }
 
+  .btn_wrapper {
+    text-align: right;
+  }
+  button {
+    ${Size("auto")};
+    padding: var(--m_sm);
+    font-weight: normal;
+
+    i {
+      margin-left: var(--m_sm);
+    }
+  }
+
   /* Slider */
   .flickity-button {
     display: none;
@@ -13,20 +26,5 @@ export const Styles = styled.section`
   .dot {
     ${Size("7px")};
     background: var(--d_green);
-  }
-
-  .btn_wrapper {
-    text-align: right;
-  }
-  button {
-    /* color: var(--d_green); */
-    ${Size("auto")};
-    padding: var(--m_sm);
-    /* border-color: var(--d_green); */
-    font-weight: normal;
-
-    i {
-      margin-left: var(--m_sm);
-    }
   }
 `;

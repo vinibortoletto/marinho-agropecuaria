@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Flickity from "flickity";
 import "flickity/dist/flickity.min.css";
+import "flickity-fade/flickity-fade.css";
+import "flickity-fade/flickity-fade.js";
 
 export default class Slider extends React.Component {
   constructor(props) {

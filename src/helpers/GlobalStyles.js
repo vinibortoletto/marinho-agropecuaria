@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { Reset } from "./reset";
+import { Size } from "./mixins";
 
 export const GlobalStyles = createGlobalStyle`
   ${Reset};
@@ -36,5 +37,4 @@ export const GlobalStyles = createGlobalStyle`
     color: var(--d_green);
     opacity: 0.5;
   }
-
 `;

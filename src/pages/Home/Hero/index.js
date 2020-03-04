@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from "react";
-
-// Banners
-import DogsBanner from "../../../images/banners/dogs.jpg";
-import HouseBanner from "../../../images/banners/house.jpg";
-import GardenBanner from "../../../images/banners/garden.jpg";
+import React, { useState, useEffect, useRef } from "react";
 
 // Styles
 import { ButtonPill } from "../../../components/Buttons/styles";
 import { Styles as Section } from "./styles";
 import Banner from "../../../components/Banner/index";
 
-export default function Hero() {
+export default function Hero({ img, title, subtitle }) {
   return (
-    <Section className="section_margin">
-      <Banner overlay img={DogsBanner} alt="cachorros" />
+    <Section>
+      <Banner overlay img={img} alt="cachorros" />
 
-      <div className="text">
-        <h1>Cuidamos de quem te faz feliz</h1>
-        <h2>Alimentos, brinquedos e veterinários para seu pet</h2>
+      <div className="content">
+        <div className="text">
+          <h1>{title}</h1>
+          <h2>{subtitle}</h2>
+        </div>
       </div>
 
       <ButtonPill>Explorar</ButtonPill>

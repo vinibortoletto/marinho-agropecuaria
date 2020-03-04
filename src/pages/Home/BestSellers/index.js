@@ -20,8 +20,9 @@ export default function BestSellers() {
         <Slider
           options={{
             autoPlay: true,
-            pauseAutoPlayOnHover: true,
-            wrapAround: true
+            pauseAutoPlayOnHover: false,
+            wrapAround: true,
+            freeScroll: true
           }}
         >
           <ProductCard />
