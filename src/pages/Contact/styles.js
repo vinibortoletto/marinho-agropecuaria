@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Styles = styled.section`
-  .more_help {
+  .form_header {
     font-weight: bold;
     font-size: var(--fz_md);
-    margin: var(--m_lg) -5vw 0 -5vw;
+    margin: var(--m_lg) -5vw;
   }
 
   .social_media {

@@ -12,6 +12,8 @@ export const ButtonPill = styled.button`
   color: ${props => (props.transparent ? "var(--l_green)" : "var(--l_gold)")};
   background-color: ${props =>
     props.transparent ? "transparent" : "var(--l_green)"};
+
+  background-color: ${props => props.disabled && "darkgray"};
 `;
 
 export const ButtonSquare = styled(ButtonPill)`

@@ -10,7 +10,7 @@ export const Container = styled.div`
   .overlay {
     ${Size("hero")};
     background-color: black;
-    opacity: 0.5;
+    opacity: 0.7;
     position: absolute;
   }
 

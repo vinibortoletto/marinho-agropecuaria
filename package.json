@@ -34,9 +34,16 @@
     ]
   },
   "devDependencies": {
+    "@unform/core": "^2.0.0",
+    "@unform/web": "^2.0.0",
+    "formik": "^2.1.4",
+    "react-input-mask": "^2.0.4",
+    "react-maskinput": "^2.0.1",
     "react-slick": "^0.25.2",
+    "react-text-mask": "^5.4.3",
     "sass": "^1.26.1",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "yup": "^0.28.1"
   }
 }

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Title } from "../../components/Title/styles";
 import InfoCards from "./InfoCards/index";
-import Form from "./Form/index";
+import ContactForm from "./ContactForm/index";
 import { Styles as Section } from "./styles";
 
 export default function Contact() {
@@ -13,10 +13,11 @@ export default function Contact() {
       <div className="content">
         <InfoCards />
 
-        <h1 className="more_help">
+        <h1 className="form_header">
           Ainda precisa de ajuda? Envie-nos uma mensagem
         </h1>
-        <Form />
+
+        <ContactForm />
 
         <div className="social_media">
           <p>Siga nossas redes sociais</p>
