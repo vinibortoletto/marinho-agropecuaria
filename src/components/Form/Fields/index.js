@@ -1,8 +1,9 @@
 import React from "react";
-import { Field, ErrorMessage } from "formik";
+import { Field } from "formik";
 import InputMask from "react-input-mask";
 
 import { Container } from "./styles";
+import Errors from "../Errors/index";
 
 export default function Input({
   htmlFor,
@@ -14,7 +15,8 @@ export default function Input({
   useMask,
   handleChange,
   handleBlur,
-  inputType
+  inputType,
+  subscribe
 }) {
   const housePhoneMask = "(99) 9999-9999";
   const cellPhoneMask = "(99) 9 9999-9999";
@@ -26,7 +28,13 @@ export default function Input({
 
   return (
     <Container>
-      <label htmlFor={htmlFor}>{label}:</label>
+      {
+        (label = "none" ? (
+          <label htmlFor={htmlFor}></label>
+        ) : (
+          <label htmlFor={htmlFor}>{label}:</label>
+        ))
+      }
 
       {useMask ? (
         <InputMask
@@ -54,10 +62,7 @@ export default function Input({
         />
       )}
 
-      <div className="error_msg">
-        &nbsp;
-        <ErrorMessage name={name} />
-      </div>
+      <Errors name={name} />
     </Container>
   );
 }

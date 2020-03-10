@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  text-align: right;
-  margin-top: var(--m_md);
-
   button {
     position: relative;
     overflow: hidden;
@@ -26,7 +23,7 @@ export const Container = styled.div`
   }
 
   .loading_animation {
-    animation: loading 2.2s ease-in-out forwards;
+    animation: loading 2.05s ease-in-out forwards;
   }
 
   @keyframes loading {

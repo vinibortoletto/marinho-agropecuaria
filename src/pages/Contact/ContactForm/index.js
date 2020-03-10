@@ -3,8 +3,9 @@ import React from "react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import { Container } from "./styles";
-import Input from "./Fields/index";
-import FormButtons from "./FormButtons/index";
+import Input from "../../../components/Form/Fields/index";
+import SubmitButton from "../../../components/Form/Buttons/Submit/index";
+import ResetButton from "../../../components/Form/Buttons/Reset/index";
 
 export default function ContactForm() {
   const initialValues = {
@@ -52,17 +53,14 @@ export default function ContactForm() {
         onSubmit={handleSubmit}
       >
         {({
-          values,
           isSubmitting,
           errors,
           touched,
           handleChange,
-          handleBlur
+          handleBlur,
+          resetForm
         }) => (
           <Form>
-            <pre>{JSON.stringify(values, null, 2)}</pre>
-            <pre>{JSON.stringify(errors, null, 2)}</pre>
-
             <Input
               htmlFor="fullName"
               label="Nome"
@@ -121,7 +119,10 @@ export default function ContactForm() {
               }
             />
 
-            <FormButtons isSubmitting={isSubmitting} errors={errors} />
+            <div className="btn_container">
+              <ResetButton resetForm={resetForm} />
+              <SubmitButton isSubmitting={isSubmitting} errors={errors} />
+            </div>
           </Form>
         )}
       </Formik>

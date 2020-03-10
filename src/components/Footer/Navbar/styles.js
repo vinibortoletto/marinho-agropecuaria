@@ -44,10 +44,13 @@ export const Container = styled.section`
     border: 1px solid var(--l_green);
     border-radius: var(--br_sm);
     padding: var(--m_sm);
-    margin-bottom: 0.5rem;
   }
 
-  .btn_wrapper {
-    text-align: right;
+  .field_error {
+    border: 1px solid var(--d_gold);
+  }
+  .error_msg {
+    color: var(--d_gold);
+    margin-bottom: var(--m_mini);
   }
 `;

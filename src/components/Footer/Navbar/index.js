@@ -3,7 +3,37 @@ import React from "react";
 import { Container } from "./styles";
 import { ButtonBullet } from "../../Buttons/styles";
 
+import { Formik, Form, useField } from "formik";
+import * as Yup from "yup";
+import Input from "../../../components/Form/Fields/index";
+import SubmitButton from "../../../components/Form/Buttons/Submit/index";
+
 export default function Navbar() {
+  const initialValues = {
+    email: ""
+  };
+  const requiredMsg = "Campo obrigatório";
+
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email("Email inválido")
+      .required(requiredMsg)
+  });
+
+  function handleSubmit(data, { resetForm }) {
+    return new Promise(res => {
+      setTimeout(() => {
+        resetForm();
+        res();
+      }, 4000);
+    });
+  }
+
+  function handleClick() {
+    const btn = document.querySelector(".btn_container button");
+    console.log(btn);
+  }
+
   return (
     <Container>
       <section>
@@ -42,13 +72,36 @@ export default function Navbar() {
       </section>
 
       <section>
-        <h1>Fique atualizado</h1>
+        <h1>Cadastre seu email e fique atualizado</h1>
 
-        <input type="text" placeholder="Cadastre seu email" />
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ isSubmitting, errors, touched }) => (
+            <Form>
+              <Input
+                htmlFor="email"
+                label="none"
+                placeholder="seu@email.com"
+                name="email"
+                type="text"
+                fieldError={
+                  touched.email && errors.email ? "field_error" : null
+                }
+              />
 
-        <div className="btn_wrapper">
-          <ButtonBullet mini>Cadastrar</ButtonBullet>
-        </div>
+              <div className="btn_container">
+                <SubmitButton
+                  subscribe
+                  isSubmitting={isSubmitting}
+                  errors={errors}
+                />
+              </div>
+            </Form>
+          )}
+        </Formik>
       </section>
     </Container>
   );
