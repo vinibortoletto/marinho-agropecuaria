@@ -9,8 +9,8 @@ export const Container = styled.div`
 
   .overlay {
     ${Size("hero")};
-    background-color: black;
-    opacity: 0.7;
+    background: linear-gradient(to bottom, black 50%, transparent);
+    opacity: 0.4;
     position: absolute;
   }
 

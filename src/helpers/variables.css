@@ -7,8 +7,8 @@
   --l_gold: #fef5e5;
 
   /* Font Family */
-  --ff_special: Poppins, sans-serif;
-  --ff_dft: Roboto, sans-serif;
+  --ff_special: "Poppins", sans-serif;
+  --ff_dft: "Open Sans", sans-serif;
 
   /* Font Size */
   --fz_mini: 0.8rem;
