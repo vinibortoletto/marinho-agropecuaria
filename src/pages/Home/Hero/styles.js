@@ -2,7 +2,9 @@ import styled from "styled-components";
 import { Size, FlexCenter, Media } from "../../../helpers/mixins";
 
 export const Styles = styled.section`
-  ${Size("hero")};
+  width: 100%;
+  height: calc(100vh - 4rem);
+
   ${FlexCenter};
   flex-direction: column;
 
@@ -33,6 +35,9 @@ export const Styles = styled.section`
   }
 
   @media ${Media("900")} {
+    height: calc(100vh - 9rem);
+    margin-top: 9rem;
+
     .text {
       h1 {
         font-size: var(--fz_xhg);

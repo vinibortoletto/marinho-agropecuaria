@@ -18,8 +18,4 @@ export const Container = styled.div`
     ${Size("hero")};
     object-fit: cover;
   }
-
-  @media ${Media("900")} {
-    /* top:  */
-  }
 `;

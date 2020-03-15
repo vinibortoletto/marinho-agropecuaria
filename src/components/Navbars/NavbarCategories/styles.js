@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { FlexCenter, Size, Media } from "../../../helpers/mixins";
 
 export const Navbar = styled.nav`
+  height: 5rem;
   ${FlexCenter};
   transition: 0.2s ease-in-out;
 
@@ -40,13 +41,17 @@ export const Navbar = styled.nav`
     }
   }
 
-  &.toggle .category_container {
-    img {
-      ${Size("2.5rem", "1.5rem")};
-    }
+  &.toggle {
+    height: 4rem;
 
-    p {
-      display: none;
+    .category_container {
+      img {
+        ${Size("2.5rem", "1.5rem")};
+      }
+
+      p {
+        display: none;
+      }
     }
   }
 
