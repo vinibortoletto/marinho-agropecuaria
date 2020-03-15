@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navbar } from "./styles";
 
 import dogIcon from "../../../images/categories/dog.png";
@@ -59,6 +59,27 @@ export default function NavbarCategories() {
       name: "Atendimento"
     }
   ];
+
+  function handleScroll() {
+    const navbarCategories = document.querySelector(".navbar_categories");
+    let initialPosition = window.pageYOffset;
+
+    window.onscroll = function() {
+      let currentPosition = window.pageYOffset;
+
+      if (initialPosition > currentPosition) {
+        navbarCategories.classList.remove("toggle");
+      } else if (currentPosition > 300) {
+        navbarCategories.classList.add("toggle");
+      }
+
+      initialPosition = currentPosition;
+    };
+  }
+
+  useEffect(() => {
+    handleScroll();
+  }, []);
 
   return (
     <Navbar className="navbar_categories">

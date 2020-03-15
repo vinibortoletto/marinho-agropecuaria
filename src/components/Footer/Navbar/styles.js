@@ -5,6 +5,9 @@ export const Container = styled.section`
   color: var(--l_gold);
   padding: var(--m_lg) var(--sp_sm);
 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+
   section {
     margin-bottom: var(--m_lg);
 

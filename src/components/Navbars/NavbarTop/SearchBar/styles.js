@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Size, FlexCenter, Media } from "../../../../helpers/mixins";
+import { FlexCenter, Breakpoint } from "../../../../helpers/mixins";
 
 export const Container = styled.div`
   ${FlexCenter()};
@@ -14,7 +14,7 @@ export const Container = styled.div`
   background: var(--d_gold);
 
   display: none;
-  @media ${Media("900")} {
+  @media ${Breakpoint("900")} {
     display: flex;
   }
 `;

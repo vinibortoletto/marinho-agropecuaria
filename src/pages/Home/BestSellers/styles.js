@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Size } from "../../../helpers/mixins";
+import { Size, Breakpoint } from "../../../helpers/mixins";
 
 export const Styles = styled.section`
   .slider_wrapper {
@@ -26,5 +26,18 @@ export const Styles = styled.section`
   .dot {
     ${Size("7px")};
     background: var(--d_green);
+  }
+
+  @media ${Breakpoint("1200")} {
+    .slider_wrapper {
+    margin-right: -10vw;
+    margin-left: -10vw;
+  }
+  @media ${Breakpoint("2000")} {
+    .slider_wrapper {
+    margin-right: -20vw;
+    margin-left: -20vw;
+  }
+
   }
 `;

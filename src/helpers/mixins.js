@@ -1,4 +1,4 @@
-export function Media(width) {
+export function Breakpoint(width) {
   return `only screen and (min-width: ${width}px)`;
 }
 

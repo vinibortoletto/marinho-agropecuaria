@@ -5,10 +5,10 @@ import { ButtonPill } from "../../../components/Buttons/styles";
 import { Styles as Section } from "./styles";
 import Banner from "../../../components/Banner/index";
 
-export default function Hero({ img, title, subtitle }) {
+export default function Hero({ img, title, subtitle, alt }) {
   return (
     <Section>
-      <Banner overlay img={img} alt="cachorros" />
+      <Banner overlay img={img} alt={alt} />
 
       <div className="content">
         <div className="text">

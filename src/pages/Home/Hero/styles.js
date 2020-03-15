@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Size, FlexCenter, Media } from "../../../helpers/mixins";
+import { Size, FlexCenter, Breakpoint } from "../../../helpers/mixins";
 
 export const Styles = styled.section`
   width: 100%;
@@ -28,13 +28,14 @@ export const Styles = styled.section`
 
   hr {
     ${Size("50%", "1px")};
+    max-width: 20rem;
     margin: var(--m_md) 0;
     border: none;
     background-color: var(--l_gold);
     opacity: 0.2;
   }
 
-  @media ${Media("900")} {
+  @media ${Breakpoint("900")} {
     height: calc(100vh - 9rem);
     margin-top: 9rem;
 

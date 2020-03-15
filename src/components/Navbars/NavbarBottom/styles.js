@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Size, FlexCenter, Media } from "../../../helpers/mixins";
+import { Size, FlexCenter, Breakpoint } from "../../../helpers/mixins";
 
 export const Navbar = styled.nav`
   ${Size("100%", "5rem")};
@@ -44,7 +44,7 @@ export const Navbar = styled.nav`
     }
   }
 
-  @media ${Media("900")} {
+  @media ${Breakpoint("900")} {
     display: none;
   }
 `;

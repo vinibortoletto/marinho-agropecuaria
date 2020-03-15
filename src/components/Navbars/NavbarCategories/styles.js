@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { FlexCenter, Size, Media } from "../../../helpers/mixins";
+import { FlexCenter, Size, Breakpoint } from "../../../helpers/mixins";
 
 export const Navbar = styled.nav`
-  height: 5rem;
   ${FlexCenter};
   transition: 0.2s ease-in-out;
 
@@ -42,8 +41,6 @@ export const Navbar = styled.nav`
   }
 
   &.toggle {
-    height: 4rem;
-
     .category_container {
       img {
         ${Size("2.5rem", "1.5rem")};
@@ -56,11 +53,11 @@ export const Navbar = styled.nav`
   }
 
   display: none;
-  @media ${Media("900")} {
+  @media ${Breakpoint("900")} {
     display: flex;
   }
 
-  @media ${Media("1100")} {
+  @media ${Breakpoint("1100")} {
     .category_container {
       padding: var(--m_md);
 

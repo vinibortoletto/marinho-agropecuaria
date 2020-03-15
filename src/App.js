@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { GlobalStyles } from "./helpers/GlobalStyles";
 import "./helpers/variables.css";
 
@@ -9,24 +9,6 @@ import Home from "./pages/Home/index.js";
 import Footer from "./components/Footer/index";
 
 function App() {
-  function handleScroll() {
-    const navbarCategories = document.querySelector(".navbar_categories");
-
-    window.addEventListener("scroll", () => {
-      let currentPosition = window.pageYOffset;
-
-      if (currentPosition > 220) {
-        navbarCategories.classList.add("toggle");
-      } else {
-        navbarCategories.classList.remove("toggle");
-      }
-    });
-  }
-
-  useEffect(() => {
-    handleScroll();
-  }, []);
-
   return (
     <>
       <GlobalStyles />

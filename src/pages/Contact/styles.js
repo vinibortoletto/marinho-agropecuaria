@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Breakpoint } from "../../helpers/mixins";
 
 export const Styles = styled.section`
   .form_header {
@@ -22,6 +23,18 @@ export const Styles = styled.section`
       &:nth-child(1) {
         margin-right: var(--m_sm);
       }
+    }
+  }
+
+  @media ${Breakpoint("1200")} {
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    section:nth-child(1) {
+      order: 2;
     }
   }
 `;

@@ -13,25 +13,26 @@ export default function Contact() {
       <div className="content">
         <InfoCards />
 
-        <h1 className="form_header">
-          Ainda precisa de ajuda? Envie-nos uma mensagem
-        </h1>
+        <section className="form">
+          <h1 className="form_header">
+            Ainda precisa de ajuda? Envie-nos uma mensagem
+          </h1>
+          <ContactForm />
 
-        <ContactForm />
+          <div className="social_media">
+            <p>Siga nossas redes sociais</p>
 
-        <div className="social_media">
-          <p>Siga nossas redes sociais</p>
+            <div>
+              <a href="https://www.instagram.com/marinhoagropecuaria/">
+                <i className="fab fa-instagram" />
+              </a>
 
-          <div>
-            <a href="https://www.instagram.com/marinhoagropecuaria/">
-              <i className="fab fa-instagram" />
-            </a>
-
-            <a href="https://www.facebook.com/marinhoagropecuaria">
-              <i className="fab fa-facebook-f" />
-            </a>
+              <a href="https://www.facebook.com/marinhoagropecuaria">
+                <i className="fab fa-facebook-f" />
+              </a>
+            </div>
           </div>
-        </div>
+        </section>
       </div>
     </Section>
   );

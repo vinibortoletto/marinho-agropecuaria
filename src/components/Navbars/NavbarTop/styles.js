@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { FlexCenter, Size, Media } from "../../../helpers/mixins";
+import { FlexCenter, Size, Breakpoint } from "../../../helpers/mixins";
 
 export const Navbar = styled.nav`
   ${FlexCenter};
   ${Size("100%", "4rem")};
 
   justify-content: space-between;
-  padding: var(--m_mini) 5vw;
+  padding: var(--m_mini) var(--sp_sm);
 
   position: fixed;
   left: 0;
@@ -37,7 +37,7 @@ export const Navbar = styled.nav`
       margin-left: var(--m_mini);
 
       display: none;
-      @media ${Media("600")} {
+      @media ${Breakpoint("600")} {
         display: block;
       }
     }
@@ -73,7 +73,7 @@ export const Navbar = styled.nav`
     display: none;
   }
 
-  @media ${Media("900")} {
+  @media ${Breakpoint("900")} {
     .logo_container {
       width: 13rem;
     }
@@ -85,5 +85,15 @@ export const Navbar = styled.nav`
     .btn_favorites {
       margin-right: var(--m_sm);
     }
+  }
+
+  @media ${Breakpoint("1200")} {
+    padding-right: var(--sp_md);
+    padding-left: var(--sp_md);
+  }
+
+  @media ${Breakpoint("2000")} {
+    padding-right: var(--sp_lg);
+    padding-left: var(--sp_lg);
   }
 `;
