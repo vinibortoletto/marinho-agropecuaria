@@ -14,7 +14,7 @@ export function Size(width, height) {
   } else if (width === "buttonMini") {
     return `width: 7rem; height: 2.5rem`;
   } else if (width === "hero") {
-    return `width: 100%; height: 30rem`;
+    return `width: 100%; height: 100vh`;
   } else {
     return `width: ${width}; height: ${width}`;
   }

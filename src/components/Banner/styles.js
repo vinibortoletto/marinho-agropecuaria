@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Size } from "../../helpers/mixins";
+import { Size, Media } from "../../helpers/mixins";
 
 export const Container = styled.div`
   position: absolute;
@@ -17,5 +17,9 @@ export const Container = styled.div`
   img {
     ${Size("hero")};
     object-fit: cover;
+  }
+
+  @media ${Media("900")} {
+    /* top:  */
   }
 `;

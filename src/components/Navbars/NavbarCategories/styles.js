@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FlexCenter, Size, Media } from "../../../helpers/mixins";
 
 export const Navbar = styled.nav`
-  ${FlexCenter()};
+  ${FlexCenter};
   transition: 0.2s ease-in-out;
 
   background: var(--d_green);
@@ -13,18 +13,6 @@ export const Navbar = styled.nav`
   z-index: 10;
   left: 0;
   right: 0;
-
-  &.toggle .category_container {
-    padding: var(--m_sm);
-
-    .img {
-      ${Size("2.5rem", "1.5rem")};
-    }
-
-    p {
-      display: none;
-    }
-  }
 
   .category_container {
     padding: var(--m_sm);
@@ -39,7 +27,7 @@ export const Navbar = styled.nav`
     flex-direction: column;
 
     .img {
-      ${Size("2.5rem", "1.5rem")};
+      ${Size("2.7rem", "1.7rem")};
       object-fit: contain;
       transition: 0.2s ease-in-out;
     }
@@ -49,6 +37,16 @@ export const Navbar = styled.nav`
       color: var(--l_gold);
       font-size: var(--fz_mini);
       transition: 0.2s ease-in-out;
+    }
+  }
+
+  &.toggle .category_container {
+    img {
+      ${Size("2.5rem", "1.5rem")};
+    }
+
+    p {
+      display: none;
     }
   }
 
@@ -64,6 +62,10 @@ export const Navbar = styled.nav`
       .img {
         ${Size("3rem", "2rem")};
       }
+    }
+
+    &.toggle .category_container {
+      padding: var(--m_sm);
     }
   }
 `;
