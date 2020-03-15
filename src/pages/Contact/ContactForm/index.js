@@ -37,12 +37,9 @@ export default function ContactForm() {
   });
 
   function handleSubmit(data, { resetForm }) {
-    return new Promise(res => {
-      setTimeout(() => {
-        resetForm();
-        res();
-      }, 4000);
-    });
+    setTimeout(() => {
+      resetForm();
+    }, 4000);
   }
 
   return (

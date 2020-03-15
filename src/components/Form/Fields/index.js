@@ -15,8 +15,7 @@ export default function Input({
   useMask,
   handleChange,
   handleBlur,
-  inputType,
-  subscribe
+  inputType
 }) {
   const housePhoneMask = "(99) 9999-9999";
   const cellPhoneMask = "(99) 9 9999-9999";

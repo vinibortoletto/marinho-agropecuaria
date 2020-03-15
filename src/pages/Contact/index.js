@@ -23,8 +23,13 @@ export default function Contact() {
           <p>Siga nossas redes sociais</p>
 
           <div>
-            <i className="fab fa-instagram" />
-            <i className="fab fa-facebook-f" />
+            <a href="https://www.instagram.com/marinhoagropecuaria/">
+              <i className="fab fa-instagram" />
+            </a>
+
+            <a href="https://www.facebook.com/marinhoagropecuaria">
+              <i className="fab fa-facebook-f" />
+            </a>
           </div>
         </div>
       </div>

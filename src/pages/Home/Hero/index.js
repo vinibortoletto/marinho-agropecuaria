@@ -16,7 +16,7 @@ export default function Hero({ img, title, subtitle }) {
           <h2>{subtitle}</h2>
         </div>
       </div>
-
+      <hr />
       <ButtonPill>Explorar</ButtonPill>
     </Section>
   );
