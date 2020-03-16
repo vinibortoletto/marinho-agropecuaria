@@ -37,10 +37,7 @@ export default function BestSellers() {
       <div className="content">
         <div className="btn_wrapper">
           <ButtonSquare mini transparent>
-            <a href="#">
-              Ver mais produtos
-              <i className="fas fa-arrow-right" />
-            </a>
+            <a href="#">Ver mais produtos</a>
           </ButtonSquare>
         </div>
       </div>

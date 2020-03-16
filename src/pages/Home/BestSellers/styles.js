@@ -3,11 +3,11 @@ import { Size, Breakpoint } from "../../../helpers/mixins";
 
 export const Styles = styled.section`
   .slider_wrapper {
-    margin: 0 -5vw var(--m_lg) -5vw;
+    margin: 0 -5vw var(--m_hg) -5vw;
   }
 
   .btn_wrapper {
-    text-align: right;
+    text-align: center;
   }
   button {
     ${Size("auto")};
@@ -28,16 +28,22 @@ export const Styles = styled.section`
     background: var(--d_green);
   }
 
-  @media ${Breakpoint("1200")} {
-    .slider_wrapper {
-    margin-right: -10vw;
-    margin-left: -10vw;
-  }
-  @media ${Breakpoint("2000")} {
-    .slider_wrapper {
-    margin-right: -20vw;
-    margin-left: -20vw;
+  @media ${Breakpoint("900")} {
+    button {
+      padding: var(--m_md) var(--m_lg);
+    }
   }
 
+  @media ${Breakpoint("1200")} {
+    .slider_wrapper {
+      margin-right: -10vw;
+      margin-left: -10vw;
+    }
+    @media ${Breakpoint("2000")} {
+      .slider_wrapper {
+        margin-right: -20vw;
+        margin-left: -20vw;
+      }
+    }
   }
 `;
