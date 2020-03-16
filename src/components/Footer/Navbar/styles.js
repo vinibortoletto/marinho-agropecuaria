@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Breakpoint } from "../../../helpers/mixins";
 
 export const Container = styled.section`
   background: var(--d_green);
@@ -6,7 +7,7 @@ export const Container = styled.section`
   padding: var(--m_lg) var(--sp_sm);
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 
   section {
     margin-bottom: var(--m_lg);
@@ -55,5 +56,14 @@ export const Container = styled.section`
   .error_msg {
     color: var(--d_gold);
     margin-bottom: var(--m_mini);
+  }
+
+  @media ${Breakpoint("1200")} {
+    padding-left: var(--sp_md);
+    padding-right: var(--sp_md);
+  }
+  @media ${Breakpoint("2000")} {
+    padding-left: var(--sp_lg);
+    padding-right: var(--sp_lg);
   }
 `;
