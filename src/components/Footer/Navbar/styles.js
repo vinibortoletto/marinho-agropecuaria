@@ -45,17 +45,17 @@ export const Container = styled.section`
 
   input {
     width: 100%;
-    border: 1px solid var(--l_green);
+    border: 1px solid var(--l_green) !important;
     border-radius: var(--br_sm);
     padding: var(--m_sm);
   }
 
   .field_error {
-    border: 1px solid var(--d_gold);
+    border: 1px solid var(--d_gold) !important;
   }
   .error_msg {
-    color: var(--d_gold);
-    margin-bottom: var(--m_mini);
+    color: var(--d_gold) !important;
+    margin-bottom: var(--m_mini) !important;
   }
 
   @media ${Breakpoint("1200")} {

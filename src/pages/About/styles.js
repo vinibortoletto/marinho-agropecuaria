@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FlexCenter, Size, Breakpoint } from "../../helpers/mixins";
+import { FlexCenter, Breakpoint } from "../../helpers/mixins";
 
 export const BgImg = styled.div`
   height: 20rem;
@@ -29,8 +29,6 @@ export const BgImg = styled.div`
 
 export const Container = styled.section`
   .text {
-    /* margin-bottom: var(--m_lg); */
-
     span {
       font-weight: bold;
     }

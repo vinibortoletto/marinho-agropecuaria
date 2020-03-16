@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Size, Media } from "../../helpers/mixins";
+import { Size } from "../../helpers/mixins";
 
 export const Container = styled.div`
   position: absolute;

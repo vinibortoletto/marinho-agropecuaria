@@ -69,7 +69,7 @@ export default function NavbarCategories() {
 
       if (initialPosition > currentPosition) {
         navbarCategories.classList.remove("toggle");
-      } else if (currentPosition > 300) {
+      } else {
         navbarCategories.classList.add("toggle");
       }
 

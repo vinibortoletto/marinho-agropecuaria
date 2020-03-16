@@ -21,6 +21,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
 
+
+
   input::-webkit-input-placeholder {
     color: var(--d_green);
     opacity: 0.5;

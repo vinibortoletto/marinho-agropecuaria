@@ -1,9 +1,8 @@
 import React from "react";
 
 import { Container } from "./styles";
-import { ButtonBullet } from "../../Buttons/styles";
 
-import { Formik, Form, useField } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import Input from "../../../components/Form/Fields/index";
 import SubmitButton from "../../../components/Form/Buttons/Submit/index";
@@ -29,11 +28,6 @@ export default function Navbar() {
     });
   }
 
-  function handleClick() {
-    const btn = document.querySelector(".btn_container button");
-    console.log(btn);
-  }
-
   return (
     <Container>
       <section>
@@ -41,19 +35,19 @@ export default function Navbar() {
 
         <ul>
           <li>
-            <a href="#">Quem somos</a>
+            <a href="">Quem somos</a>
           </li>
           <li>
-            <a href="#">Termos e condições</a>
+            <a href="">Termos e condições</a>
           </li>
           <li>
-            <a href="#">Trocas e devoluções</a>
+            <a href="">Trocas e devoluções</a>
           </li>
           <li>
-            <a href="#">Formas de pagamento</a>
+            <a href="">Formas de pagamento</a>
           </li>
           <li>
-            <a href="#">Termos de compra</a>
+            <a href="">Termos de compra</a>
           </li>
         </ul>
       </section>
@@ -63,10 +57,10 @@ export default function Navbar() {
 
         <ul>
           <li>
-            <a href="#">Envie uma mensagem</a>
+            <a href="">Envie uma mensagem</a>
           </li>
           <li>
-            <a href="#">Atendimento</a>
+            <a href="">Atendimento</a>
           </li>
         </ul>
       </section>

@@ -37,7 +37,6 @@ export const Styles = styled.section`
 
   @media ${Breakpoint("900")} {
     height: calc(100vh - 9rem);
-    margin-top: 9rem;
 
     .text {
       h1 {

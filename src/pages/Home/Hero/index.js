@@ -7,7 +7,7 @@ import Banner from "../../../components/Banner/index";
 
 export default function Hero({ img, title, subtitle, alt }) {
   return (
-    <Section>
+    <Section className="hero">
       <Banner overlay img={img} alt={alt} />
 
       <div className="content">
