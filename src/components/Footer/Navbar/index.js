@@ -1,11 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-import { Container } from "./styles";
-
+// Dependencies
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+
+// Components
 import Input from "../../../components/Form/Fields/index";
 import SubmitButton from "../../../components/Form/Buttons/Submit/index";
+
+// Styles
+import { Container } from "./styles";
 
 export default function Navbar() {
   const initialValues = {
@@ -35,19 +40,19 @@ export default function Navbar() {
 
         <ul>
           <li>
-            <a href="">Quem somos</a>
+            <Link to="/quem-somos">Quem somos</Link>
           </li>
           <li>
-            <a href="">Termos e condições</a>
+            <Link to="/termos-e-condicoes">Termos e condições</Link>
           </li>
           <li>
-            <a href="">Trocas e devoluções</a>
+            <Link to="/trocas-e-devolucoes">Trocas e devoluções</Link>
           </li>
           <li>
-            <a href="">Formas de pagamento</a>
+            <Link to="/formas-de-pagamento">Formas de pagamento</Link>
           </li>
           <li>
-            <a href="">Termos de compra</a>
+            <Link to="/termos-de-compra">Termos de compra</Link>
           </li>
         </ul>
       </section>
@@ -57,10 +62,10 @@ export default function Navbar() {
 
         <ul>
           <li>
-            <a href="">Envie uma mensagem</a>
+            <Link to="/envie-uma-mensagem">Envie uma mensagem</Link>
           </li>
           <li>
-            <a href="">Atendimento</a>
+            <Link to="/atendimento">Atendimento</Link>
           </li>
         </ul>
       </section>

@@ -9,10 +9,8 @@ import Footer from "./components/Footer/index";
 
 // Pages
 import Home from "./pages/Home/index.js";
+import TermsAndConditions from "./pages/TermsAndConditions/index.js";
 import PageNotFound from "./pages/PageNotFound/index.js";
-
-// Styles
-import { NavbarWrapper } from "./styles";
 
 export default function App() {
   return (
@@ -22,6 +20,12 @@ export default function App() {
       <main>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/termos-e-condicoes"
+            component={TermsAndConditions}
+          />
+
           <Route component={PageNotFound} />
         </Switch>
       </main>

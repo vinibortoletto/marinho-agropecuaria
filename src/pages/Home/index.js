@@ -43,7 +43,7 @@ export default function Home() {
 
   return (
     <>
-      <NavbarTop />
+      <NavbarTop home />
       <NavbarBottom />
 
       <Container className="section_margin">

@@ -7,9 +7,9 @@ import Categories from "./Categories/index";
 // Styles
 import { Container } from "./styles";
 
-export default function NavbarTop({ simple }) {
+export default function NavbarTop({ simple, home }) {
   return (
-    <Container simple={simple}>
+    <Container simple={simple} home={home}>
       {!simple ? (
         <>
           <Header />
