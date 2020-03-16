@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import { Navbar } from "./styles";
 
-import dogIcon from "../../../images/categories/dog.png";
-import catIcon from "../../../images/categories/cat.png";
-import fishIcon from "../../../images/categories/fish.png";
-import turtleIcon from "../../../images/categories/turtle.png";
-import chickenIcon from "../../../images/categories/chicken.png";
-import ratIcon from "../../../images/categories/rat.png";
-import houseIcon from "../../../images/categories/house.png";
-import gardenIcon from "../../../images/categories/garden.png";
-import infoIcon from "../../../images/categories/info.png";
+import dogIcon from "../../../../images/categories/dog.png";
+import catIcon from "../../../../images/categories/cat.png";
+import fishIcon from "../../../../images/categories/fish.png";
+import turtleIcon from "../../../../images/categories/turtle.png";
+import chickenIcon from "../../../../images/categories/chicken.png";
+import ratIcon from "../../../../images/categories/rat.png";
+import houseIcon from "../../../../images/categories/house.png";
+import gardenIcon from "../../../../images/categories/garden.png";
+import infoIcon from "../../../../images/categories/info.png";
 
-export default function NavbarCategories() {
+export default function Categories() {
   const categories = [
     {
       img: dogIcon,

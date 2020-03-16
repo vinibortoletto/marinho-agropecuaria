@@ -1,15 +1,22 @@
 import React from "react";
-import Hero from "./Hero";
-import BestSellers from "./BestSellers";
-import Contact from "../Contact";
-import About from "../About";
-import Slider from "../../components/Slider/index";
 
 // Images
 import dogsBanner from "../../images/banners/dogs.jpg";
 import houseBanner from "../../images/banners/house.jpg";
 import gardenBanner from "../../images/banners/garden.jpg";
 
+// Components
+import Slider from "../../components/Slider/index";
+import NavbarTop from "../../components/Navbars/NavbarTop/index";
+import NavbarBottom from "../../components/Navbars/NavbarBottom/index";
+
+// Pages
+import Hero from "./Hero";
+import BestSellers from "./BestSellers";
+import Contact from "../Contact";
+import About from "../About";
+
+// Styles
 import { Container } from "./styles";
 
 export default function Home() {
@@ -36,6 +43,9 @@ export default function Home() {
 
   return (
     <>
+      <NavbarTop />
+      <NavbarBottom />
+
       <Container className="section_margin">
         <Slider
           options={{

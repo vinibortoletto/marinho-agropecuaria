@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FlexCenter, Breakpoint } from "../../../../helpers/mixins";
+import { FlexCenter, Breakpoint } from "../../../../../helpers/mixins";
 
 export const Container = styled.div`
   ${FlexCenter()};

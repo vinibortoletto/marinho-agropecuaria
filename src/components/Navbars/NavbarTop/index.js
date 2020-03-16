@@ -1,18 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import logo from "../../../images/logos/my_logo/main.png";
-import { Navbar } from "./styles";
-import SearchBar from "./SearchBar/index";
-import NavButtons from "./NavButtons/index";
 
-export default function NavbarTop() {
+// Components
+import Header from "./Header/index";
+import Categories from "./Categories/index";
+
+// Styles
+import { Container } from "./styles";
+
+export default function NavbarTop({ simple }) {
   return (
-    <Navbar>
-      <Link to="/">
-        <img className="logo" src={logo} alt="marinho logo" />
-      </Link>
-      <SearchBar />
-      <NavButtons />
-    </Navbar>
+    <Container simple={simple}>
+      {!simple ? (
+        <>
+          <Header />
+          <Categories />
+        </>
+      ) : (
+        <Header simple={simple} />
+      )}
+    </Container>
   );
 }

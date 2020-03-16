@@ -1,7 +1,7 @@
 import React from "react";
-import { IconSphere } from "../../../IconSphere/styles";
+import { IconSphere } from "../../../../IconSphere/styles";
 
-export default function NavButtons() {
+export default function Buttons() {
   return (
     <div className="btn_container">
       <button className="btn_user">

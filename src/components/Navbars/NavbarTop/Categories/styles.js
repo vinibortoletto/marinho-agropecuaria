@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FlexCenter, Size, Breakpoint } from "../../../helpers/mixins";
+import { FlexCenter, Size, Breakpoint } from "../../../../helpers/mixins";
 
 export const Navbar = styled.nav`
   ${FlexCenter};
