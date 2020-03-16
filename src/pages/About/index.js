@@ -1,14 +1,12 @@
 import React from "react";
 import { Title } from "../../components/Title/styles";
 import img from "../../images/banners/man.jpg";
-import { Container } from "./styles";
-import Banner from "../../components/Banner/index";
+import { Container, BgImg } from "./styles";
+// import Banner from "../../components/Banner/index";
 import Companies from "./Companies/index";
-
 
 // Website Logo
 import logo from "../../images/logos/my_logo/main.svg";
-
 
 export default function About() {
   return (
@@ -17,9 +15,9 @@ export default function About() {
 
       <div className="content">
         <section>
-          <div className="wrapper">
-            <Banner img={img} alt="homem olhando para um campo" />
-          </div>
+          <BgImg img={img}>
+            <div className="bg_img"></div>
+          </BgImg>
 
           <div className="text">
             <p>
@@ -46,8 +44,8 @@ export default function About() {
           <Companies />
         </section>
 
-        <section className='logo'>
-          <img  src={logo} alt="marinho logo" />
+        <section className="logo">
+          <img src={logo} alt="marinho logo" />
         </section>
       </div>
     </Container>

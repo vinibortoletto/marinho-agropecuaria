@@ -11,16 +11,10 @@ export const Container = styled.div`
     margin: var(--m_md);
 
     width: 7rem;
-    filter: grayscale(1) sepia(1);
-    opacity: 0.7;
+    opacity: 0.8;
   }
 
   @media ${Breakpoint("1200")} {
-    margin-top: 15rem;
-  }
-
-  @media ${Breakpoint("2000")} {
-    margin-left: var(--sp_md);
-    margin-right: var(--sp_md);
+    margin-top: 20rem;
   }
 `;
