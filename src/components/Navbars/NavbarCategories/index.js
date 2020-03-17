@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import { Navbar } from "./styles";
 
-import dogIcon from "../../../../images/categories/dog.png";
-import catIcon from "../../../../images/categories/cat.png";
-import fishIcon from "../../../../images/categories/fish.png";
-import turtleIcon from "../../../../images/categories/turtle.png";
-import chickenIcon from "../../../../images/categories/chicken.png";
-import ratIcon from "../../../../images/categories/rat.png";
-import houseIcon from "../../../../images/categories/house.png";
-import gardenIcon from "../../../../images/categories/garden.png";
-import infoIcon from "../../../../images/categories/info.png";
+import dogIcon from "../../../images/categories/dog.png";
+import catIcon from "../../../images/categories/cat.png";
+import fishIcon from "../../../images/categories/fish.png";
+import turtleIcon from "../../../images/categories/turtle.png";
+import chickenIcon from "../../../images/categories/chicken.png";
+import ratIcon from "../../../images/categories/rat.png";
+import houseIcon from "../../../images/categories/house.png";
+import gardenIcon from "../../../images/categories/garden.png";
+import infoIcon from "../../../images/categories/info.png";
 
-export default function Categories() {
+export default function NavbarCategories() {
   const categories = [
     {
       img: dogIcon,
@@ -60,25 +60,16 @@ export default function Categories() {
     }
   ];
 
-  function handleScroll() {
-    const navbarCategories = document.querySelector(".navbar_categories");
-    let initialPosition = window.pageYOffset;
-
-    window.onscroll = function() {
-      let currentPosition = window.pageYOffset;
-
-      if (initialPosition > currentPosition) {
-        navbarCategories.classList.remove("toggle");
-      } else {
-        navbarCategories.classList.add("toggle");
-      }
-
-      initialPosition = currentPosition;
-    };
-  }
-
   useEffect(() => {
-    handleScroll();
+    const navbarCategories = document.querySelector(".navbar_categories");
+
+    window.onscroll = () => {
+      if (window.pageYOffset > 200) {
+        navbarCategories.classList.add("shrink");
+      } else {
+        navbarCategories.classList.remove("shrink");
+      }
+    };
   }, []);
 
   return (

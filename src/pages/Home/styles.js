@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Breakpoint } from "../../helpers/mixins";
 
-export const Container = styled.div`
+export const Container = styled.section`
   margin: 0 -5vw var(--m_lg) -5vw;
 
   /* Slider */

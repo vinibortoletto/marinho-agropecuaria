@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FlexCenter, Breakpoint } from "../../helpers/mixins";
 
-export const BgImg = styled.div`
+export const Banner = styled.div`
   height: 20rem;
   margin-bottom: var(--m_md);
 

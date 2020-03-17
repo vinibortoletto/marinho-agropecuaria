@@ -1,11 +1,11 @@
 import React from "react";
 
 import { IconSphere } from "../../../components/IconSphere/styles";
-import { InfoCard, Section } from "../InfoCards/styles";
+import { InfoCard, Container } from "../InfoCards/styles";
 
 export default function InfoCards() {
   return (
-    <Section>
+    <Container>
       <InfoCard>
         <IconSphere>
           <i className="fas fa-phone" />
@@ -81,6 +81,6 @@ export default function InfoCards() {
           </div>
         </div>
       </InfoCard>
-    </Section>
+    </Container>
   );
 }

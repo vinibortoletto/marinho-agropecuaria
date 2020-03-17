@@ -30,10 +30,6 @@ export default class Slider extends React.Component {
     this.flickity.updateDraggable();
   }
 
-  componentWillUnmount() {
-    this.flickity.destroy();
-  }
-
   componentDidUpdate(prevProps, prevState) {
     const flickityDidBecomeActive =
       !prevState.flickityReady && this.state.flickityReady;

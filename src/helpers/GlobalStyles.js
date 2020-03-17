@@ -10,7 +10,7 @@ export const GlobalStyles = createGlobalStyle`
     color: var(--d_green);
     font-family: var(--ff_dft);
     padding: 0 var(--sp_sm);
-  }
+  } 
 
   .section_margin {
     margin-bottom: var(--m_hg);
@@ -19,9 +19,6 @@ export const GlobalStyles = createGlobalStyle`
   .content {
     padding: 0 var(--sp_sm);
   }
-
-
-
 
   input::-webkit-input-placeholder {
     color: var(--d_green);

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // Components
 import ProductCard from "../../../components/ProductCard/index";
@@ -37,7 +38,7 @@ export default function BestSellers() {
       <div className="content">
         <div className="btn_wrapper">
           <ButtonSquare mini transparent>
-            <a href="#">Ver mais produtos</a>
+            <Link to="/produtos">Ver mais produtos</Link>
           </ButtonSquare>
         </div>
       </div>

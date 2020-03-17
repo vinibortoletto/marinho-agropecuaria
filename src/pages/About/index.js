@@ -1,23 +1,26 @@
 import React from "react";
+
+// Images
+import logo from "../../images/logos/my_logo/main.svg";
+import bannerImg from "../../images/banners/man.jpg";
+
+// Components
 import { Title } from "../../components/Title/styles";
-import img from "../../images/banners/man.jpg";
-import { Container, BgImg } from "./styles";
-// import Banner from "../../components/Banner/index";
 import Companies from "./Companies/index";
 
-// Website Logo
-import logo from "../../images/logos/my_logo/main.svg";
+// Styles
+import { Container, Banner } from "./styles";
 
 export default function About() {
   return (
     <Container>
       <Title>Quem somos</Title>
 
-      <div className="content">
+      <section className="content">
         <section>
-          <BgImg img={img}>
+          <Banner img={bannerImg}>
             <div className="bg_img"></div>
-          </BgImg>
+          </Banner>
 
           <div className="text">
             <p>
@@ -47,7 +50,7 @@ export default function About() {
         <section className="logo">
           <img src={logo} alt="marinho logo" />
         </section>
-      </div>
+      </section>
     </Container>
   );
 }

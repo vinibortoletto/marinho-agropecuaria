@@ -4,7 +4,7 @@ import { Container } from "./styles";
 
 export default function SearchBar() {
   return (
-    <Container>
+    <Container className="searchbar">
       <p>O que você está procurando?</p>
       <i className="fas fa-search" />
     </Container>

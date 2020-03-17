@@ -62,10 +62,10 @@ export default function Navbar() {
 
         <ul>
           <li>
-            <Link to="/envie-uma-mensagem">Envie uma mensagem</Link>
+            <Link to="/contato">Envie uma mensagem</Link>
           </li>
           <li>
-            <Link to="/atendimento">Atendimento</Link>
+            <Link to="/contato">Atendimento</Link>
           </li>
         </ul>
       </section>

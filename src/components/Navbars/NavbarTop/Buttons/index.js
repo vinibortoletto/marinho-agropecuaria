@@ -1,5 +1,5 @@
 import React from "react";
-import { IconSphere } from "../../../../IconSphere/styles";
+import { IconSphere } from "../../../IconSphere/styles";
 
 export default function Buttons() {
   return (

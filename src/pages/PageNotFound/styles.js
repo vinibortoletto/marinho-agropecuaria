@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Size, Breakpoint } from "../../helpers/mixins";
 
-export const Section = styled.section`
-  section {
+export const Container = styled.section`
+  .content {
     display: grid;
     justify-items: center;
     grid-gap: var(--m_md);
@@ -36,7 +36,6 @@ export const Section = styled.section`
     background-color: var(--d_green);
     opacity: 0.2;
   }
-  }
 
   button {
     ${Size("auto")};
@@ -49,7 +48,7 @@ export const Section = styled.section`
   }
 
   @media ${Breakpoint("900")} {
-    section {
+    .content {
       grid-template-columns: 1fr 1fr;
     }
   }

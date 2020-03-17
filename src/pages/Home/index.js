@@ -7,8 +7,6 @@ import gardenBanner from "../../images/banners/garden.jpg";
 
 // Components
 import Slider from "../../components/Slider/index";
-import NavbarTop from "../../components/Navbars/NavbarTop/index";
-import NavbarBottom from "../../components/Navbars/NavbarBottom/index";
 
 // Pages
 import Hero from "./Hero";
@@ -18,6 +16,7 @@ import About from "../About";
 
 // Styles
 import { Container } from "./styles";
+import Navbars from "../../components/Navbars/index";
 
 export default function Home() {
   const heroData = [
@@ -43,10 +42,7 @@ export default function Home() {
 
   return (
     <>
-      <NavbarTop home />
-      <NavbarBottom />
-
-      <Container className="section_margin">
+      <Container className="hero" className="section_margin">
         <Slider
           options={{
             autoPlay: 5000,

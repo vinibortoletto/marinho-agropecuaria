@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // Images
@@ -7,20 +7,40 @@ import errorImg from "../../images/ux/404.svg";
 // Components
 import { Title } from "../../components/Title/styles";
 import { ButtonSquare } from "../../components/Buttons/styles";
-import NavbarTop from "../../components/Navbars/NavbarTop/index";
+import Navbars from "../../components/Navbars/index";
 
 // Styles
-import { Section } from "./styles";
+import { Container } from "./styles";
 
 export default function PageNotFound() {
+  useEffect(() => {
+    // Removes mainHeader (navbars) and add a simpler one
+    const root = document.getElementById("root");
+    const main = document.querySelector("main");
+
+    const mainHeader = document.querySelector("header");
+    mainHeader.parentNode.removeChild(mainHeader);
+
+    const simpleHeader = document.querySelector("main header");
+    simpleHeader.parentNode.removeChild(simpleHeader);
+
+    root.insertBefore(simpleHeader, root.firstChild);
+
+    return () => {
+      // Goes back to mainHeader, and remove the simpler one
+      main.insertBefore(simpleHeader, main.firstChild);
+      root.insertBefore(mainHeader, root.firstChild);
+    };
+  }, []);
+
   return (
     <>
-      <NavbarTop simple />
+      <Navbars simple />
 
-      <Section>
+      <Container className="page_not_found">
         <Title>Página não encontrada</Title>
 
-        <section className="content">
+        <div className="content">
           <div>
             <img src={errorImg} alt="página não encontrada" />
           </div>
@@ -45,8 +65,8 @@ export default function PageNotFound() {
               </ButtonSquare>
             </Link>
           </div>
-        </section>
-      </Section>
+        </div>
+      </Container>
     </>
   );
 }

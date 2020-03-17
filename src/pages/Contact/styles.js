@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import { Breakpoint } from "../../helpers/mixins";
 
-export const Styles = styled.section`
+export const Container = styled.section`
   .form_header {
-    font-weight: bold;
     font-size: var(--fz_md);
-    margin: var(--m_lg) -5vw;
+    margin: var(--m_lg) 0;
+
+    span {
+      font-weight: bold;
+    }
   }
 
   .social_media {

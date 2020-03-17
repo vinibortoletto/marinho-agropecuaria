@@ -3,19 +3,19 @@ import React from "react";
 import { Title } from "../../components/Title/styles";
 import InfoCards from "./InfoCards/index";
 import ContactForm from "./ContactForm/index";
-import { Styles as Section } from "./styles";
+import { Container } from "./styles";
 
 export default function Contact() {
   return (
-    <Section className="section_margin">
+    <Container className="section_margin">
       <Title>Contato</Title>
 
-      <div className="content">
+      <section className="content">
         <InfoCards />
 
         <section className="form">
           <h1 className="form_header">
-            Ainda precisa de ajuda? Envie-nos uma mensagem
+            Não encontrou o que procurava? <span>Envie uma mensagem!</span>
           </h1>
           <ContactForm />
 
@@ -33,7 +33,7 @@ export default function Contact() {
             </div>
           </div>
         </section>
-      </div>
-    </Section>
+      </section>
+    </Container>
   );
 }

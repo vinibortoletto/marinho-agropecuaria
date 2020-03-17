@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Breakpoint } from "../../../helpers/mixins";
 
-export const Section = styled.section`
+export const Container = styled.section`
   background: var(--d_gold);
   border-radius: var(--br_sm);
   padding: var(--m_md) var(--m_sm);
@@ -11,7 +11,7 @@ export const Section = styled.section`
   }
 `;
 
-export const InfoCard = styled.section`
+export const InfoCard = styled.div`
   display: grid;
   grid-template-columns: 25% 75%;
 
