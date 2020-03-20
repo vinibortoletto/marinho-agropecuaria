@@ -5,7 +5,7 @@ import { Container } from "./styles";
 export default function SearchBar() {
   return (
     <Container className="searchbar">
-      <p>O que você está procurando?</p>
+      <input type="text" placeholder="O que você está procurando?" />
       <i className="fas fa-search" />
     </Container>
   );

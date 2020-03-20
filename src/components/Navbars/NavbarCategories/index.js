@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+
+// Styles
 import { Navbar } from "./styles";
 
+// Images
 import dogIcon from "../../../images/categories/dog.png";
 import catIcon from "../../../images/categories/cat.png";
 import fishIcon from "../../../images/categories/fish.png";
@@ -16,47 +20,56 @@ export default function NavbarCategories() {
     {
       img: dogIcon,
       alt: "categoria cães",
-      name: "Cães"
+      name: "Cães",
+      path: "/produtos/caes"
     },
     {
       img: catIcon,
       alt: "categoria gatos",
-      name: "Gatos"
+      name: "Gatos",
+      path: "/produtos/gatos"
     },
     {
       img: fishIcon,
       alt: "categoria peixes",
-      name: "Peixes"
+      name: "Peixes",
+      path: "/produtos/peixes"
     },
     {
       img: turtleIcon,
       alt: "categoria répteis",
-      name: "Répteis"
+      name: "Répteis",
+      path: "/produtos/repteis"
     },
     {
       img: chickenIcon,
       alt: "categoria aves",
-      name: "Aves"
+      name: "Aves",
+      path: "/produtos/aves"
     },
     {
       img: ratIcon,
       alt: "categoria roedores",
-      name: "Roedores"
+      name: "Roedores",
+      path: "/produtos/roedores"
     },
     {
       img: houseIcon,
       alt: "categoria casa",
-      name: "Casa"
+      name: "Construção",
+      path: "/produtos/construcao"
     },
     {
       img: gardenIcon,
       alt: "categoria jardim",
-      name: "Jardim"
+      name: "Jardinagem",
+      path: "/produtos/jardinagem"
     },
     {
       img: infoIcon,
       alt: "categoria atendimento",
-      name: "Atendimento"
+      name: "Atendimento",
+      path: "/contato"
     }
   ];
 
@@ -76,10 +89,12 @@ export default function NavbarCategories() {
     <Navbar className="navbar_categories">
       {categories.map((category, index) => {
         return (
-          <div key={index} className="category_container">
-            <img className="img" src={category.img} alt={category.alt} />
-            <p>{category.name}</p>
-          </div>
+          <Link to={category.path}>
+            <div key={index} className="category_container">
+              <img className="img" src={category.img} alt={category.alt} />
+              <p>{category.name}</p>
+            </div>
+          </Link>
         );
       })}
     </Navbar>

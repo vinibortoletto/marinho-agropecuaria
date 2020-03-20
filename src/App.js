@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 // Shared Components
 import Navbars from "./components/Navbars/index";
 import Footer from "./components/Footer/index";
