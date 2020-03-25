@@ -8,6 +8,10 @@ export const Styles = styled.section`
   ${FlexCenter};
   flex-direction: column;
 
+  button {
+    width: 10rem;
+  }
+
   .text {
     color: var(--l_gold);
     text-align: center;

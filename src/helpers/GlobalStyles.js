@@ -17,7 +17,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   .content {
-    padding: 0 var(--sp_sm);
+    padding: 0 var(--m_md);
   }
 
   input::-webkit-input-placeholder {

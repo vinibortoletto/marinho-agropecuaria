@@ -77,7 +77,7 @@ export default function NavbarCategories() {
     const navbarCategories = document.querySelector(".navbar_categories");
 
     window.onscroll = () => {
-      if (window.pageYOffset > 200) {
+      if (window.pageYOffset > 20) {
         navbarCategories.classList.add("shrink");
       } else {
         navbarCategories.classList.remove("shrink");
@@ -89,8 +89,8 @@ export default function NavbarCategories() {
     <Navbar className="navbar_categories">
       {categories.map((category, index) => {
         return (
-          <Link to={category.path}>
-            <div key={index} className="category_container">
+          <Link key={index} to={category.path}>
+            <div className="category_container">
               <img className="img" src={category.img} alt={category.alt} />
               <p>{category.name}</p>
             </div>

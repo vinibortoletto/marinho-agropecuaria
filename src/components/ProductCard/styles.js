@@ -1,17 +1,22 @@
 import styled from "styled-components";
-import { Size } from "../../helpers/mixins";
+import { FlexCenter } from "../../helpers/mixins";
 
 export const Container = styled.div`
-  ${Size("15rem", "25rem")};
+  width: 15rem;
+  height: 26rem;
 
   border: 1px solid var(--d_green_trans);
   border-radius: var(--br_sm);
   padding: 2rem;
   margin: 0 var(--m_mini);
 
-  img {
-    width: 10rem;
+  .img_container {
+    ${FlexCenter};
     margin-bottom: var(--m_md);
+
+    img {
+      width: 10rem;
+    }
   }
 
   h1 {

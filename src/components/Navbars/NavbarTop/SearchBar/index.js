@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Container } from "./styles";
 
 export default function SearchBar() {
+  const [active, setActive] = useState(false);
+
+  function handleInputActive() {
+    active ? setActive(false) : setActive(true);
+  }
+
   return (
-    <Container className="searchbar">
-      <input type="text" placeholder="O que você está procurando?" />
+    <Container active={active} className="searchbar">
+      <input
+        onClick={handleInputActive}
+        onBlur={handleInputActive}
+        type="text"
+        placeholder="O que você está procurando?"
+      />
       <i className="fas fa-search" />
     </Container>
   );

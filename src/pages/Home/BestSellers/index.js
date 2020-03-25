@@ -36,7 +36,7 @@ export default function BestSellers() {
       </div>
 
       <div className="content">
-        <div className="btn_wrapper">
+        <div className="btn_container">
           <ButtonSquare mini transparent>
             <Link to="/produtos">Ver mais produtos</Link>
           </ButtonSquare>

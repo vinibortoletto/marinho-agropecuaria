@@ -3,15 +3,21 @@ import { FlexCenter, Breakpoint } from "../../../../helpers/mixins";
 
 export const Container = styled.div`
   width: 100%;
-  background: var(--d_gold);
-  border-radius: var(--br_lg);
-  margin: 0 var(--m_sm);
   ${FlexCenter()};
+  margin: 0 var(--m_sm);
   padding: 0.7rem 1.5rem;
+
+  border-radius: var(--br_lg);
   font-size: var(--fz_sm);
+  background: var(--d_gold);
 
   input {
     width: 100%;
+    font-weight: bold;
+  }
+
+  i {
+    opacity: ${props => (props.active ? "1" : ".5")};
   }
 
   display: none;

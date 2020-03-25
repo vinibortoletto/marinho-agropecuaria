@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import { Size } from "../../helpers/mixins";
+import { FlexCenter, Size } from "../../helpers/mixins";
 
 export const ButtonPill = styled.button`
-  ${props => (props.mini ? `${Size("buttonMini")}` : `${Size("button")}`)};
+  ${FlexCenter};
+  height: ${props => (props.mini ? "2.5rem" : "3rem")};
+  padding: 0 var(--m_md);
+
   border-radius: 2rem;
   border: ${props => (props.transparent ? "1px solid var(--l_green)" : "none")};
 
-  font-weight: bold;
   font-size: ${props => (props.mini ? "var(--fz_sm)" : "var(--fz_md)")};
 
   color: ${props => (props.transparent ? "var(--l_green)" : "var(--l_gold)")};

@@ -1,19 +1,18 @@
 import styled from "styled-components";
-import { Size, Breakpoint } from "../../../helpers/mixins";
+import { Size, Breakpoint, FlexCenter } from "../../../helpers/mixins";
 
 export const Styles = styled.section`
   .slider_wrapper {
     margin: 0 -5vw var(--m_hg) -5vw;
   }
 
-  .btn_wrapper {
-    text-align: center;
+  .btn_container {
+    ${FlexCenter};
   }
   button {
     ${Size("auto")};
     padding: var(--m_sm);
     font-weight: normal;
-
     i {
       margin-left: var(--m_sm);
     }
