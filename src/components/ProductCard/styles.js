@@ -9,7 +9,6 @@ export const Container = styled.div`
   border-radius: var(--br_sm);
 
   padding: 2rem;
-  margin: 0 var(--m_mini);
   transition: 0.2s ease-out;
   cursor: pointer;
 

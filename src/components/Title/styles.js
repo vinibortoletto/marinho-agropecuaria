@@ -6,6 +6,7 @@ export const Title = styled.h1`
   font-weight: bold;
   font-size: var(--fz_hg);
   color: var(--d_gold);
+  font-family: var(--ff_special);
 
   @media ${Breakpoint("1200")} {
     font-size: var(--fz_xhg);

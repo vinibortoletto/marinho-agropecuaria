@@ -8,6 +8,8 @@ import Footer from "./components/Footer/index";
 // Pages
 import Home from "./pages/Home/index.js";
 import Products from "./pages/Products/index.js";
+import ProductDetails from "./pages/Products/ProductDetails/index.js";
+
 import About from "./pages/About/index.js";
 import Contact from "./pages/Contact/index.js";
 
@@ -32,6 +34,8 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/produtos" component={Products} />
+          <Route path="/detalhes-do-produto" component={ProductDetails} />
+
           <Route path="/quem-somos" component={About} />
           <Route path="/contato" component={Contact} />
 

@@ -1,7 +1,10 @@
 import styled from "styled-components";
-import { FlexCenter } from "../../../helpers/mixins";
+import { FlexCenter, Breakpoint } from "../../../helpers/mixins";
 
 export const Container = styled.section`
+  margin-right: var(--m_lg);
+  border-right: 1px solid var(--d_green_trans);
+
   .categories,
   .prices {
     margin-bottom: var(--m_lg);
@@ -26,5 +29,10 @@ export const Container = styled.section`
 
   .ranking div {
     display: inline;
+  }
+
+  display: none;
+  @media ${Breakpoint("1200")} {
+    display: block;
   }
 `;

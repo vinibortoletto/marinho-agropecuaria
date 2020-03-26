@@ -29,8 +29,9 @@ export const Styles = styled.section`
 
   .product_list {
     display: grid;
+    justify-items: center;
     grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-    gap: var(--m_md);
+    gap: var(--m_sm);
     margin-bottom: var(--m_lg);
   }
 
