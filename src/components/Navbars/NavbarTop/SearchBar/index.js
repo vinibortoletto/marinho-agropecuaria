@@ -5,15 +5,15 @@ import { Container } from "./styles";
 export default function SearchBar() {
   const [active, setActive] = useState(false);
 
-  function handleInputActive() {
-    active ? setActive(false) : setActive(true);
+  function handleInputActive(action) {
+    action === "click" ? setActive(true) : setActive(false);
   }
 
   return (
     <Container active={active} className="searchbar">
       <input
-        onClick={handleInputActive}
-        onBlur={handleInputActive}
+        onClick={() => handleInputActive("click")}
+        onBlur={() => handleInputActive()}
         type="text"
         placeholder="O que você está procurando?"
       />

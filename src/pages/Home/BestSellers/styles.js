@@ -27,6 +27,13 @@ export const Styles = styled.section`
     background: var(--d_green);
   }
 
+  .product_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: var(--m_md);
+    margin-bottom: var(--m_lg);
+  }
+
   @media ${Breakpoint("900")} {
     button {
       padding: var(--m_md) var(--m_lg);
