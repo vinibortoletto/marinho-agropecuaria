@@ -19,8 +19,10 @@ export default function Details() {
 
       <hr />
 
-      <Price />
-      <Buttons />
+      <div className="price_and_btn_wrapper">
+        <Price />
+        <Buttons />
+      </div>
     </Container>
   );
 }

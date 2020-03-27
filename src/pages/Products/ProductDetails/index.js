@@ -4,6 +4,7 @@ import React from "react";
 import { Title } from "../../../components/Title/styles";
 import Gallery from "./Gallery";
 import Details from "./Details";
+import RelatedProducts from "./RelatedProducts/index";
 
 // Styles
 import { Container } from "./styles";
@@ -14,8 +15,12 @@ export default function ProductDetails() {
       <Title>Animais > Cães > Rações</Title>
 
       <div className="content">
-        <Gallery />
-        <Details />
+        <div className="gallery_and_details_wrapper">
+          <Gallery />
+          <Details />
+        </div>
+
+        <RelatedProducts />
       </div>
     </Container>
   );

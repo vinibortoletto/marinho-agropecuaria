@@ -17,7 +17,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   .content {
-    padding: 0 var(--m_md);
+    padding: 0 var(--m_sm);
   }
 
   input::-webkit-input-placeholder {
@@ -37,11 +37,19 @@ export const GlobalStyles = createGlobalStyle`
     opacity: 0.5;
   }
 
+
   @media ${Breakpoint("1200")} {
     body {
       padding: 0 var(--sp_md);
     }
   }
+
+  @media ${Breakpoint("1500")} {
+    .content {
+      padding: 0 var(--sp_sm);
+    }
+  }
+
   @media ${Breakpoint("2000")} {
     body {
       padding: 0 var(--sp_lg);

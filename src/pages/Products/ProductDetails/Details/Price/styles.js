@@ -1,11 +1,13 @@
 import styled from "styled-components";
+import { Breakpoint } from "../../../../../helpers/mixins";
 
 export const Container = styled.div`
-  margin-bottom: var(--m_md);
+  margin-bottom: var(--m_sm);
+  text-align: right;
 
   h3 {
     font-weight: bold;
-    font-size: var(--fz_md);
+    font-size: var(--fz_lg);
   }
 
   p {
@@ -15,5 +17,10 @@ export const Container = styled.div`
   span {
     font-size: var(--fz_mini);
     color: var(--l_green);
+  }
+
+  @media ${Breakpoint("1100")} {
+    margin-bottom: 0;
+    text-align: left;
   }
 `;

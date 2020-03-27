@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 // Images
 import product from "../../../../images/products/product_sample.png";
 
+// Styles
 import { Container } from "./styles";
 
 export default function Gallery() {
@@ -30,9 +31,9 @@ export default function Gallery() {
       <img src={product} alt="produto" />
 
       <div className="dots">
-        <div className="dot selected"></div>
-        <div className="dot"></div>
-        <div className="dot"></div>
+        <button className="dot selected"></button>
+        <button className="dot"></button>
+        <button className="dot"></button>
       </div>
     </Container>
   );

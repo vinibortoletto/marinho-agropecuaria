@@ -16,6 +16,11 @@ export const ButtonPill = styled.button`
     props.transparent ? "transparent" : "var(--l_green)"};
 
   background-color: ${props => props.disabled && "darkgray"};
+
+  transition: 0.2s ease-out;
+  &:hover {
+    filter: ${props => !props.transparent && "brightness(90%)"};
+  }
 `;
 
 export const ButtonSquare = styled(ButtonPill)`

@@ -51,3 +51,8 @@ export default function App() {
     </>
   );
 }
+
+/* 
+  TODO:
+    - create contextRef for contentful 
+*/

@@ -1,16 +1,20 @@
 import styled from "styled-components";
-import { Size, FlexCenter } from "../../../../helpers/mixins";
+import { Size, FlexCenter, Breakpoint } from "../../../../helpers/mixins";
 
 export const Container = styled.div`
   margin-bottom: var(--m_md);
+  ${FlexCenter};
+  flex-direction: column;
 
   img {
     width: 100%;
-    max-width: 20rem;
+    max-height: 20rem;
+    object-fit: contain;
 
     padding: var(--m_sm);
     margin-bottom: var(--m_sm);
     border: 1px solid var(--d_green_trans);
+    border-radius: var(--br_sm);
   }
 
   .dots {
@@ -36,6 +40,13 @@ export const Container = styled.div`
         background: var(--d_green);
         border-radius: var(--br_circle);
       }
+    }
+  }
+
+  @media ${Breakpoint("800")} {
+    img {
+      max-width: 25rem;
+      max-height: 25rem;
     }
   }
 `;
