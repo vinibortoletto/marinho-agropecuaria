@@ -31,11 +31,10 @@ export const Styles = styled.section`
   }
 
   hr {
-    ${Size("50%", "1px")};
+    width: 50%;
     max-width: 20rem;
     margin: var(--m_md) 0;
-    border: none;
-    background-color: var(--l_gold);
+    border-color: var(--l_gold);
     opacity: 0.2;
   }
 

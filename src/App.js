@@ -2,22 +2,23 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 // Shared Components
-import Navbars from "./components/Navbars/index";
-import Footer from "./components/Footer/index";
+import Navbars from "./components/Navbars";
+import Footer from "./components/Footer";
 
 // Pages
-import Home from "./pages/Home/index.js";
-import Products from "./pages/Products/index.js";
-import ProductDetails from "./pages/Products/ProductDetails/index.js";
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import ProductDetails from "./pages/Products/ProductDetails";
+import Cart from "./pages/Cart";
 
-import About from "./pages/About/index.js";
-import Contact from "./pages/Contact/index.js";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
-import TermsAndConditions from "./pages/TermsAndConditions/index.js";
-import ExchangesAndReturns from "./pages/ExchangesAndReturns/index.js";
-import PaymentMethods from "./pages/PaymentMethods/index.js";
-import PurchaseTerms from "./pages/PurchaseTerms/index.js";
-import PageNotFound from "./pages/PageNotFound/index.js";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import ExchangesAndReturns from "./pages/ExchangesAndReturns";
+import PaymentMethods from "./pages/PaymentMethods";
+import PurchaseTerms from "./pages/PurchaseTerms";
+import PageNotFound from "./pages/PageNotFound";
 
 // Styles
 import { GlobalStyles } from "./helpers/GlobalStyles";
@@ -35,6 +36,7 @@ export default function App() {
           <Route exact path="/" component={Home} />
           <Route path="/produtos" component={Products} />
           <Route path="/detalhes-do-produto" component={ProductDetails} />
+          <Route path="/carrinho" component={Cart} />
 
           <Route path="/quem-somos" component={About} />
           <Route path="/contato" component={Contact} />

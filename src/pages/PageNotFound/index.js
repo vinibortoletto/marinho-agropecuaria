@@ -8,6 +8,7 @@ import errorImg from "../../images/ux/404.svg";
 import { Title } from "../../components/Title/styles";
 import { ButtonSquare } from "../../components/Buttons/styles";
 import Navbars from "../../components/Navbars/index";
+import DividingLine from "../../components/DividingLine";
 
 // Styles
 import { Container } from "./styles";
@@ -56,7 +57,7 @@ export default function PageNotFound() {
               </h2>
             </div>
 
-            <hr />
+            <DividingLine margin="var(--m_lg)" />
 
             <Link to="/">
               <ButtonSquare transparent mini>

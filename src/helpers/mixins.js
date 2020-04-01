@@ -3,7 +3,7 @@ export function Breakpoint(width) {
 }
 
 export function AbsoluteCenter() {
-  return "position: absolute; top: 50%; left: 50%;";
+  return "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);";
 }
 
 export function Size(width, height) {

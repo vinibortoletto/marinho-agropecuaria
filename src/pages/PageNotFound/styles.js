@@ -29,14 +29,6 @@ export const Container = styled.section`
     }
   }
 
-  hr {
-    ${Size("100%", "1px")};
-    margin: var(--m_lg) 0;
-    border: none;
-    background-color: var(--d_green);
-    opacity: 0.2;
-  }
-
   button {
     ${Size("auto")};
     padding: var(--m_sm);

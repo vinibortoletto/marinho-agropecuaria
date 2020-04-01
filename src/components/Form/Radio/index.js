@@ -1,18 +1,14 @@
 import React from "react";
 
-// Components
-import Stars from "../../Stars/index";
-
-// Styles
 import { Container } from "./styles";
 
-export default function Checkbox({ label, stars }) {
+export default function Radio({ label, name, value, checked }) {
   return (
     <Container>
       <label>
-        <input type="checkbox" />
+        {label}
+        <input type="radio" checked={checked} value={value} name={name} />
         <span className="checkmark"></span>
-        {stars ? <Stars /> : label}
       </label>
     </Container>
   );

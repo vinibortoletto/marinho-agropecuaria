@@ -3,7 +3,7 @@ import React from "react";
 // Styles
 import { ButtonPill } from "../../../components/Buttons/styles";
 import { Styles as Section } from "./styles";
-import Banner from "../../../components/Banner/index";
+import Banner from "../../../components/Banner";
 
 export default function Hero({ img, title, subtitle, alt }) {
   return (
@@ -16,7 +16,9 @@ export default function Hero({ img, title, subtitle, alt }) {
           <h2>{subtitle}</h2>
         </div>
       </div>
+
       <hr />
+
       <ButtonPill>Explorar</ButtonPill>
     </Section>
   );

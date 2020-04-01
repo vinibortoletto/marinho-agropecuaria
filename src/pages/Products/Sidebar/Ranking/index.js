@@ -1,7 +1,7 @@
 import React from "react";
 
 // Components
-import Checkbox from "../../../../components/Form/Checkbox/index";
+import Checkbox from "../../../../components/Form/Checkbox";
 
 export default function Prices() {
   return (
