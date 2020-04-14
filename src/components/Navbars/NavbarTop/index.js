@@ -1,33 +1,44 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-// Logos
-import { ReactComponent as MainLogo } from "../../../images/logos/my_logo/main.svg";
-// import { ReactComponent as MiniLogo } from "../0__images/logos/my_logo/mini.svg";
-// import { ReactComponent as WhiteLogo } from "../0__images/logos/my_logo/white.svg";
+// Images
+import mainLogo from "../../../images/logos/my_logo/main.png";
+import whiteLogo from "../../../images/logos/my_logo/white.png";
+
+// Components
+import SearchBar from "./SearchBar/index";
+import Buttons from "./Buttons/index";
 
 // Styles
-import { Navbar } from "./styles";
-import { IconSphere } from "../../IconSphere/styles";
+import { Container } from "./styles";
 
-export default function NavbarTop() {
+export default function NavbarTop({ simple }) {
   return (
-    <Navbar>
-      <MainLogo className="logo" />
+    <Container simple={simple} className="navbar_top">
+      {!simple ? (
+        <>
+          <Link to="/">
+            <img
+              className="logo"
+              src={mainLogo}
+              alt="marinho agropecuária logo"
+            />
+          </Link>
 
-      <div className="btn-container">
-        <button>
-          <IconSphere>
-            <i className="fas fa-user"></i>
-          </IconSphere>
-        </button>
-
-        <button>
-          <IconSphere>
-            <i className="fas fa-heart"></i>
-            <span className="counter">0</span>
-          </IconSphere>
-        </button>
-      </div>
-    </Navbar>
+          <SearchBar />
+          <Buttons />
+        </>
+      ) : (
+        <>
+          <Link to="/">
+            <img
+              className="logo"
+              src={whiteLogo}
+              alt="marinho agropecuária logo"
+            />
+          </Link>
+        </>
+      )}
+    </Container>
   );
 }

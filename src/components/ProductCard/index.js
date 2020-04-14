@@ -11,16 +11,18 @@ import { Container } from "./styles";
 
 export default function ProductCard() {
   return (
-    <Container>
-      <img src={product} alt="produto" />
+    <Container className="product_card">
+      <div className="img_container">
+        <img src={product} alt="produto" />
+      </div>
 
       <h1>ração para cães (porte grande)</h1>
 
       <Stars />
 
       <div className="price">
-        <h2>R$ 50,00</h2>
-        <h3>até 6x no cartão</h3>
+        <h2>R$50,00</h2>
+        <h3>até 6x de R$3,16 no cartão</h3>
       </div>
     </Container>
   );

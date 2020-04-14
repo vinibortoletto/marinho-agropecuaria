@@ -3,7 +3,7 @@ import { Navbar } from "./styles";
 
 export default function NavbarBottom() {
   return (
-    <Navbar>
+    <Navbar className="navbar_bottom">
       <ul>
         <li>
           <i className="fas fa-search"></i>

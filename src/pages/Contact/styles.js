@@ -1,10 +1,14 @@
 import styled from "styled-components";
+import { Breakpoint } from "../../helpers/mixins";
 
-export const Styles = styled.section`
-  .more_help {
-    font-weight: bold;
+export const Container = styled.section`
+  .form_header {
     font-size: var(--fz_md);
-    margin: var(--m_lg) -5vw 0 -5vw;
+    margin: var(--m_lg) 0;
+
+    span {
+      font-weight: bold;
+    }
   }
 
   .social_media {
@@ -22,6 +26,18 @@ export const Styles = styled.section`
       &:nth-child(1) {
         margin-right: var(--m_sm);
       }
+    }
+  }
+
+  @media ${Breakpoint("1200")} {
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    section:nth-child(1) {
+      order: 2;
     }
   }
 `;

@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 
 // Styles
 import { ButtonPill } from "../../../components/Buttons/styles";
 import { Styles as Section } from "./styles";
-import Banner from "../../../components/Banner/index";
+import Banner from "../../../components/Banner";
 
-export default function Hero({ img, title, subtitle }) {
+export default function Hero({ img, title, subtitle, alt }) {
   return (
-    <Section>
-      <Banner overlay img={img} alt="cachorros" />
+    <Section className="hero">
+      <Banner overlay img={img} alt={alt} />
 
       <div className="content">
         <div className="text">
@@ -16,6 +16,8 @@ export default function Hero({ img, title, subtitle }) {
           <h2>{subtitle}</h2>
         </div>
       </div>
+
+      <hr />
 
       <ButtonPill>Explorar</ButtonPill>
     </Section>

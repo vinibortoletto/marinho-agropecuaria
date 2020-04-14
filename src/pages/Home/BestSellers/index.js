@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // Components
 import ProductCard from "../../../components/ProductCard/index";
@@ -16,7 +17,7 @@ export default function BestSellers() {
     <Section className="section_margin">
       <Title>Os mais vendidos</Title>
 
-      <div className="slider_wrapper">
+      {/* <div className="slider_wrapper">
         <Slider
           options={{
             autoPlay: true,
@@ -32,15 +33,27 @@ export default function BestSellers() {
           <ProductCard />
           <ProductCard />
         </Slider>
-      </div>
+      </div> */}
+
+      {/* <div className="product_list_wrapper">
+    
+      </div> */}
 
       <div className="content">
-        <div className="btn_wrapper">
+        <div className="product_list">
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+        </div>
+
+        <div className="btn_container">
           <ButtonSquare mini transparent>
-            <a href="#">
-              Ver mais produtos
-              <i className="fas fa-arrow-right" />
-            </a>
+            <Link to="/produtos">Ver mais produtos</Link>
           </ButtonSquare>
         </div>
       </div>

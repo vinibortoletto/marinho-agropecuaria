@@ -1,6 +1,17 @@
 import styled from "styled-components";
+import { Breakpoint } from "../../../helpers/mixins";
 
-export const Styles = styled.section`
+export const Container = styled.section`
+  background: var(--d_gold);
+  border-radius: var(--br_sm);
+  padding: var(--m_md) var(--m_sm);
+
+  @media ${Breakpoint("900")} {
+    padding: var(--m_lg);
+  }
+`;
+
+export const InfoCard = styled.div`
   display: grid;
   grid-template-columns: 25% 75%;
 
@@ -11,6 +22,7 @@ export const Styles = styled.section`
   margin-bottom: var(--m_md);
   &:nth-last-child(1) {
     margin-bottom: 0;
+    border: none;
   }
 
   .margin_bottom {

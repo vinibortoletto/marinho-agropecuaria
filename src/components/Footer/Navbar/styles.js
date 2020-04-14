@@ -1,9 +1,13 @@
 import styled from "styled-components";
+import { Breakpoint } from "../../../helpers/mixins";
 
 export const Container = styled.section`
   background: var(--d_green);
   color: var(--l_gold);
   padding: var(--m_lg) var(--sp_sm);
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 
   section {
     margin-bottom: var(--m_lg);
@@ -41,13 +45,25 @@ export const Container = styled.section`
 
   input {
     width: 100%;
-    border: 1px solid var(--l_green);
+    border: 1px solid var(--l_green) !important;
     border-radius: var(--br_sm);
     padding: var(--m_sm);
-    margin-bottom: 0.5rem;
   }
 
-  .btn_wrapper {
-    text-align: right;
+  .field_error {
+    border: 1px solid var(--d_gold) !important;
+  }
+  .error_msg {
+    color: var(--d_gold) !important;
+    margin-bottom: var(--m_mini) !important;
+  }
+
+  @media ${Breakpoint("1200")} {
+    padding-left: var(--sp_md);
+    padding-right: var(--sp_md);
+  }
+  @media ${Breakpoint("2000")} {
+    padding-left: var(--sp_lg);
+    padding-right: var(--sp_lg);
   }
 `;

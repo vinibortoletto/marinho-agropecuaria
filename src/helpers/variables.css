@@ -3,18 +3,20 @@
   --d_green: #00564e;
   --d_green_trans: rgba(0, 86, 78, 0.3);
   --l_green: #00a79d;
-  --d_gold: #efae5f;
+  --d_gold: #f5c181;
   --l_gold: #fef5e5;
 
   /* Font Family */
-  --ff_special: Poppins, sans-serif;
-  --ff_dft: Roboto, sans-serif;
+  --ff_special: "Poppins", sans-serif;
+  --ff_dft: "Open Sans", sans-serif;
 
   /* Font Size */
+  --fz_mini: 0.8rem;
   --fz_sm: 0.9rem;
   --fz_md: 1.2rem;
   --fz_lg: 1.5rem;
   --fz_hg: 2rem;
+  --fz_xhg: 3rem;
 
   /* Measures */
   --m_mini: 0.5rem;
@@ -26,7 +28,7 @@
   /* Padding */
   --sp_sm: 5vw;
   --sp_md: 10vw;
-  --sp_lg: 5vw;
+  --sp_lg: 20vw;
 
   /* Border Radius */
   --br_sm: 0.3rem;
