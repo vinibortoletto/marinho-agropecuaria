@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // Components
 import DividingLine from "../../../components/DividingLine";
@@ -9,15 +9,33 @@ import CepNumber from "./CepNumber";
 import { Container } from "./styles";
 
 export default function DeliveryInfo() {
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  function handleWidth() {
+    setWindowWidth(window.outerWidth);
+
+    window.addEventListener("resize", () => {
+      setWindowWidth(window.outerWidth);
+    });
+  }
+
+  useEffect(() => {
+    handleWidth();
+  }, []);
+
   return (
     <Container>
       <DividingLine margin="var(--m_lg)" />
 
-      <DeliveryOptions />
+      <div className="wrapper">
+        <DeliveryOptions />
 
-      <DividingLine margin="var(--m_lg)" />
+        {windowWidth < 750 && <DividingLine margin="var(--m_lg)" />}
 
-      <CepNumber />
+        <CepNumber />
+      </div>
+
+      {windowWidth < 1000 && <DividingLine margin="var(--m_lg)" />}
     </Container>
   );
 }

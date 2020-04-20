@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { Breakpoint } from "../../../helpers/mixins";
 
 export const Container = styled.div`
   max-width: 25rem;
+  margin: auto;
 
   .order_summary {
     position: relative;
@@ -56,5 +58,9 @@ export const Container = styled.div`
 
   button {
     font-weight: bold;
+  }
+
+  @media ${Breakpoint("1000")} {
+    margin: 0;
   }
 `;

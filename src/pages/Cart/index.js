@@ -15,19 +15,15 @@ export default function Cart() {
       <Title>Carrinho</Title>
 
       <div className="content">
-        <div className="product_list">
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-        </div>
-
         <div>
+          <div className="product_list">
+            <ProductItem />
+          </div>
+
           <DeliveryInfo />
         </div>
 
-        <div>
-          <OrderSummary />
-        </div>
+        <OrderSummary />
       </div>
     </Container>
   );

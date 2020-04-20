@@ -19,9 +19,9 @@ export default function DeliveryOptions() {
   useEffect(() => {
     const cepNumber = document.querySelector(".cepNumber");
 
-    deliveryOption === "homeDelivery"
-      ? (cepNumber.style.display = "block")
-      : (cepNumber.style.display = "none");
+    deliveryOption === "storeDelivery"
+      ? cepNumber.classList.add("mute")
+      : cepNumber.classList.remove("mute");
   }, [deliveryOption]);
 
   return (

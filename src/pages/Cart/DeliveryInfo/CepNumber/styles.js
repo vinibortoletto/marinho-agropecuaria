@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { FlexCenter } from "../../../../helpers/mixins";
 
 export const Container = styled.div`
-  margin-bottom: var(--m_hg);
+  ${FlexCenter};
+  flex-direction: column;
 
   h1 {
     margin-bottom: var(--m_sm);
@@ -26,6 +28,32 @@ export const Container = styled.div`
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+
+  /* When deliveryOption is set to store, cepNumber becomes mute  */
+  .cepNumber.mute {
+    pointer-events: none;
+
+    h1 {
+      color: grey;
+    }
+
+    input {
+      border-color: grey;
+      color: grey;
+
+      &::placeholder {
+        color: darkgrey;
+      }
+    }
+
+    button {
+      background-color: darkgrey;
+    }
+
+    a {
+      color: darkgrey;
     }
   }
 `;
