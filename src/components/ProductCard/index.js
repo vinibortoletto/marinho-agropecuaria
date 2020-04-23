@@ -1,27 +1,24 @@
 import React from "react";
 
-// Image
-import product from "../../images/products/product_sample.png";
-
 // Components
 import Stars from "../Stars/index";
 
 // Styles
 import { Container } from "./styles";
 
-export default function ProductCard() {
+export default function ProductCard({ img, title, price, paymentMethod }) {
   return (
     <Container className="product_card">
       <div className="img_container">
-        <img src={product} alt="produto" />
+        <img src={img} alt="produto" />
       </div>
 
-      <h1>ração para cães (porte grande)</h1>
+      <h1>{title}</h1>
 
       <Stars />
 
       <div className="price">
-        <h2>R$50,00</h2>
+        <h2>R${price}</h2>
         <h3>até 6x de R$3,16 no cartão</h3>
       </div>
     </Container>

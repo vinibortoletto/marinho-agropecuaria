@@ -4,12 +4,12 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.1",
+    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "flickity": "^2.2.1",
     "flickity-fade": "^1.0.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-scripts": "3.4.0"
   },
   "scripts": {
@@ -34,17 +34,18 @@
     ]
   },
   "devDependencies": {
-    "@unform/core": "^2.0.0",
-    "@unform/web": "^2.0.0",
+    "@unform/core": "^2.1.0",
+    "@unform/web": "^2.1.0",
+    "contentful": "^7.14.3",
     "formik": "^2.1.4",
     "react-input-mask": "^2.0.4",
     "react-maskinput": "^2.0.1",
     "react-router-dom": "^5.1.2",
     "react-slick": "^0.25.2",
     "react-text-mask": "^5.4.3",
-    "sass": "^1.26.1",
+    "sass": "^1.26.3",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.0.1",
-    "yup": "^0.28.1"
+    "styled-components": "^5.1.0",
+    "yup": "^0.28.4"
   }
 }
