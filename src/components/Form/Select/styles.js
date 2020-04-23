@@ -4,7 +4,6 @@ import { FlexCenter, Breakpoint } from "../../../helpers/mixins";
 export const Container = styled.div`
   ${FlexCenter};
   flex-direction: column;
-  margin-bottom: var(--m_sm);
 
   button {
     width: ${(props) => (props.mini ? "4rem" : "12rem")};
