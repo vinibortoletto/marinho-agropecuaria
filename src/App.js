@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Switch, Route } from "react-router-dom";
+import Client from "./Contentful";
 
 // Shared Components
 import Navbars from "./components/Navbars";
@@ -53,8 +54,3 @@ export default function App() {
     </>
   );
 }
-
-/* 
-  TODO:
-    - create contextRef for contentful 
-*/

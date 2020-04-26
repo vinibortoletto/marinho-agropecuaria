@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Client from "./Contentful";
 
-const ProductContext = React.createContext();
+const ProductContext = React.createContext(null);
 
 function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
@@ -17,7 +17,7 @@ function ProductProvider({ children }) {
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [products]);
 
   return (
     <ProductContext.Provider value={{ products: products }}>
@@ -28,4 +28,4 @@ function ProductProvider({ children }) {
 
 const ProductConsumer = ProductContext.Consumer;
 
-export { ProductProvider, ProductConsumer };
+export { ProductProvider, ProductConsumer, ProductContext };

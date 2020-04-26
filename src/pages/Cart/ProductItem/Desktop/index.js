@@ -31,7 +31,7 @@ export default function Desktop({ product }) {
         </div>
 
         <div>
-          <Select mini defaultTitle="1" options={["1", "2", "3", "4", "5"]} />
+          <Select mini defaultOptions="1" options={["1", "2", "3", "4", "5"]} />
 
           <button className="remove_item">
             <i className="fas fa-times" />
