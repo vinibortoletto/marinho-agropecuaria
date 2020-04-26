@@ -3,6 +3,7 @@ import { Breakpoint } from "../../../../../helpers/mixins";
 
 export const Container = styled.div`
   h1 {
+    text-transform: capitalize;
     font-weight: bold;
     font-size: var(--fz_md);
     @media ${Breakpoint("600")} {
