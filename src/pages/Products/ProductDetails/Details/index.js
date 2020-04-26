@@ -12,18 +12,18 @@ import DividingLine from "../../../../components/DividingLine";
 // Styles
 import { Container } from "./styles";
 
-export default function Details() {
+export default function Details({ title, price, description }) {
   return (
     <Container className="product_info">
-      <Title />
+      <Title title={title} />
       <FavoriteIcon />
       <Stars />
-      <Description />
+      <Description description={description} />
 
       <DividingLine margin="var(--m_md)" />
 
       <div className="price_and_btn_wrapper">
-        <Price />
+        <Price price={price} />
         <Buttons />
       </div>
     </Container>

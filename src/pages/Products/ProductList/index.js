@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ProductConsumer } from "../../../Context";
+import { ProductConsumer, ProductContext } from "../../../Context";
 
 // Components
 import ProductCard from "../../../components/ProductCard/index";
@@ -24,8 +24,15 @@ export default function ProductList() {
             return value.products.map(
               (product, index) =>
                 index <= itemsToShow && (
-                  <Link key={product.sys.id} to="/detalhes-do-produto">
+                  <Link
+                    onClick={() => {
+                      value.findSelectedProduct(product.sys.id);
+                    }}
+                    key={product.sys.id}
+                    to="/detalhes-do-produto"
+                  >
                     <ProductCard
+                      className="product_card"
                       img={product.fields.img.fields.file.url}
                       title={product.fields.title}
                       price={product.fields.price}

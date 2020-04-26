@@ -17,6 +17,11 @@ export const Container = styled.div`
   span {
     font-size: var(--fz_mini);
     color: var(--l_green);
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
 
   @media ${Breakpoint("1100")} {

@@ -8,6 +8,7 @@ import RelatedProducts from "./RelatedProducts/index";
 
 // Styles
 import { Container } from "./styles";
+import { ProductConsumer } from "../../../Context";
 
 export default function ProductDetails() {
   return (
@@ -15,10 +16,27 @@ export default function ProductDetails() {
       <Title>Animais > Cães > Rações</Title>
 
       <div className="content">
-        <div className="gallery_and_details_wrapper">
+        {/* <div className="gallery_and_details_wrapper">
           <Gallery />
           <Details />
-        </div>
+        </div> */}
+
+        <ProductConsumer>
+          {(value) => {
+            const { title, price, description } = value.selectedProduct.fields;
+
+            return (
+              <div className="gallery_and_details_wrapper">
+                <Gallery />
+                <Details
+                  title={title}
+                  price={price}
+                  description={description}
+                />
+              </div>
+            );
+          }}
+        </ProductConsumer>
 
         <RelatedProducts />
       </div>

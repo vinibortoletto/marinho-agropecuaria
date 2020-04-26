@@ -1,26 +1,32 @@
 import React, { useState, useEffect } from "react";
-import Client from "./Contentful";
+// import Client from "./Contentful";
+import { getProducts, saveProducts, getStoredProducts } from "./Storage";
 
 const ProductContext = React.createContext(null);
 
 function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState({});
 
-  function getProducts() {
-    Client.getEntries("products")
-      .then((entry) => {
-        let data = entry.items;
-        setProducts(data);
-      })
-      .catch((err) => console.log(err));
-  }
-
+  // Get products from Contentful if LocalStorage is empty
   useEffect(() => {
-    getProducts();
+    products.length === 0 && getProducts(setProducts);
+  }, []);
+
+  // Save products to LocalStorage
+  useEffect(() => {
+    saveProducts(products);
   }, [products]);
 
+  function findSelectedProduct(id) {
+    const product = products.find((product) => product.sys.id === id);
+    setSelectedProduct(product);
+  }
+
   return (
-    <ProductContext.Provider value={{ products: products }}>
+    <ProductContext.Provider
+      value={{ products, selectedProduct, findSelectedProduct }}
+    >
       {children}
     </ProductContext.Provider>
   );
