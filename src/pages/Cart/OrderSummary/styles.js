@@ -29,8 +29,9 @@ export const Container = styled.div`
     }
 
     > .title {
-      font-size: var(--fz_md);
       margin-bottom: var(--m_sm);
+      font-weight: bold;
+      text-decoration: underline;
     }
 
     .product_amount,

@@ -28,7 +28,7 @@ export default function OrderSummary() {
 
           <div className="order_total">
             <div>
-              <span className="title">Total</span>
+              <span className="title">Total:</span>
               <span className="price">R$ 106,00</span>
             </div>
             <span className="payment_method">em até 4x sem juros</span>
