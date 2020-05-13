@@ -19,10 +19,11 @@ export default function ProductDetails() {
         <ProductConsumer>
           {(value) => {
             const { title, price, description } = value.selectedProduct.fields;
+            const img = value.selectedProduct.fields.img.fields.file.url;
 
             return (
               <div className="gallery_and_details_wrapper">
-                <Gallery />
+                <Gallery img={img} />
                 <Details
                   title={title}
                   price={price}

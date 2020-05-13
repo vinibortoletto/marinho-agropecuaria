@@ -6,13 +6,13 @@ import product from "../../../../images/products/product_sample.png";
 // Styles
 import { Container } from "./styles";
 
-export default function Gallery() {
+export default function Gallery({ img }) {
   function handleDots() {
     const dots = document.querySelectorAll(".dot");
 
-    dots.forEach(dot => {
+    dots.forEach((dot) => {
       dot.addEventListener("click", () => {
-        dots.forEach(dot => {
+        dots.forEach((dot) => {
           dot.classList.contains("selected") &&
             dot.classList.remove("selected");
         });
@@ -28,7 +28,7 @@ export default function Gallery() {
 
   return (
     <Container>
-      <img src={product} alt="produto" />
+      <img src={img} alt="produto" />
 
       <div className="dots">
         <button className="dot selected"></button>
