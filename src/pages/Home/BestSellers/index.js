@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ProductConsumer } from "../../../Context";
 
 // Components
 import ProductCard from "../../../components/ProductCard/index";
-
-// Flickity slider
-import Slider from "../../../components/Slider/index";
 
 // Styles
 import { Styles as Section } from "./styles";
@@ -17,38 +15,31 @@ export default function BestSellers() {
     <Section className="section_margin">
       <Title>Os mais vendidos</Title>
 
-      {/* <div className="slider_wrapper">
-        <Slider
-          options={{
-            autoPlay: true,
-            pauseAutoPlayOnHover: false,
-            wrapAround: true,
-            freeScroll: true
-          }}
-        >
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </Slider>
-      </div> */}
-
-      {/* <div className="product_list_wrapper">
-    
-      </div> */}
-
       <div className="content">
         <div className="product_list">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          <ProductConsumer>
+            {(value) => {
+              return value.products.map(
+                (product, index) =>
+                  index <= 7 && (
+                    <Link
+                      onClick={() => {
+                        value.findSelectedProduct(product.sys.id);
+                      }}
+                      key={product.sys.id}
+                      to="/detalhes-do-produto"
+                    >
+                      <ProductCard
+                        className="product_card"
+                        img={product.fields.img.fields.file.url}
+                        title={product.fields.title}
+                        price={product.fields.price}
+                      />
+                    </Link>
+                  )
+              );
+            }}
+          </ProductConsumer>
         </div>
 
         <div className="btn_container">
