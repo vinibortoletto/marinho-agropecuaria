@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { ProductConsumer, ProductContext } from "../../../Context";
+import { ProductContext } from "../../../Context";
 
 // Components
 import ProductCard from "../../../components/ProductCard/index";
@@ -10,38 +10,45 @@ import { Container } from "./styles";
 import { ButtonSquare } from "../../../components/Buttons/styles";
 
 export default function ProductList() {
-  const [itemsToShow, setItemsToShow] = useState(5);
+  const [itemsToShow, setItemsToShow] = useState([{}, {}, {}, {}, {}, {}]);
+  const context = useContext(ProductContext);
 
   function handleItemsToShow() {
-    setItemsToShow(itemsToShow + 3);
+    const newItemsToShow = [...itemsToShow, {}, {}, {}];
+    setItemsToShow(newItemsToShow);
+  }
+
+  function showBackupCards() {
+    return itemsToShow.map((item, index) => <ProductCard key={index} />);
+  }
+
+  function showProductCards() {
+    return context.products.map(
+      (product, index) =>
+        index < itemsToShow.length && (
+          <Link
+            onClick={() => {
+              context.findSelectedProduct(product.sys.id);
+            }}
+            key={product.sys.id}
+            to="/detalhes-do-produto"
+          >
+            <ProductCard
+              loaded
+              className="product_card"
+              img={product.fields.img.fields.file.url}
+              title={product.fields.title}
+              price={product.fields.price}
+            />
+          </Link>
+        )
+    );
   }
 
   return (
     <Container>
       <div className="products_list">
-        <ProductConsumer>
-          {(value) => {
-            return value.products.map(
-              (product, index) =>
-                index <= itemsToShow && (
-                  <Link
-                    onClick={() => {
-                      value.findSelectedProduct(product.sys.id);
-                    }}
-                    key={product.sys.id}
-                    to="/detalhes-do-produto"
-                  >
-                    <ProductCard
-                      className="product_card"
-                      img={product.fields.img.fields.file.url}
-                      title={product.fields.title}
-                      price={product.fields.price}
-                    />
-                  </Link>
-                )
-            );
-          }}
-        </ProductConsumer>
+        {context.products.length < 1 ? showBackupCards() : showProductCards()}
       </div>
 
       <div className="button_container">
