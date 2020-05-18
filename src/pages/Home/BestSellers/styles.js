@@ -33,6 +33,10 @@ export const Styles = styled.section`
     grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
     gap: var(--m_sm);
     margin-bottom: var(--m_lg);
+
+    a {
+      width: 100%;
+    }
   }
 
   @media ${Breakpoint("900")} {

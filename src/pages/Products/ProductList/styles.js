@@ -11,9 +11,8 @@ export const Container = styled.section`
     gap: var(--m_sm);
     justify-items: center;
 
-    .product_card {
+    a {
       width: 100%;
-      transition: 0.2s ease-in-out;
     }
   }
 

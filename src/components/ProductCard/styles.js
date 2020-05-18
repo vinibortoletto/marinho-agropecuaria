@@ -58,7 +58,7 @@ export const Container = styled.div`
 
   .product_card {
     width: 100%;
-    height: 25rem;
+    height: 26rem;
 
     background: var(--l_gold);
     border: 1px solid var(--d_green_trans);
