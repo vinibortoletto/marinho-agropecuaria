@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { Size, FlexCenter, Breakpoint } from "../../../helpers/mixins";
+import { FlexCenter, Breakpoint } from "../../../helpers/mixins";
 
 export const Styles = styled.section`
   width: 100%;
-  height: calc(100vh - 4rem);
+  height: calc(100vh - 16rem);
 
   ${FlexCenter};
   flex-direction: column;
