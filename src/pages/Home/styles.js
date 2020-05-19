@@ -15,15 +15,21 @@ export const Container = styled.section`
 
   /* Slider */
   .flickity-button {
-    background-color: transparent;
-    opacity: 0.7;
-
-    svg {
-      color: var(--d_gold);
-    }
+    display: none;
   }
-
   .flickity-page-dots .dot {
     background-color: var(--d_green);
+  }
+
+  @media ${Breakpoint("1000")} {
+    .flickity-button {
+      display: block;
+      background-color: transparent;
+      opacity: 0.7;
+
+      svg {
+        color: var(--d_gold);
+      }
+    }
   }
 `;
