@@ -18,15 +18,16 @@ export const Container = styled.div`
     position: absolute;
     top: 0;
     left: -100%;
+    z-index: 1;
 
     background-color: var(--l_green);
   }
 
   .loading_animation {
-    animation: loading 2.05s ease-in-out forwards;
+    animation: loadingAnimation 2s ease-in-out forwards;
   }
 
-  @keyframes loading {
+  @keyframes loadingAnimation {
     0% {
       left: -100%;
     }

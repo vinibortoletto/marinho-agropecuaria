@@ -12,7 +12,7 @@ export default function SubmitButton({ isSubmitting, subscribe, cep }) {
     setTimeout(() => {
       btn.forEach((btn) => {
         if (btn.hasAttribute("disabled")) {
-          const loadingBg = btn.firstElementChild;
+          let loadingBg = btn.firstElementChild;
 
           cep
             ? setButtonContent("Calculando...")
