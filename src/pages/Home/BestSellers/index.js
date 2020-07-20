@@ -51,9 +51,11 @@ export default function BestSellers() {
         </div>
 
         <div className="btn_container">
-          <ButtonSquare mini transparent>
-            <Link to="/produtos">Ver mais produtos</Link>
-          </ButtonSquare>
+          <Link to="/produtos">
+            <ButtonSquare mini transparent>
+              Ver mais produtos
+            </ButtonSquare>
+          </Link>
         </div>
       </div>
     </Section>
