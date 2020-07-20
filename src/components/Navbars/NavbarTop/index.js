@@ -13,11 +13,23 @@ import Buttons from "./Buttons/index";
 import { Container } from "./styles";
 
 export default function NavbarTop({ simple }) {
+  function resetNavbarCategoriesOpacity() {
+    let categories = document.querySelectorAll(
+      ".navbar_categories .category_container"
+    );
+
+    categories.forEach((item) => {
+      if (item.style.opacity !== "1") {
+        item.style.opacity = "1";
+      }
+    });
+  }
+
   return (
     <Container simple={simple} className="navbar_top">
       {!simple ? (
         <>
-          <Link to="/">
+          <Link to="/" onClick={() => resetNavbarCategoriesOpacity()}>
             <img
               className="logo"
               src={mainLogo}

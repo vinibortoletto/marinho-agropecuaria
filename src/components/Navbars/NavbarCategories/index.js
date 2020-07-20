@@ -1,77 +1,95 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
+// Images
+import dogIcon from "../../../images/categories/dog.svg";
+import catIcon from "../../../images/categories/cat.svg";
+import fishIcon from "../../../images/categories/fish.svg";
+import reptileIcon from "../../../images/categories/reptile.svg";
+import birdIcon from "../../../images/categories/bird.svg";
+import rodentIcon from "../../../images/categories/rodent.svg";
+import houseIcon from "../../../images/categories/house.svg";
+import gardenIcon from "../../../images/categories/garden.svg";
+import infoIcon from "../../../images/categories/info.svg";
 
 // Styles
 import { Navbar } from "./styles";
 
-// Images
-import dogIcon from "../../../images/categories/dog.png";
-import catIcon from "../../../images/categories/cat.png";
-import fishIcon from "../../../images/categories/fish.png";
-import turtleIcon from "../../../images/categories/turtle.png";
-import chickenIcon from "../../../images/categories/chicken.png";
-import ratIcon from "../../../images/categories/rat.png";
-import houseIcon from "../../../images/categories/house.png";
-import gardenIcon from "../../../images/categories/garden.png";
-import infoIcon from "../../../images/categories/info.png";
-
 export default function NavbarCategories() {
   const categories = [
     {
+      id: "dog",
       img: dogIcon,
       alt: "categoria cães",
       name: "Cães",
-      path: "/produtos/caes"
+      path: "/produtos/caes",
     },
     {
+      id: "cat",
       img: catIcon,
       alt: "categoria gatos",
       name: "Gatos",
-      path: "/produtos/gatos"
+      path: "/produtos/gatos",
     },
     {
+      id: "fish",
       img: fishIcon,
       alt: "categoria peixes",
       name: "Peixes",
-      path: "/produtos/peixes"
+      path: "/produtos/peixes",
     },
     {
-      img: turtleIcon,
+      id: "reptile",
+      img: reptileIcon,
       alt: "categoria répteis",
       name: "Répteis",
-      path: "/produtos/repteis"
+      path: "/produtos/repteis",
     },
     {
-      img: chickenIcon,
+      id: "bird",
+      img: birdIcon,
       alt: "categoria aves",
       name: "Aves",
-      path: "/produtos/aves"
+      path: "/produtos/aves",
     },
     {
-      img: ratIcon,
+      id: "rodent",
+      img: rodentIcon,
       alt: "categoria roedores",
       name: "Roedores",
-      path: "/produtos/roedores"
+      path: "/produtos/roedores",
     },
     {
+      id: "house",
       img: houseIcon,
       alt: "categoria casa",
       name: "Construção",
-      path: "/produtos/construcao"
+      path: "/produtos/construcao",
     },
     {
+      id: "garden",
       img: gardenIcon,
       alt: "categoria jardim",
       name: "Jardinagem",
-      path: "/produtos/jardinagem"
+      path: "/produtos/jardinagem",
     },
     {
+      id: "info",
       img: infoIcon,
       alt: "categoria atendimento",
       name: "Atendimento",
-      path: "/contato"
-    }
+      path: "/contato",
+    },
   ];
+
+  function getPage(id) {
+    let icons = document.querySelectorAll(".category_container");
+
+    icons.forEach((icon) => {
+      icon.style.opacity = "0.5";
+      icon.id === id && (icon.style.opacity = "1");
+    });
+  }
 
   useEffect(() => {
     const navbarCategories = document.querySelector(".navbar_categories");
@@ -89,8 +107,12 @@ export default function NavbarCategories() {
     <Navbar className="navbar_categories">
       {categories.map((category, index) => {
         return (
-          <Link key={index} to={category.path}>
-            <div className="category_container">
+          <Link
+            key={index}
+            to={category.path}
+            onClick={() => getPage(category.id)}
+          >
+            <div id={category.id} className="category_container">
               <img className="img" src={category.img} alt={category.alt} />
               <p>{category.name}</p>
             </div>
