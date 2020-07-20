@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // Images
 import logo from "../../images/logos/my_logo/main.svg";
-import bannerImg from "../../images/banners/man.jpg";
+import manBannerSm from "../../images/banners/man-sm.jpg";
+import manBannerMd from "../../images/banners/man-md.jpg";
+import manBannerBg from "../../images/banners/man-bg.jpg";
 
 // Components
 import { Title } from "../../components/Title/styles";
@@ -12,13 +14,37 @@ import Companies from "./Companies/index";
 import { Container, Banner } from "./styles";
 
 export default function About() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [manBanner, setManBanner] = useState(manBannerSm);
+
+  function getWidth() {
+    window.addEventListener("resize", () => {
+      setWindowWidth(window.innerWidth);
+    });
+  }
+
+  function setBanner() {
+    if (windowWidth <= 500) {
+      setManBanner(manBannerSm);
+    } else if (windowWidth <= 1000 && windowWidth > 500) {
+      setManBanner(manBannerMd);
+    } else {
+      setManBanner(manBannerBg);
+    }
+  }
+
+  useEffect(() => {
+    getWidth();
+    setBanner();
+  }, [windowWidth]);
+
   return (
     <Container>
       <Title>Quem somos</Title>
 
       <section className="content">
         <section>
-          <Banner img={bannerImg}>
+          <Banner img={manBanner}>
             <div className="bg_img"></div>
           </Banner>
 
