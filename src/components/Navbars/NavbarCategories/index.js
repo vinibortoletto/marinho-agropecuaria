@@ -88,15 +88,6 @@ export default function NavbarCategories() {
     },
   ];
 
-  // function getPage(id) {
-  //   let icons = document.querySelectorAll(".category_container");
-
-  //   icons.forEach((icon) => {
-  //     icon.style.opacity = "0.5";
-  //     icon.id === id && (icon.style.opacity = "1");
-  //   });
-  // }
-
   useEffect(() => {
     const navbarCategories = document.querySelector(".navbar_categories");
 

@@ -21,14 +21,12 @@ function ProductProvider({ children }) {
   }, [products]);
 
   function getCurrentPage(id) {
-    // let icons = document.querySelectorAll(".category_container"); FIXME: move this to navbarCategories
+    let icons = document.querySelectorAll(".category_container");
 
-    // icons.forEach((icon) => {
-    // icon.style.opacity = "0.5";
-    // icon.id === id && (icon.style.opacity = "1");
-    // });
-
-    // console.log(id);
+    icons.forEach((icon) => {
+      icon.style.opacity = "0.5";
+      icon.id === id && (icon.style.opacity = "1");
+    });
 
     setCurrentPage(id);
   }
