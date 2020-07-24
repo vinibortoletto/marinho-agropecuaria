@@ -39,21 +39,24 @@ export default function Home() {
       title: "Cuidamos de quem te faz feliz",
       subtitle: "Alimentos, brinquedos e veterinários para seu pet",
       alt: "cachorros",
-      tag: "caes",
+      path: "caes",
+      id: "dogs",
     },
     {
       img: houseBanner,
       title: "Atendemos as necessidades da sua casa",
       subtitle: "Materias de construção e ferramentas para seu lar",
       alt: "casa e construção",
-      tag: "casa-e-construcao",
+      path: "casa",
+      id: "house",
     },
     {
       img: gardenBanner,
       title: "Do campo para a sua casa",
       subtitle: "Mudas, sementes e ornamentos para seu jardim",
       alt: "jardinagem",
-      tag: "jardinagem",
+      path: "jardim",
+      id: "garden",
     },
   ];
 
@@ -102,7 +105,8 @@ export default function Home() {
               title={hero.title}
               subtitle={hero.subtitle}
               alt={hero.alt}
-              tag={hero.tag}
+              path={hero.path}
+              id={hero.id}
             />
           ))}
         </Slider>

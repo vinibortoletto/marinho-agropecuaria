@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { ProductContext } from "../../../Context";
 
 // Styles
 import { ButtonPill } from "../../../components/Buttons/styles";
 import { Styles as Section } from "./styles";
 import Banner from "../../../components/Banner";
 
-export default function Hero({ img, title, subtitle, alt, tag }) {
-  const [exploreLink, setExploreLink] = useState(`produtos/${tag}`);
+export default function Hero({ img, title, subtitle, alt, path, id }) {
+  const context = useContext(ProductContext);
+  const [exploreLink, setExploreLink] = useState(`produtos/${path}`);
 
   return (
     <Section className="hero">
@@ -22,7 +24,7 @@ export default function Hero({ img, title, subtitle, alt, tag }) {
 
       <hr />
 
-      <Link to={exploreLink}>
+      <Link to={exploreLink} onClick={() => context.getCurrentPage(id)}>
         <ButtonPill>Explorar</ButtonPill>
       </Link>
     </Section>

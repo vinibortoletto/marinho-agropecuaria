@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ProductContext } from "../../../Context";
 
 // Components
@@ -10,8 +10,10 @@ import { Container } from "./styles";
 import { ButtonSquare } from "../../../components/Buttons/styles";
 
 export default function ProductList() {
-  const [itemsToShow, setItemsToShow] = useState([{}, {}, {}, {}, {}, {}]);
+  let location = useLocation();
   const context = useContext(ProductContext);
+
+  const [itemsToShow, setItemsToShow] = useState([{}, {}, {}, {}, {}, {}]);
 
   function handleItemsToShow() {
     const newItemsToShow = [...itemsToShow, {}, {}, {}];
@@ -23,26 +25,53 @@ export default function ProductList() {
   }
 
   function showProductCards() {
-    return context.products.map(
-      (product, index) =>
-        index < itemsToShow.length && (
-          <Link
-            onClick={() => {
-              context.findSelectedProduct(product.sys.id);
-            }}
-            key={product.sys.id}
-            to="/detalhes-do-produto"
-          >
-            <ProductCard
-              loaded
-              className="product_card"
-              img={product.fields.img.fields.file.url}
-              title={product.fields.title}
-              price={product.fields.price}
-            />
-          </Link>
-        )
-    );
+    if (location.pathname !== "/produtos") {
+      let filteredProducts = context.products.filter(
+        (product) => product.fields.tags === context.currentPage
+      );
+
+      return filteredProducts.map(
+        (product, index) =>
+          index < itemsToShow.length && (
+            <Link
+              onClick={() => {
+                context.findSelectedProduct(product.sys.id);
+              }}
+              key={product.sys.id}
+              to="/detalhes-do-produto"
+            >
+              <ProductCard
+                loaded
+                className="product_card"
+                img={product.fields.img.fields.file.url}
+                title={product.fields.title}
+                price={product.fields.price}
+              />
+            </Link>
+          )
+      );
+    } else {
+      return context.products.map(
+        (product, index) =>
+          index < itemsToShow.length && (
+            <Link
+              onClick={() => {
+                context.findSelectedProduct(product.sys.id);
+              }}
+              key={product.sys.id}
+              to="/detalhes-do-produto"
+            >
+              <ProductCard
+                loaded
+                className="product_card"
+                img={product.fields.img.fields.file.url}
+                title={product.fields.title}
+                price={product.fields.price}
+              />
+            </Link>
+          )
+      );
+    }
   }
 
   return (
