@@ -33,18 +33,29 @@ export default function App() {
 
       <main>
         <Switch>
+          {/* Home Page */}
           <Route exact path="/" component={Home} />
+
+          {/* Products Pages */}
           <Route path="/produtos" component={Products} />
-          <Route path="/detalhes-do-produto" component={ProductDetails} />
-          <Route path="/carrinho" component={Cart} />
+          <Route exact path="/detalhes-do-produto" component={ProductDetails} />
 
-          <Route path="/quem-somos" component={About} />
-          <Route path="/contato" component={Contact} />
-
-          <Route path="/termos-e-condicoes" component={TermsAndConditions} />
-          <Route path="/trocas-e-devolucoes" component={ExchangesAndReturns} />
-          <Route path="/formas-de-pagamento" component={PaymentMethods} />
-          <Route path="/termos-de-compra" component={PurchaseTerms} />
+          {/* Default Pages */}
+          <Route exact path="/carrinho" component={Cart} />
+          <Route exact path="/quem-somos" component={About} />
+          <Route exact path="/contato" component={Contact} />
+          <Route
+            exact
+            path="/termos-e-condicoes"
+            component={TermsAndConditions}
+          />
+          <Route
+            exact
+            path="/trocas-e-devolucoes"
+            component={ExchangesAndReturns}
+          />
+          <Route exact path="/formas-de-pagamento" component={PaymentMethods} />
+          <Route exact path="/termos-de-compra" component={PurchaseTerms} />
           <Route component={PageNotFound} />
         </Switch>
       </main>
