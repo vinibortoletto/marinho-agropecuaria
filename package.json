@@ -40,7 +40,7 @@
     "formik": "^2.1.4",
     "react-input-mask": "^2.0.4",
     "react-maskinput": "^2.0.1",
-    "react-router-dom": "^5.1.2",
+    "react-router-dom": "^5.2.0",
     "react-slick": "^0.25.2",
     "react-text-mask": "^5.4.3",
     "sass": "^1.26.3",
