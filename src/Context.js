@@ -1,24 +1,44 @@
 import React, { useState, useEffect } from "react";
-
-// import Client from "./Contentful";
-import { getProducts, saveProducts, getStoredProducts } from "./Storage";
+import {
+  getProducts,
+  saveProducts,
+  getStoredProducts,
+  getStoredSelectedProduct,
+  saveSelectedProduct,
+} from "./Storage";
 
 const ProductContext = React.createContext(null);
 
 function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
-  const [selectedProduct, setSelectedProduct] = useState({});
+  const [selectedProduct, setSelectedProduct] = useState([]);
   const [currentPage, setCurrentPage] = useState();
 
-  // Get products from Contentful if LocalStorage is empty
+  // Get selectedProduct from localStorage OR from Contentful
   useEffect(() => {
-    products.length === 0 && getProducts(setProducts);
-  }, [products]);
+    const checkLocalStorage = localStorage.getItem("products");
 
-  // Save products to LocalStorage
+    if (checkLocalStorage !== null && checkLocalStorage.length >= 0) {
+      getStoredProducts(setProducts);
+    } else {
+      getProducts(setProducts);
+    }
+  }, []);
+
+  // Get selectedProduct from localStorage
+  useEffect(() => {
+    const checkLocalStorage = localStorage.getItem("selectedProduct");
+
+    if (checkLocalStorage !== null && checkLocalStorage.length > 0) {
+      getStoredSelectedProduct(setSelectedProduct);
+    }
+  }, []);
+
+  // Save products/selectedProduct to localStorage
   useEffect(() => {
     saveProducts(products);
-  }, [products]);
+    saveSelectedProduct(selectedProduct);
+  }, [products, selectedProduct]);
 
   function getCurrentPage(id) {
     let icons = document.querySelectorAll(".category_container");
@@ -32,7 +52,9 @@ function ProductProvider({ children }) {
   }
 
   function findSelectedProduct(id) {
-    const product = products.find((product) => product.sys.id === id);
+    const product = [];
+    product.push(products.find((product) => product.sys.id === id));
+
     setSelectedProduct(product);
   }
 

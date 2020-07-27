@@ -9,7 +9,6 @@ import Banner from "../../../components/Banner";
 
 export default function Hero({ img, title, subtitle, alt, path, id }) {
   const context = useContext(ProductContext);
-  const [exploreLink, setExploreLink] = useState(`produtos/${path}`);
 
   return (
     <Section className="hero">
@@ -24,7 +23,7 @@ export default function Hero({ img, title, subtitle, alt, path, id }) {
 
       <hr />
 
-      <Link to={exploreLink} onClick={() => context.getCurrentPage(id)}>
+      <Link to={`produtos/${path}`} onClick={() => context.getCurrentPage(id)}>
         <ButtonPill>Explorar</ButtonPill>
       </Link>
     </Section>

@@ -8,23 +8,24 @@ const client = createClient({
 export async function getProducts(setProducts) {
   try {
     let contentful = await client.getEntries("products");
-    setProducts(contentful.items);
+    await setProducts(contentful.items);
   } catch (error) {
     console.log(error);
   }
 }
 
+export function getStoredProducts(setProducts) {
+  setProducts(JSON.parse(localStorage.getItem("products")));
+}
 export function saveProducts(products) {
   localStorage.setItem("products", JSON.stringify(products));
-
-  // localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
 }
 
-export function getStoredProducts(setProducts) {
-  let storedProducts = JSON.parse(localStorage.getItem("products"));
-  setProducts(storedProducts);
-
-  storedProducts.length === 0 && console.log("empty");
+export function getStoredSelectedProduct(setSelectedProduct) {
+  setSelectedProduct(JSON.parse(localStorage.getItem("selectedProduct")));
+}
+export function saveSelectedProduct(selectedProduct) {
+  localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
 }
 
 // export function saveSelectedProduct(products) {

@@ -9,28 +9,37 @@ import RelatedProducts from "./RelatedProducts/index";
 // Styles
 import { Container } from "./styles";
 import { ProductConsumer } from "../../../Context";
+import { useEffect } from "react";
 
 export default function ProductDetails() {
   return (
     <Container>
-      <Title>Animais > Cães > Rações</Title>
+      <Title>
+        Animais {`>`} Cães {`>`} Rações
+      </Title>
 
       <div className="content">
         <ProductConsumer>
           {(value) => {
-            const { title, price, description } = value.selectedProduct.fields;
-            const img = value.selectedProduct.fields.img.fields.file.url;
+            if (value.selectedProduct.length > 0) {
+              const {
+                title,
+                price,
+                description,
+              } = value.selectedProduct[0].fields;
+              const img = value.selectedProduct[0].fields.img.fields.file.url;
 
-            return (
-              <div className="gallery_and_details_wrapper">
-                <Gallery img={img} />
-                <Details
-                  title={title}
-                  price={price}
-                  description={description}
-                />
-              </div>
-            );
+              return (
+                <div className="gallery_and_details_wrapper">
+                  <Gallery img={img} />
+                  <Details
+                    title={title}
+                    price={price}
+                    description={description}
+                  />
+                </div>
+              );
+            }
           }}
         </ProductConsumer>
 

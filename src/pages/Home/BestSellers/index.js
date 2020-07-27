@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ProductConsumer, ProductContext } from "../../../Context";
+import { ProductContext } from "../../../Context";
 
 // Components
 import ProductCard from "../../../components/ProductCard/index";
