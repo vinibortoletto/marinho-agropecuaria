@@ -27,7 +27,3 @@ export function getStoredSelectedProduct(setSelectedProduct) {
 export function saveSelectedProduct(selectedProduct) {
   localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
 }
-
-// export function saveSelectedProduct(products) {
-//   localStorage.setItem("products", JSON.stringify(products));
-// }

@@ -14,7 +14,7 @@ function ProductProvider({ children }) {
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [currentPage, setCurrentPage] = useState();
 
-  // Get selectedProduct from localStorage OR from Contentful
+  // Get products from localStorage OR from Contentful
   useEffect(() => {
     const checkLocalStorage = localStorage.getItem("products");
 
@@ -40,15 +40,8 @@ function ProductProvider({ children }) {
     saveSelectedProduct(selectedProduct);
   }, [products, selectedProduct]);
 
-  function getCurrentPage(id) {
-    let icons = document.querySelectorAll(".category_container");
-
-    icons.forEach((icon) => {
-      icon.style.opacity = "0.5";
-      icon.id === id && (icon.style.opacity = "1");
-    });
-
-    setCurrentPage(id);
+  function getCurrentPage(page) {
+    setCurrentPage(page);
   }
 
   function findSelectedProduct(id) {

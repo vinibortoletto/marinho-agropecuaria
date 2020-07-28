@@ -24,63 +24,54 @@ export default function NavbarCategories() {
 
   const categories = [
     {
-      id: "dogs",
       img: dogIcon,
       alt: "categoria cães",
       name: "cães",
       path: "caes",
     },
     {
-      id: "cats",
       img: catIcon,
       alt: "categoria gatos",
       name: "gatos",
       path: "gatos",
     },
     {
-      id: "fish",
       img: fishIcon,
       alt: "categoria peixes",
       name: "peixes",
       path: "peixes",
     },
     {
-      id: "reptiles",
       img: reptileIcon,
       alt: "categoria répteis",
       name: "répteis",
       path: "repteis",
     },
     {
-      id: "birds",
       img: birdIcon,
       alt: "categoria aves",
       name: "aves",
       path: "aves",
     },
     {
-      id: "rodents",
       img: rodentIcon,
       alt: "categoria roedores",
       name: "roedores",
       path: "roedores",
     },
     {
-      id: "house",
       img: houseIcon,
       alt: "categoria casa",
       name: "casa",
       path: "casa",
     },
     {
-      id: "garden",
       img: gardenIcon,
       alt: "categoria jardim",
       name: "jardim",
       path: "jardim",
     },
     {
-      id: "contact",
       img: infoIcon,
       alt: "categoria atendimento",
       name: "atendimento",
@@ -100,6 +91,15 @@ export default function NavbarCategories() {
     };
   }, []);
 
+  function showActiveCategory(id) {
+    let icons = document.querySelectorAll(".category_container");
+
+    icons.forEach((icon) => {
+      icon.style.opacity = "0.5";
+      icon.id === id && (icon.style.opacity = "1");
+    });
+  }
+
   return (
     <Navbar className="navbar_categories">
       {categories.map((category, index) => {
@@ -111,9 +111,12 @@ export default function NavbarCategories() {
                 ? "/contato"
                 : `/produtos/${category.path}`
             }
-            onClick={() => context.getCurrentPage(category.id)}
+            onClick={() => {
+              context.getCurrentPage(category.name);
+              showActiveCategory(category.path);
+            }}
           >
-            <div id={category.id} className="category_container">
+            <div id={category.path} className="category_container">
               <img className="img" src={category.img} alt={category.alt} />
               <p>{category.name}</p>
             </div>

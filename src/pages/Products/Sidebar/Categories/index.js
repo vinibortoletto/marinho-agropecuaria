@@ -13,16 +13,16 @@ export default function Categories() {
           <Checkbox label="Rações" />
         </li>
         <li>
-          <Checkbox label="Enlatados" />
-        </li>
-        <li>
-          <Checkbox label="Petiscos" />
-        </li>
-        <li>
           <Checkbox label="Brinquedos" />
         </li>
         <li>
           <Checkbox label="Remédios" />
+        </li>
+        <li>
+          <Checkbox label="Casa e Construção" />
+        </li>
+        <li>
+          <Checkbox label="Jardim" />
         </li>
       </ul>
     </div>

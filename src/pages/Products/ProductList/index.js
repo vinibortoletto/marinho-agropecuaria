@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ProductContext } from "../../../Context";
 
@@ -26,8 +26,8 @@ export default function ProductList() {
 
   function showProductCards() {
     if (location.pathname !== "/produtos") {
-      let filteredProducts = context.products.filter(
-        (product) => product.fields.tags === context.currentPage
+      let filteredProducts = context.products.filter((product) =>
+        product.fields.tags.includes(context.currentPage)
       );
 
       return filteredProducts.map(
@@ -73,6 +73,15 @@ export default function ProductList() {
       );
     }
   }
+
+  useEffect(() => {
+    let page = location.pathname.split("produtos/").pop();
+
+    page === "caes" && (page = "cães");
+    page === "repteis" && (page = "répteis");
+
+    context.getCurrentPage(page);
+  }, [location]);
 
   return (
     <Container>

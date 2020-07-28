@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 // Components
 import { Title } from "../../../components/Title/styles";
@@ -8,14 +8,33 @@ import RelatedProducts from "./RelatedProducts/index";
 
 // Styles
 import { Container } from "./styles";
-import { ProductConsumer } from "../../../Context";
-import { useEffect } from "react";
+import { ProductConsumer, ProductContext } from "../../../Context";
 
 export default function ProductDetails() {
+  const context = useContext(ProductContext);
+  const [tag, setTag] = useState();
+
+  useEffect(() => {
+    getTag();
+  }, [context]);
+
+  function getTag() {
+    let newTag;
+
+    context.selectedProduct.length > 0 &&
+      (newTag = context.selectedProduct[0].fields.tags);
+
+    // if (newTag === "dogs") {
+    //   setTag("cães");
+    // }
+
+    // console.log(newTag);
+  }
+
   return (
     <Container>
       <Title>
-        Animais {`>`} Cães {`>`} Rações
+        {tag} {`>`} Rações
       </Title>
 
       <div className="content">
