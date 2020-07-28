@@ -21,21 +21,16 @@ export default function ProductDetails() {
   function getTag() {
     let newTag;
 
-    context.selectedProduct.length > 0 &&
-      (newTag = context.selectedProduct[0].fields.tags);
+    if (context.selectedProduct.length > 0) {
+      newTag = context.selectedProduct[0].fields.tags.replace(/,/g, " >");
+    }
 
-    // if (newTag === "dogs") {
-    //   setTag("cães");
-    // }
-
-    // console.log(newTag);
+    setTag(newTag);
   }
 
   return (
     <Container>
-      <Title>
-        {tag} {`>`} Rações
-      </Title>
+      <p className="breadcrumb">{tag}</p>
 
       <div className="content">
         <ProductConsumer>
