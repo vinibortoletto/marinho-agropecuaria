@@ -16,8 +16,24 @@ export default function ProductList() {
   const [itemsToShow, setItemsToShow] = useState([{}, {}, {}, {}, {}, {}]);
 
   function handleItemsToShow() {
+    const moreProductsBtn = document.getElementById("moreProducts_btn");
+
     const newItemsToShow = [...itemsToShow, {}, {}, {}];
     setItemsToShow(newItemsToShow);
+
+    if (location.pathname !== "/produtos") {
+      let filteredProducts;
+
+      filteredProducts = context.products.filter((product) =>
+        product.fields.tags.includes(context.currentPage)
+      );
+
+      newItemsToShow.length >= filteredProducts.length &&
+        (moreProductsBtn.style.display = "none");
+    } else if (location.pathname === "/produtos") {
+      newItemsToShow.length >= context.products.length &&
+        (moreProductsBtn.style.display = "none");
+    }
   }
 
   function showBackupCards() {
@@ -90,7 +106,14 @@ export default function ProductList() {
       </div>
 
       <div className="button_container">
-        <ButtonSquare mini transparent onClick={handleItemsToShow}>
+        <ButtonSquare
+          mini
+          transparent
+          onClick={() => {
+            handleItemsToShow();
+          }}
+          id="moreProducts_btn"
+        >
           ver mais produtos
         </ButtonSquare>
       </div>
