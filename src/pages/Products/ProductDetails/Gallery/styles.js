@@ -6,15 +6,34 @@ export const Container = styled.div`
   ${FlexCenter};
   flex-direction: column;
 
+  .productDetails_img-container {
+    border: 1px solid var(--d_green_trans);
+    border-radius: var(--br_sm);
+    margin-bottom: var(--m_sm);
+  }
+
   img {
     width: 100%;
     max-height: 20rem;
     object-fit: contain;
 
     padding: var(--m_sm);
-    margin-bottom: var(--m_sm);
-    border: 1px solid var(--d_green_trans);
-    border-radius: var(--br_sm);
+
+    &.animation {
+      animation: blink 0.2s ease-in-out;
+    }
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   .dots {
