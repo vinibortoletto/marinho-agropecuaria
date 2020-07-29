@@ -19,9 +19,14 @@ export default function RelatedProducts() {
           <ProductConsumer>
             {(value) => {
               if (value.selectedProduct.length > 0) {
-                const selectedProductTag = value.selectedProduct[0].fields.tags;
-                const relatedProducts = value.products.filter(
-                  (product) => product.fields.tags === selectedProductTag
+                s;
+                const selectedProductTags = value.selectedProduct
+                  .shift()
+                  .fields.tags.split(", ")
+                  .shift();
+
+                const relatedProducts = value.products.filter((product) =>
+                  product.fields.tags.includes(selectedProductTags)
                 );
 
                 return relatedProducts.map(
@@ -45,25 +50,6 @@ export default function RelatedProducts() {
                     )
                 );
               }
-              // return value.products.map(
-              //   (product, index) =>
-              //     index <= 3 && (
-              //       <Link
-              //         onClick={() => {
-              //           value.findSelectedProduct(product.sys.id);
-              //         }}
-              //         key={product.sys.id}
-              //         to="/detalhes-do-produto"
-              //       >
-              //         <ProductCard
-              //           className="product_card"
-              //           img={product.fields.img.fields.file.url}
-              //           title={product.fields.title}
-              //           price={product.fields.price}
-              //         />
-              //       </Link>
-              //     )
-              // );
             }}
           </ProductConsumer>
         </div>
