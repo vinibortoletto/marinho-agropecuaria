@@ -19,7 +19,6 @@ export default function RelatedProducts() {
           <ProductConsumer>
             {(value) => {
               if (value.selectedProduct.length > 0) {
-                s;
                 const selectedProductTags = value.selectedProduct
                   .shift()
                   .fields.tags.split(", ")

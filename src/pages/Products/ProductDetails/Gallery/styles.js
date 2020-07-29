@@ -10,6 +10,10 @@ export const Container = styled.div`
     border: 1px solid var(--d_green_trans);
     border-radius: var(--br_sm);
     margin-bottom: var(--m_sm);
+
+    width: 25rem;
+    height: 25rem;
+    display: flex;
   }
 
   img {
