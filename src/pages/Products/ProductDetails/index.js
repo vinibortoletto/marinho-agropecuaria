@@ -1,17 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 
 // Components
-import { Title } from "../../../components/Title/styles";
 import Gallery from "./Gallery";
 import Details from "./Details";
 import RelatedProducts from "./RelatedProducts/index";
 
 // Styles
 import { Container } from "./styles";
-import { ProductConsumer, ProductContext } from "../../../Context";
+import { ProductContext } from "../../../Context";
 
 export default function ProductDetails() {
   const context = useContext(ProductContext);
+  const selectedProduct = context.selectedProduct;
   const [tag, setTag] = useState();
 
   useEffect(() => {
@@ -28,35 +28,24 @@ export default function ProductDetails() {
     setTag(newTag);
   }
 
+  function renderProductDetails() {
+    const { title, price, description } = selectedProduct[0].fields;
+    const img = selectedProduct[0].fields.img.fields.file.url;
+
+    return (
+      <div className="gallery_and_details_wrapper">
+        <Gallery img={img} />
+        <Details title={title} price={price} description={description} />
+      </div>
+    );
+  }
+
   return (
     <Container>
       <p className="breadcrumb">{tag}</p>
 
       <div className="content">
-        <ProductConsumer>
-          {(value) => {
-            if (value.selectedProduct.length > 0) {
-              const {
-                title,
-                price,
-                description,
-              } = value.selectedProduct[0].fields;
-              const img = value.selectedProduct[0].fields.img.fields.file.url;
-
-              return (
-                <div className="gallery_and_details_wrapper">
-                  <Gallery img={img} />
-                  <Details
-                    title={title}
-                    price={price}
-                    description={description}
-                  />
-                </div>
-              );
-            }
-          }}
-        </ProductConsumer>
-
+        {selectedProduct.length > 0 && renderProductDetails()}
         <RelatedProducts />
       </div>
     </Container>
