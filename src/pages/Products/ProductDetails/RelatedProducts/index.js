@@ -19,14 +19,22 @@ export default function RelatedProducts() {
           <ProductConsumer>
             {(value) => {
               if (value.selectedProduct.length > 0) {
-                const selectedProductTags = value.selectedProduct
-                  .shift()
-                  .fields.tags.split(", ")
-                  .shift();
+                let selectedProductTags = value.selectedProduct[0].fields.tags.split(
+                  ", "
+                )[0];
 
-                const relatedProducts = value.products.filter((product) =>
+                let relatedProducts = value.products.filter((product) =>
                   product.fields.tags.includes(selectedProductTags)
                 );
+
+                if (relatedProducts.length < 4) {
+                  let randomProduct =
+                    value.products[
+                      Math.floor(Math.random() * value.products.length)
+                    ];
+
+                  relatedProducts.push(randomProduct);
+                }
 
                 return relatedProducts.map(
                   (product, index) =>
