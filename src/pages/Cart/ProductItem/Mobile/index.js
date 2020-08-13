@@ -25,7 +25,7 @@ export default function Mobile({ product }) {
           </button>
         </div>
 
-        <Select mini defaultOptions="1" options={["1", "2", "3", "4", "5"]} />
+        <Select mini cart options={["1", "2", "3", "4", "5"]} />
       </div>
 
       <DividingLine bgColor="var(--d_gold);" />

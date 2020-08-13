@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
-
+import { ProductContext } from "../../../Context";
 // Components
 import { ButtonPill } from "../../../components/Buttons/styles";
 
 // Styles
 import { Container } from "./styles";
 
-export default function Select({ mini, options }) {
+export default function Select({ mini, options, productList, cart }) {
+  const context = useContext(ProductContext);
   const [defaultOption, setDefaultOption] = useState(options[0]);
+  let products = context.products;
 
   function handleToggleAnimation() {
     // Shows options
@@ -19,19 +21,32 @@ export default function Select({ mini, options }) {
     arrowIcon.classList.toggle("toggle");
   }
 
-  function handleSortBtnChange() {
+  function handleSortBtnChange(id) {
     const options = document.querySelectorAll(".sort_options li");
 
     options.forEach((opt) => {
-      opt.addEventListener("click", () => {
+      if (opt.id == id) {
         setDefaultOption(opt.innerText);
         handleToggleAnimation();
-      });
+
+        if (productList) {
+          context.handleSortProducts(opt.innerText);
+          context.saveSortOption(opt.innerText);
+        }
+      }
     });
   }
 
   useEffect(() => {
-    handleSortBtnChange();
+    if (defaultOption === "Mais vendidos") {
+      const checkLocalStorage = localStorage.getItem("sortOption");
+
+      if (checkLocalStorage === null) {
+        context.saveSortOption(defaultOption);
+      } else {
+        context.getSortOption(setDefaultOption);
+      }
+    }
   }, []);
 
   return (
@@ -50,7 +65,13 @@ export default function Select({ mini, options }) {
         <div className="sort_options">
           <ul>
             {options.map((option, index) => (
-              <li key={index}>{option}</li>
+              <li
+                key={index}
+                id={index}
+                onClick={() => handleSortBtnChange(index)}
+              >
+                {option}
+              </li>
             ))}
           </ul>
         </div>

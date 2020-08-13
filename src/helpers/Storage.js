@@ -8,7 +8,12 @@ const client = createClient({
 export async function getProducts(setProducts) {
   try {
     let contentful = await client.getEntries("products");
-    await setProducts(contentful.items);
+    let products = contentful.items;
+
+    // Sorts products by rating
+    products = await products.sort((a, b) => b.fields.rating - a.fields.rating);
+
+    setProducts(products);
   } catch (error) {
     console.log(error);
   }

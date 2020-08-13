@@ -5,7 +5,7 @@ import {
   getStoredProducts,
   getStoredSelectedProduct,
   saveSelectedProduct,
-} from "./Storage";
+} from "./helpers/Storage";
 
 const ProductContext = React.createContext(null);
 
@@ -51,6 +51,37 @@ function ProductProvider({ children }) {
     setSelectedProduct(product);
   }
 
+  function handleSortProducts(option) {
+    let newProducts = products;
+
+    // Ascending
+    if (option === "Menor preço") {
+      newProducts.sort(
+        (a, b) => parseFloat(a.fields.price) - parseFloat(b.fields.price)
+      );
+    }
+    // Descending
+    else if (option === "Maior preço") {
+      newProducts.sort(
+        (a, b) => parseFloat(a.fields.price) + parseFloat(b.fields.price)
+      );
+    }
+    // By rating
+    else {
+      newProducts.sort((a, b) => b.fields.rating - a.fields.rating);
+    }
+
+    setProducts([...newProducts]);
+  }
+
+  function getSortOption(setDefaultOption) {
+    setDefaultOption(JSON.parse(localStorage.getItem("sortOption")));
+  }
+
+  function saveSortOption(defaultOption) {
+    localStorage.setItem("sortOption", JSON.stringify(defaultOption));
+  }
+
   return (
     <ProductContext.Provider
       value={{
@@ -59,6 +90,11 @@ function ProductProvider({ children }) {
         findSelectedProduct,
         getCurrentPage,
         currentPage,
+        setProducts,
+        saveProducts,
+        handleSortProducts,
+        getSortOption,
+        saveSortOption,
       }}
     >
       {children}

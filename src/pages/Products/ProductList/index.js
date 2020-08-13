@@ -11,7 +11,7 @@ import { ButtonSquare } from "../../../components/Buttons/styles";
 
 export default function ProductList() {
   let location = useLocation();
-  const context = useContext(ProductContext);
+  let context = useContext(ProductContext);
 
   const [itemsToShow, setItemsToShow] = useState([{}, {}, {}, {}, {}, {}]);
 

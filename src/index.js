@@ -4,7 +4,7 @@ import App from "./App";
 
 // Router
 import { BrowserRouter as Router } from "react-router-dom";
-import RestoreScroll from "./RestoreScroll";
+import RestoreScroll from "./helpers/RestoreScroll";
 
 // Context
 import { ProductProvider } from "./Context";

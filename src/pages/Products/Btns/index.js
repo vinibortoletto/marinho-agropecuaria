@@ -15,7 +15,7 @@ export default function Btns() {
       </ButtonPill>
 
       <Select
-        defaultOptions="Mais vendidos"
+        productList
         options={["Mais vendidos", "Menor preço", "Maior preço"]}
       />
     </Container>
