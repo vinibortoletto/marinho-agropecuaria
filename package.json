@@ -6,11 +6,12 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "eslint-config-airbnb": "^18.2.0",
     "flickity": "^2.2.1",
     "flickity-fade": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.0"
+    "react-scripts": "^3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,10 +35,10 @@
     ]
   },
   "devDependencies": {
-    "@unform/core": "^2.1.0",
-    "@unform/web": "^2.1.0",
     "contentful": "^7.14.3",
+    "eslint-plugin-react": "^7.20.6",
     "formik": "^2.1.4",
+    "prettier": "^2.1.1",
     "react-input-mask": "^2.0.4",
     "react-maskinput": "^2.0.1",
     "react-router-dom": "^5.2.0",

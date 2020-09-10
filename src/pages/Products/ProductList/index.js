@@ -12,6 +12,7 @@ import { ButtonSquare } from "../../../components/Buttons/styles";
 export default function ProductList() {
   let location = useLocation();
   let context = useContext(ProductContext);
+  const sortedProducts = context.sortedProducts;
 
   const [itemsToShow, setItemsToShow] = useState([{}, {}, {}, {}, {}, {}]);
 
@@ -24,14 +25,14 @@ export default function ProductList() {
     if (location.pathname !== "/produtos") {
       let filteredProducts;
 
-      filteredProducts = context.products.filter((product) =>
+      filteredProducts = sortedProducts.filter((product) =>
         product.fields.tags.includes(context.currentPage)
       );
 
       newItemsToShow.length >= filteredProducts.length &&
         (moreProductsBtn.style.display = "none");
     } else if (location.pathname === "/produtos") {
-      newItemsToShow.length >= context.products.length &&
+      newItemsToShow.length >= sortedProducts.length &&
         (moreProductsBtn.style.display = "none");
     }
   }
@@ -42,7 +43,7 @@ export default function ProductList() {
 
   function showProductCards() {
     if (location.pathname !== "/produtos") {
-      let filteredProducts = context.products.filter((product) =>
+      let filteredProducts = sortedProducts.filter((product) =>
         product.fields.tags.includes(context.currentPage)
       );
 
@@ -67,7 +68,7 @@ export default function ProductList() {
           )
       );
     } else {
-      return context.products.map(
+      return sortedProducts.map(
         (product, index) =>
           index < itemsToShow.length && (
             <Link
@@ -97,12 +98,15 @@ export default function ProductList() {
     page === "repteis" && (page = "répteis");
 
     context.getCurrentPage(page);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   return (
     <Container>
       <div className="products_list">
-        {context.products.length < 1 ? showBackupCards() : showProductCards()}
+        {context.sortedProducts.length < 1
+          ? showBackupCards()
+          : showProductCards()}
       </div>
 
       <div className="button_container">

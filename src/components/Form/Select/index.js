@@ -9,7 +9,8 @@ import { Container } from "./styles";
 export default function Select({ mini, options, productList, cart }) {
   const context = useContext(ProductContext);
   const [defaultOption, setDefaultOption] = useState(options[0]);
-  let products = context.products;
+  // let products = context.products;
+  let sortedProducts = context.sortedProducts;
 
   function handleToggleAnimation() {
     // Shows options
@@ -37,15 +38,14 @@ export default function Select({ mini, options, productList, cart }) {
     });
   }
 
+  // Saves sortOption in LocalStorage
   useEffect(() => {
-    if (defaultOption === "Mais vendidos") {
-      const checkLocalStorage = localStorage.getItem("sortOption");
+    let checkLocalStorage = localStorage.getItem("sortOption");
 
-      if (checkLocalStorage === null) {
-        context.saveSortOption(defaultOption);
-      } else {
-        context.getSortOption(setDefaultOption);
-      }
+    if (checkLocalStorage === null) {
+      context.saveSortOption(defaultOption);
+    } else {
+      context.getSortOption(setDefaultOption);
     }
   }, []);
 

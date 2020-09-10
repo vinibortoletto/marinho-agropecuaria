@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: inline;
@@ -38,7 +38,7 @@ export const Container = styled.div`
   }
 
   .checkmark:after {
-    content: "";
+    content: '';
     position: absolute;
     display: none;
   }
@@ -58,4 +58,4 @@ export const Container = styled.div`
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
   }
-`;
+`
