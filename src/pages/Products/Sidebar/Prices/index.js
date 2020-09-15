@@ -1,35 +1,35 @@
-import React from "react";
+import React from 'react'
 
 // Components
-import Checkbox from "../../../../components/Form/Checkbox/index";
+import Checkbox from '../../../../components/Form/Checkbox/index'
 
-export default function Prices() {
+export default function Prices({ type }) {
   return (
-    <div className="prices">
+    <div className='prices'>
       <h1>Preços</h1>
 
       <ul>
         <li>
-          <Checkbox label="Até R$50" />
+          <Checkbox label='Até R$15' type={type} />
           <span>(34)</span>
         </li>
         <li>
-          <Checkbox label="Até R$100" />
+          <Checkbox label='Até R$25' type={type} />
+          <span>(34)</span>
+        </li>
+        <li>
+          <Checkbox label='Até R$50' type={type} />
+          <span>(34)</span>
+        </li>
+        <li>
+          <Checkbox label='Até R$100' type={type} />
           <span>(15)</span>
         </li>
         <li>
-          <Checkbox label="Até R$200" />
+          <Checkbox label='Até R$200' type={type} />
           <span>(7)</span>
-        </li>
-        <li>
-          <Checkbox label="Até R$500" />
-          <span>(2)</span>
-        </li>
-        <li>
-          <Checkbox label="+ de R$500" />
-          <span>(0)</span>
         </li>
       </ul>
     </div>
-  );
+  )
 }
