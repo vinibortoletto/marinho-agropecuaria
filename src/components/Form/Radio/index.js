@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { Container } from "./styles";
+import { Container } from './styles';
 
 export default function Radio({ label, name, value, checked, handleChange }) {
   return (
@@ -12,7 +12,8 @@ export default function Radio({ label, name, value, checked, handleChange }) {
           checked={checked}
           value={value}
           name={name}
-          onChange={handleChange}
+          onChange={handleChange && handleChange}
+          className="radio"
         />
         <span className="checkmark"></span>
       </label>

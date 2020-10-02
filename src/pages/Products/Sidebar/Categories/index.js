@@ -1,30 +1,30 @@
-import React from 'react'
+import React from 'react';
 
 // Components
-import Checkbox from '../../../../components/Form/Checkbox/index'
+import Checkbox from '../../../../components/Form/Checkbox/index';
 
-export default function Categories({ type }) {
+export default function Categories() {
   return (
-    <div className='categories'>
+    <div className="categories">
       <h1>Categorias</h1>
 
       <ul>
         <li>
-          <Checkbox label='Rações' type={type} />
+          <Checkbox name="categories" value="rações" label="Rações" />
         </li>
         <li>
-          <Checkbox label='Brinquedos' type={type} />
+          <Checkbox name="categories" value="brinquedos" label="Brinquedos" />
         </li>
         <li>
-          <Checkbox label='Remédios' type={type} />
+          <Checkbox name="categories" value="remédios" label="Remédios" />
         </li>
         <li>
-          <Checkbox label='Casa e Construção' type={type} />
+          <Checkbox name="categories" value="casa e construção" label="Casa e Construção" />
         </li>
         <li>
-          <Checkbox label='Jardim' type={type} />
+          <Checkbox name="categories" value="jardim" label="Jardim" />
         </li>
       </ul>
     </div>
-  )
+  );
 }

@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 // Components
-import Radio from "../../../../components/Form/Radio";
+import Radio from '../../../../components/Form/Radio';
 
 // Styles
-import { Container } from "./styles";
+import { Container } from './styles';
 
 export default function DeliveryOptions() {
-  const [deliveryOption, setDeliveryOption] = useState("homeDelivery");
+  const [deliveryOption, setDeliveryOption] = useState('homeDelivery');
 
   function handleChange(e) {
     const radioValue = e.target.value;
     setDeliveryOption(radioValue);
-
-    console.log(document.getElementsByName("deliveryOption"));
   }
 
   useEffect(() => {
-    const cepNumber = document.querySelector(".cepNumber");
+    const cepNumber = document.querySelector('.cepNumber');
 
-    deliveryOption === "storeDelivery"
-      ? cepNumber.classList.add("mute")
-      : cepNumber.classList.remove("mute");
+    if (deliveryOption === 'storeDelivery') {
+      cepNumber.classList.add('mute');
+    } else {
+      cepNumber.classList.remove('mute');
+    }
   }, [deliveryOption]);
 
   return (
@@ -30,14 +30,14 @@ export default function DeliveryOptions() {
         label="Vou retirar os produtos na loja física"
         name="deliveryOption"
         value="storeDelivery"
-        checked={deliveryOption === "storeDelivery" && "checked"}
+        checked={deliveryOption === 'storeDelivery' && true}
         handleChange={handleChange}
       />
       <Radio
         label="Quero receber os produtos em casa"
         name="deliveryOption"
         value="homeDelivery"
-        checked={deliveryOption === "homeDelivery" && "checked"}
+        checked={deliveryOption === 'homeDelivery' && true}
         handleChange={handleChange}
       />
     </Container>

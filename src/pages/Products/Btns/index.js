@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 // Components
-import { ButtonPill } from "../../../components/Buttons/styles";
-import Select from "../../../components/Form/Select";
+import { ButtonPill } from '../../../components/Buttons/styles';
+import Select from '../../../components/Form/Select';
 
 // Styles
-import { Container } from "./styles";
+import { Container } from './styles';
 
 export default function Btns() {
   return (
@@ -14,10 +14,7 @@ export default function Btns() {
         Busca avançada
       </ButtonPill>
 
-      <Select
-        productList
-        options={["Mais vendidos", "Menor preço", "Maior preço"]}
-      />
+      <Select productList options={['Mais vendidos', 'Menor preço', 'Maior preço']} />
     </Container>
   );
 }

@@ -1,9 +1,18 @@
-import styled from "styled-components";
-import { FlexCenter, Breakpoint } from "../../../helpers/mixins";
+import styled from 'styled-components';
+import { FlexCenter, Breakpoint } from '../../../helpers/mixins';
 
 export const Container = styled.section`
-  margin-right: var(--m_lg);
-  border-right: 1px solid var(--d_green_trans);
+  /* while small */
+
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+
+  background: var(--l_gold);
+
+  /*  */
 
   .categories,
   .prices {
@@ -27,12 +36,12 @@ export const Container = styled.section`
     margin-left: 0.2rem;
   }
 
-  .ranking div {
+  .rating div {
     display: inline;
   }
 
-  display: none;
-  @media ${Breakpoint("1200")} {
-    display: block;
+  @media ${Breakpoint('1200')} {
+    margin-right: var(--m_lg);
+    border-right: 1px solid var(--d_green_trans);
   }
 `;
