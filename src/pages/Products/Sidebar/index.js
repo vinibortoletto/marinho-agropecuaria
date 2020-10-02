@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { ProductContext } from '../../../Context';
+import { IconSphere } from '../../../components/IconSphere/styles';
 
 import { Container } from './styles';
 
@@ -119,8 +120,20 @@ export default function Sidebar() {
     localStorage.setItem('rating', JSON.stringify([]));
   }, []);
 
+  function handleCloseSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const navbarCategories = document.querySelector('.navbar_categories');
+
+    sidebar.classList.remove('show');
+    navbarCategories.classList.remove('shrink');
+  }
+
   return (
     <Container className="sidebar">
+      <button id="close_btn" type="button" onClick={handleCloseSidebar}>
+        <i className="fas fa-times" />
+      </button>
+
       <Categories />
       <Prices />
       <Rating />
