@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from 'react';
 import { ProductContext } from '../../../Context';
-import { IconSphere } from '../../../components/IconSphere/styles';
 
 import { Container } from './styles';
 
@@ -9,7 +8,7 @@ import Categories from './Categories/index';
 import Prices from './Prices/index';
 import Rating from './Rating/index';
 
-export default function Sidebar() {
+export default function Sidebar({ handleCloseSidebar }) {
   const context = useContext(ProductContext);
   const { setSortedProducts, handleSortProducts } = context;
 
@@ -63,6 +62,7 @@ export default function Sidebar() {
     handleSortProducts(sortOption, newProducts);
     setSortedProducts(newProducts);
   }
+
   function handleUnchecking(elmt) {
     //  Since price/rating are radios, there's no need to uncheck them
 
@@ -102,31 +102,20 @@ export default function Sidebar() {
     }
   }
 
-  // Handles checking/unchecking
   useEffect(() => {
+    // Handles checking/unchecking
     const inputElmts = document.querySelectorAll('.sidebar input');
-
     inputElmts.forEach((elmt) => {
       elmt.addEventListener('click', () => {
         elmt.checked ? handleChecking(elmt) : handleUnchecking(elmt);
       });
     });
-  }, []);
 
-  // Sets defualt tags to localStorage
-  useEffect(() => {
+    // Sets defualt tags to localStorage
     localStorage.setItem('categories', JSON.stringify([]));
     localStorage.setItem('price', JSON.stringify([]));
     localStorage.setItem('rating', JSON.stringify([]));
   }, []);
-
-  function handleCloseSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    const navbarCategories = document.querySelector('.navbar_categories');
-
-    sidebar.classList.remove('show');
-    navbarCategories.classList.remove('shrink');
-  }
 
   return (
     <Container className="sidebar">

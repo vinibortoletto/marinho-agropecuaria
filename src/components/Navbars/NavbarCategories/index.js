@@ -1,9 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductContext } from '../../../Context';
-
-// Pages
-import Products from '../../../pages/Products';
 
 // Images
 import dogIcon from '../../../images/categories/dog.svg';
@@ -81,14 +78,11 @@ export default function NavbarCategories() {
 
   useEffect(() => {
     const navbarCategories = document.querySelector('.navbar_categories');
-    const sidebar = document.querySelector('.sidebar');
 
     window.onscroll = () => {
-      if (!sidebar.classList.contains('show')) {
-        window.pageYOffset > 20
-          ? navbarCategories.classList.add('shrink')
-          : navbarCategories.classList.remove('shrink');
-      }
+      window.pageYOffset > 20
+        ? navbarCategories.classList.add('shrink')
+        : navbarCategories.classList.remove('shrink');
     };
   }, []);
 
