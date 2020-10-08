@@ -20,25 +20,24 @@ export async function getProducts(setProducts, setSortedProducts) {
   }
 }
 
-export function getStoredProducts(setProducts, setSortedProducts) {
-  const localSortedProducts = JSON.parse(localStorage.getItem('sortedProducts'));
-
-  if (localSortedProducts !== null && localSortedProducts.length > 0) {
-    setSortedProducts(JSON.parse(localStorage.getItem('sortedProducts')));
-  } else {
-    setSortedProducts(JSON.parse(localStorage.getItem('products')));
-  }
-
-  setProducts(JSON.parse(localStorage.getItem('products')));
-}
 export function saveProducts(products, sortedProducts) {
   localStorage.setItem('products', JSON.stringify(products));
   localStorage.setItem('sortedProducts', JSON.stringify(sortedProducts));
 }
 
-export function getStoredSelectedProduct(setSelectedProduct) {
-  setSelectedProduct(JSON.parse(localStorage.getItem('selectedProduct')));
-}
-export function saveSelectedProduct(selectedProduct) {
-  localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
+export function getLocalProducts(setProducts, setSortedProducts, setSelectedProduct) {
+  const localProducts = JSON.parse(localStorage.getItem('products'));
+  const localSortedProducts = JSON.parse(localStorage.getItem('sortedProducts'));
+
+  if (
+    localProducts === null ||
+    localProducts.length === 0 ||
+    localSortedProducts === null ||
+    localSortedProducts.length === 0
+  ) {
+    getProducts(setProducts, setSortedProducts);
+  } else {
+    setProducts(localProducts);
+    setSortedProducts(localSortedProducts);
+  }
 }

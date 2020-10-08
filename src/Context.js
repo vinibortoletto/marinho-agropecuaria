@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  getProducts,
-  saveProducts,
-  getStoredProducts,
-  getStoredSelectedProduct,
-  saveSelectedProduct,
-} from './helpers/Storage';
+import { saveProducts, getLocalProducts } from './helpers/Storage';
 
 const ProductContext = React.createContext(null);
 
@@ -16,15 +10,16 @@ function ProductProvider({ children }) {
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [currentPage, setCurrentPage] = useState();
 
-  function getCurrentPage(page) {
-    setCurrentPage(page);
+  function findSelectedProduct(id) {
+    const newSelectedProduct = [];
+    newSelectedProduct.push(products.find((product) => product.sys.id === id));
+
+    setSelectedProduct(newSelectedProduct);
+    localStorage.setItem('selectedProduct', JSON.stringify(newSelectedProduct));
   }
 
-  function findSelectedProduct(id) {
-    const product = [];
-    product.push(products.find((product) => product.sys.id === id));
-
-    setSelectedProduct(product);
+  function getCurrentPage(page) {
+    setCurrentPage(page);
   }
 
   function handleSortProducts(option, oldProducts) {
@@ -49,40 +44,22 @@ function ProductProvider({ children }) {
   function getSortOption(setDefaultOption) {
     setDefaultOption(JSON.parse(localStorage.getItem('sortOption')));
   }
-
   function saveSortOption(defaultOption) {
     localStorage.setItem('sortOption', JSON.stringify(defaultOption));
   }
 
-  // Get products from localStorage OR from Contentful
+  // Get products, sortedProducts, selectedProducts
   useEffect(() => {
-    const localProducts = JSON.parse(localStorage.getItem('products'));
+    getLocalProducts(setProducts, setSortedProducts);
 
-    if (
-      localProducts !== null &&
-      localProducts.length > 0 &&
-      localProducts.length === products.length
-    ) {
-      getStoredProducts(setProducts, setSortedProducts);
-    } else {
-      getProducts(setProducts, setSortedProducts);
-    }
+    const localSelectedProducts = JSON.parse(localStorage.getItem('selectedProduct'));
+    localSelectedProducts.length > 0 && setSelectedProduct(localSelectedProducts);
   }, []);
 
-  // Get selectedProduct from localStorage
-  useEffect(() => {
-    const checkLocalStorage = localStorage.getItem('selectedProduct');
-
-    if (checkLocalStorage !== null && checkLocalStorage.length > 0) {
-      getStoredSelectedProduct(setSelectedProduct);
-    }
-  }, []);
-
-  // Save products/selectedProduct to localStorage
+  // Save products/sortedProducts to localStorage
   useEffect(() => {
     saveProducts(products, sortedProducts);
-    saveSelectedProduct(selectedProduct);
-  }, [products, sortedProducts, selectedProduct]);
+  }, [products, sortedProducts]);
 
   return (
     <ProductContext.Provider

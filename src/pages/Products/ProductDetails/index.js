@@ -1,28 +1,24 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from 'react';
 
 // Components
-import Gallery from "./Gallery";
-import Details from "./Details";
-import RelatedProducts from "./RelatedProducts/index";
+import Gallery from './Gallery';
+import Details from './Details';
+import RelatedProducts from './RelatedProducts/index';
 
 // Styles
-import { Container } from "./styles";
-import { ProductContext } from "../../../Context";
+import { Container } from './styles';
+import { ProductContext } from '../../../Context';
 
 export default function ProductDetails() {
   const context = useContext(ProductContext);
-  const selectedProduct = context.selectedProduct;
+  const { selectedProduct } = context;
   const [tag, setTag] = useState();
-
-  useEffect(() => {
-    getTag();
-  }, [context]);
 
   function getTag() {
     let newTag;
 
-    if (context.selectedProduct.length > 0) {
-      newTag = context.selectedProduct[0].fields.tags.replace(/,/g, " >");
+    if (selectedProduct.length > 0) {
+      newTag = selectedProduct[0].fields.tags.replace(/,/g, ' >');
     }
 
     setTag(newTag);
@@ -39,6 +35,10 @@ export default function ProductDetails() {
       </div>
     );
   }
+
+  useEffect(() => {
+    getTag();
+  }, [context, selectedProduct]);
 
   return (
     <Container>
