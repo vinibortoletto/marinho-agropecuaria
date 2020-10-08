@@ -1,8 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   i {
-    color: var(--d_gold);
     margin-right: 0.2rem;
+
+    &.active {
+      color: var(--d_gold);
+    }
+    &.mute {
+      color: var(--d_green_trans);
+    }
   }
 `;

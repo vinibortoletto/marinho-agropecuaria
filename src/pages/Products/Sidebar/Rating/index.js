@@ -1,30 +1,33 @@
 import React from 'react';
 
 // Components
-import Checkbox from '../../../../components/Form/Checkbox';
+import Radio from '../../../../components/Form/Radio';
+
+// Styles
+import { Container } from './styles';
 
 export default function Rating() {
   return (
-    <div className="rating">
+    <Container className="rating">
       <h1>Avaliações</h1>
 
       <ul>
         <li>
-          <Checkbox stars name="rating" value="1" />
+          <Radio stars={1} name="rating" value="1" />
         </li>
         <li>
-          <Checkbox stars name="rating" value="2" />
+          <Radio stars={2} name="rating" value="2" />
         </li>
         <li>
-          <Checkbox stars name="rating" value="3" />
+          <Radio stars={3} name="rating" value="3" />
         </li>
         <li>
-          <Checkbox stars name="rating" value="4" />
+          <Radio stars={4} name="rating" value="4" />
         </li>
         <li>
-          <Checkbox stars name="rating" value="5" />
+          <Radio stars={5} name="rating" value="5" />
         </li>
       </ul>
-    </div>
+    </Container>
   );
 }

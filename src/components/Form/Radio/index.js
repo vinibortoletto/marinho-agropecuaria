@@ -1,12 +1,14 @@
 import React from 'react';
 
 import { Container } from './styles';
+import Stars from '../../Stars/index';
 
-export default function Radio({ label, name, value, checked, handleChange }) {
+export default function Radio({ label, name, value, checked, handleChange, stars }) {
   return (
     <Container>
       <label>
-        {label}
+        {stars ? <Stars stars={stars} /> : label}
+
         <input
           type="radio"
           checked={checked}
