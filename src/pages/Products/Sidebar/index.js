@@ -4,6 +4,8 @@ import { ProductContext } from '../../../Context';
 import { Container } from './styles';
 
 // Components
+import CloseSideBarBtn from './CloseSideBarBtn/index';
+import ClearFiltersBtn from './ClearFiltersBtn/index';
 import Categories from './Categories/index';
 import Prices from './Prices/index';
 import Rating from './Rating/index';
@@ -119,9 +121,10 @@ export default function Sidebar({ handleCloseSidebar }) {
 
   return (
     <Container className="sidebar">
-      <button id="close_btn" type="button" onClick={handleCloseSidebar}>
-        <i className="fas fa-times" />
-      </button>
+      <div id="btns_container">
+        <ClearFiltersBtn />
+        <CloseSideBarBtn handleCloseSidebar={handleCloseSidebar} />
+      </div>
 
       <Categories />
       <Prices />

@@ -14,16 +14,15 @@ export const Container = styled.section`
 
   background: var(--l_gold);
 
-  #close_btn {
-    float: right;
-    font-size: 1.5rem;
-    color: var(--l_green);
-  }
-
   display: none;
-
   &.show {
     display: block;
+  }
+
+  #btns_container {
+    display: flex;
+    float: right;
+    align-items: center;
   }
 
   .categories,
@@ -68,7 +67,9 @@ export const Container = styled.section`
   @media ${Breakpoint('1200')} {
     width: auto;
     height: auto;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
     margin-top: 0;
     margin-right: var(--m_lg);
