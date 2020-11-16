@@ -44,16 +44,8 @@ export default function App() {
           <Route exact path="/carrinho" component={Cart} />
           <Route exact path="/quem-somos" component={About} />
           <Route exact path="/contato" component={Contact} />
-          <Route
-            exact
-            path="/termos-e-condicoes"
-            component={TermsAndConditions}
-          />
-          <Route
-            exact
-            path="/trocas-e-devolucoes"
-            component={ExchangesAndReturns}
-          />
+          <Route exact path="/termos-e-condicoes" component={TermsAndConditions} />
+          <Route exact path="/trocas-e-devolucoes" component={ExchangesAndReturns} />
           <Route exact path="/formas-de-pagamento" component={PaymentMethods} />
           <Route exact path="/termos-de-compra" component={PurchaseTerms} />
           <Route component={PageNotFound} />

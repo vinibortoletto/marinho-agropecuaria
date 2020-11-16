@@ -53,7 +53,10 @@ function ProductProvider({ children }) {
     getLocalProducts(setProducts, setSortedProducts);
 
     const localSelectedProducts = JSON.parse(localStorage.getItem('selectedProduct'));
-    localSelectedProducts.length > 0 && setSelectedProduct(localSelectedProducts);
+
+    if (localSelectedProducts && localSelectedProducts.length > 0) {
+      setSelectedProduct(localSelectedProducts);
+    }
   }, []);
 
   // Save products/sortedProducts to localStorage
