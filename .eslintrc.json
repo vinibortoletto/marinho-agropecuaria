@@ -23,6 +23,7 @@
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
-    "no-unused-expressions": "off"
+    "no-unused-expressions": "off",
+    "react/no-array-index-key": "off"
   }
 }

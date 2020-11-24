@@ -1,14 +1,14 @@
-import styled from "styled-components";
-import { FlexCenter, Breakpoint } from "../../../helpers/mixins";
+import styled from 'styled-components';
+import { FlexCenter, Breakpoint } from '../../../helpers/mixins';
 
 export const Container = styled.div`
   ${FlexCenter};
   flex-direction: column;
 
   button {
-    width: ${(props) => (props.mini ? "4rem" : "12rem")};
+    width: ${(props) => (props.mini ? '4rem' : '12rem')};
     padding: 0;
-    border-radius: ${(props) => props.mini && "var(--br_sm)"};
+    border-radius: ${(props) => props.mini && 'var(--br_sm)'};
 
     position: relative;
     z-index: 1;
@@ -36,13 +36,14 @@ export const Container = styled.div`
   }
 
   .sort_options {
-    width: 100%;
+    width: 105%;
     position: absolute;
     z-index: -1;
 
     border-radius: var(--br_sm);
 
     font-size: var(--fz_sm);
+    border: 1px solid var(--d_green_trans);
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
 
     background: var(--l_gold);
@@ -70,16 +71,16 @@ export const Container = styled.div`
     }
   }
 
-  @media ${Breakpoint("600")} {
+  @media ${Breakpoint('600')} {
     flex-direction: row;
-    justify-content: ${(props) => (props.mini ? "flex-start" : "flex-end")};
+    justify-content: ${(props) => (props.mini ? 'flex-start' : 'flex-end')};
 
     .bnt_advanced_search {
       margin-right: var(--m_sm);
     }
   }
 
-  @media ${Breakpoint("1200")} {
+  @media ${Breakpoint('1200')} {
     .bnt_advanced_search {
       display: none;
     }

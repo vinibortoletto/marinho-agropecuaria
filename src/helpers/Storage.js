@@ -25,7 +25,7 @@ export function saveProducts(products, sortedProducts) {
   localStorage.setItem('sortedProducts', JSON.stringify(sortedProducts));
 }
 
-export function getLocalProducts(setProducts, setSortedProducts, setSelectedProduct) {
+export function getLocalProducts(setProducts, setSortedProducts) {
   const localProducts = JSON.parse(localStorage.getItem('products'));
   const localSortedProducts = JSON.parse(localStorage.getItem('sortedProducts'));
 
