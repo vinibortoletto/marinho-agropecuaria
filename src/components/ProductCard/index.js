@@ -1,26 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 
 // Components
-import Stars from "../Stars/index";
+import Stars from '../Stars/index';
 
 // Styles
-import { Container } from "./styles";
+import { Container } from './styles';
 
-export default function ProductCard({
-  img,
-  title,
-  price,
-  paymentMethod,
-  loaded,
-}) {
+export default function ProductCard({ img, title, price, loaded }) {
+  const [numOfInstallments, setNumOfInstallments] = useState(0);
+
+  // Get numer of installments
+  useEffect(() => {
+    if (price <= 50) {
+      setNumOfInstallments(2);
+    } else if (price <= 100) {
+      setNumOfInstallments(4);
+    } else if (price <= 200) {
+      setNumOfInstallments(6);
+    }
+  }, []);
+
   return (
     <Container>
       {!loaded ? (
         <div className="backup_card">
-          <div className="img"></div>
-          <div className="title"></div>
-          <div className="stars"></div>
-          <div className="price"></div>
+          <div className="img" />
+          <div className="title" />
+          <div className="stars" />
+          <div className="price" />
         </div>
       ) : (
         <div className="product_card">
@@ -34,7 +41,7 @@ export default function ProductCard({
 
           <div className="price">
             <h2>R${price}</h2>
-            <h3>até 6x de R$3,16 no cartão</h3>
+            <h3>até {numOfInstallments}x de R$3,16 no cartão</h3>
           </div>
         </div>
       )}
