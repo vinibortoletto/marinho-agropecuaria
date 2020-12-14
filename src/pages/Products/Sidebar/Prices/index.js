@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ProductContext } from '../../../../Context';
+import { ProductContext } from '../../../../helpers/Context';
 
 // Components
 import Radio from '../../../../components/Form/Radio/index';
