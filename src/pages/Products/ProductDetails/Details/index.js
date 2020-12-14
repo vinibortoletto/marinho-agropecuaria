@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
 // Components
-import Title from "./Title";
-import Stars from "../../../../components/Stars";
-import Description from "./Description";
-import Price from "./Price";
-import Buttons from "./Buttons";
-import FavoriteIcon from "./FavoriteIcon";
-import DividingLine from "../../../../components/DividingLine";
+import Title from './Title';
+import Stars from '../../../../components/Stars';
+import Description from './Description';
+import Price from './Price';
+import Buttons from './Buttons';
+import FavoriteIcon from './FavoriteIcon';
+import DividingLine from '../../../../components/DividingLine';
 
 // Styles
-import { Container } from "./styles";
+import { Container } from './styles';
 
 export default function Details({ title, price, description }) {
   return (

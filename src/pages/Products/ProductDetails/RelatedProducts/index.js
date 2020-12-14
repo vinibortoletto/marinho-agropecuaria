@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { ProductConsumer, ProductContext } from "../../../../Context";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { ProductConsumer, ProductContext } from '../../../../helpers/Context';
 
 // Components
-import { Title } from "../../../../components/Title/styles";
-import ProductCard from "../../../../components/ProductCard/index";
+import { Title } from '../../../../components/Title/styles';
+import ProductCard from '../../../../components/ProductCard/index';
 
 // Styles
-import { Container } from "./styles";
+import { Container } from './styles';
 
 export default function RelatedProducts() {
   const context = useContext(ProductContext);
@@ -15,10 +15,10 @@ export default function RelatedProducts() {
   const products = context.products;
 
   function renderRelatedProducts() {
-    let selectedProductTags = selectedProduct[0].fields.tags.split(", ")[0];
+    let selectedProductTags = selectedProduct[0].fields.tags.split(', ')[0];
 
     let relatedProducts = products.filter((product) =>
-      product.fields.tags.includes(selectedProductTags)
+      product.fields.tags.includes(selectedProductTags),
     );
 
     if (relatedProducts.length < 4) {
@@ -57,7 +57,7 @@ export default function RelatedProducts() {
               price={product.fields.price}
             />
           </Link>
-        )
+        ),
     );
   }
 
@@ -66,9 +66,7 @@ export default function RelatedProducts() {
       <h2 className="title">Produtos relacionados</h2>
 
       <div className="content">
-        <div className="products_list">
-          {selectedProduct.length > 0 && renderRelatedProducts()}
-        </div>
+        <div className="products_list">{selectedProduct.length > 0 && renderRelatedProducts()}</div>
       </div>
     </Container>
   );
