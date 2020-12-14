@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { ProductContext } from "../../../Context";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { ProductContext } from '../../../helpers/Context';
 
 // Components
-import ProductCard from "../../../components/ProductCard/index";
+import ProductCard from '../../../components/ProductCard/index';
 
 // Styles
-import { Styles as Section } from "./styles";
-import { Title } from "../../../components/Title/styles";
-import { ButtonSquare } from "../../../components/Buttons/styles";
+import { Styles as Section } from './styles';
+import { Title } from '../../../components/Title/styles';
+import { ButtonSquare } from '../../../components/Buttons/styles';
 
 export default function BestSellers() {
   const context = useContext(ProductContext);
@@ -37,7 +37,7 @@ export default function BestSellers() {
               price={product.fields.price}
             />
           </Link>
-        )
+        ),
     );
   }
 

@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
-import { ProductContext } from "../../../Context";
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { ProductContext } from '../../../helpers/Context';
 
 // Styles
-import { ButtonPill } from "../../../components/Buttons/styles";
-import { Styles as Section } from "./styles";
-import Banner from "../../../components/Banner";
+import { ButtonPill } from '../../../components/Buttons/styles';
+import { Styles as Section } from './styles';
+import Banner from '../../../components/Banner';
 
 export default function Hero({ img, title, subtitle, alt, path, id }) {
   const context = useContext(ProductContext);

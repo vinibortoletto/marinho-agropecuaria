@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ProductContext } from '../../../Context';
+import { useLocation } from 'react-router-dom';
+import { ProductContext } from '../../../helpers/Context';
+
 // Components
 import { ButtonPill } from '../../Buttons/styles';
 
@@ -7,10 +9,9 @@ import { ButtonPill } from '../../Buttons/styles';
 import { Container } from './styles';
 
 export default function Select({ mini, options, productList, cart }) {
+  const location = useLocation();
   const context = useContext(ProductContext);
   const [defaultOption, setDefaultOption] = useState(options[0]);
-  // let products = context.products;
-  const { sortedProducts } = context;
 
   function handleToggleAnimation() {
     // Shows options
@@ -23,16 +24,16 @@ export default function Select({ mini, options, productList, cart }) {
   }
 
   function handleSortBtnChange(id) {
-    const options = document.querySelectorAll('.sort_options li');
+    const selectBtnOptions = document.querySelectorAll('.sort_options li');
 
-    options.forEach((opt) => {
-      if (opt.id == id) {
-        setDefaultOption(opt.innerText);
+    selectBtnOptions.forEach((option) => {
+      if (option.id === id.toString()) {
+        setDefaultOption(option.innerText);
         handleToggleAnimation();
 
         if (productList) {
-          context.handleSortProducts(opt.innerText);
-          context.saveSortOption(opt.innerText);
+          context.handleSortProducts(option.innerText);
+          context.saveSortOption(option.innerText);
         }
       }
     });
@@ -40,12 +41,14 @@ export default function Select({ mini, options, productList, cart }) {
 
   // Saves sortOption in LocalStorage
   useEffect(() => {
-    const checkLocalStorage = localStorage.getItem('sortOption');
+    if (location.pathname.includes('produtos')) {
+      const checkLocalStorage = localStorage.getItem('sortOption');
 
-    if (checkLocalStorage === null) {
-      context.saveSortOption(defaultOption);
-    } else {
-      context.getSortOption(setDefaultOption);
+      if (checkLocalStorage === null) {
+        context.saveSortOption(defaultOption);
+      } else {
+        context.getSortOption(setDefaultOption);
+      }
     }
   }, []);
 
