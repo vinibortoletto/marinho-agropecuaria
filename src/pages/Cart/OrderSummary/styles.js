@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Breakpoint } from "../../../helpers/mixins";
+import styled from 'styled-components';
+import { Breakpoint } from '../../../helpers/mixins';
 
 export const Container = styled.div`
   max-width: 25rem;
@@ -14,7 +14,7 @@ export const Container = styled.div`
     border-radius: var(--br_sm);
 
     &::before {
-      content: "";
+      content: '';
       width: 1rem;
       height: 2rem;
       display: inline-block;
@@ -61,7 +61,7 @@ export const Container = styled.div`
     font-weight: bold;
   }
 
-  @media ${Breakpoint("1000")} {
+  @media ${Breakpoint('1000')} {
     margin: 0;
   }
 `;

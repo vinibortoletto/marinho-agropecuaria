@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 // Components
-import DividingLine from "../../../components/DividingLine";
-import { ButtonBullet } from "../../../components/Buttons/styles";
+import DividingLine from '../../../components/DividingLine';
+import { ButtonBullet } from '../../../components/Buttons/styles';
 
 // Styles
-import { Container } from "./styles";
+import { Container } from './styles';
 
 export default function OrderSummary() {
   return (

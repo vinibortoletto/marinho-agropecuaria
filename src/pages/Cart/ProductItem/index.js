@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from "react";
-
-// Images
-import product from "../../../images/products/product_sample.png";
+import React, { useState, useEffect } from 'react';
 
 // Components
-import ProductItemMobile from "./Mobile";
-import ProductItemDesktop from "./Desktop";
-// import DividingLine from "../../../components/DividingLine";
+import ProductItemMobile from './Mobile';
+import ProductItemDesktop from './Desktop';
 
 // Styles
-import { Container } from "./styles";
+import { Container } from './styles';
 
-export default function ProductItem() {
-  const [windowWidth, setWindowWidth] = useState(0);
+export default function ProductItem({ title, price, img }) {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   function handleWidth() {
-    setWindowWidth(window.outerWidth);
-
-    window.addEventListener("resize", () => {
-      setWindowWidth(window.outerWidth);
+    window.addEventListener('resize', () => {
+      setWindowWidth(window.innerWidth);
     });
   }
 
@@ -28,11 +22,13 @@ export default function ProductItem() {
 
   return (
     <Container>
-      {windowWidth < 750 ? (
-        <ProductItemMobile product={product} />
+      {/* {windowWidth < 750 ? (
+        <ProductItemMobile title={title} price={price} img={img} />
       ) : (
-        <ProductItemDesktop product={product} />
-      )}
+        <ProductItemDesktop title={title} price={price} img={img} />
+      )} */}
+
+      <ProductItemMobile title={title} price={price} img={img} />
     </Container>
   );
 }

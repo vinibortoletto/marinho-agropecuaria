@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Breakpoint } from "../../../../helpers/mixins";
+import styled from 'styled-components';
+import { Breakpoint } from '../../../../helpers/mixins';
 
 export const Container = styled.div`
   border: 1px solid var(--d_gold);
@@ -46,6 +46,7 @@ export const Container = styled.div`
 
   .title {
     font-weight: bold;
+    text-transform: capitalize;
   }
 
   .price {
@@ -72,7 +73,7 @@ export const Container = styled.div`
     }
   }
 
-  @media ${Breakpoint("1000")} {
+  @media ${Breakpoint('1000')} {
     .product_info {
       grid-template-columns: 30% 60% 10%;
     }

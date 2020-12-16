@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { FlexCenter } from "../../../../helpers/mixins";
+import styled from 'styled-components';
+import { FlexCenter } from '../../../../helpers/mixins';
 
 export const Container = styled.div`
   ${FlexCenter};

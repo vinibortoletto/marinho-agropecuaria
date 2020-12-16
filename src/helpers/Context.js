@@ -52,20 +52,30 @@ function ProductProvider({ children }) {
     localStorage.setItem('sortOption', JSON.stringify(defaultOption));
   }
 
-  // add cart empty to localStorage
+  // update cart in localStorage and state
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify([]));
+    const localCart = JSON.parse(localStorage.getItem('cart'));
+
+    if (localCart === null) {
+      localStorage.setItem('cart', JSON.stringify([]));
+    } else if (localCart.length > 0) {
+      setCart(localCart);
+    }
   }, []);
 
   // Get products, sortedProducts, selectedProducts
   useEffect(() => {
     getLocalProducts(setProducts, setSortedProducts);
 
-    const localSelectedProducts = JSON.parse(localStorage.getItem('selectedProduct'));
-
-    if (localSelectedProducts && localSelectedProducts.length > 0) {
-      setSelectedProduct(localSelectedProducts);
+    const localSelectedProduct = JSON.parse(localStorage.getItem('selectedProduct'));
+    if (localSelectedProduct && localSelectedProduct.length > 0) {
+      setSelectedProduct(localSelectedProduct);
     }
+
+    // const localSelectedProduct = JSON.parse(localStorage.getItem('selectedProduct'));
+    // if (localSelectedProduct) {
+    //   setSelectedProduct(localSelectedProduct);
+    // }
   }, []);
 
   // Save products/sortedProducts to localStorage

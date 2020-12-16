@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
 // Components
-import DividingLine from "../../../../components/DividingLine";
-import { ButtonSquare } from "../../../../components/Buttons/styles";
-import Select from "../../../../components/Form/Select";
+import DividingLine from '../../../../components/DividingLine';
+import { ButtonSquare } from '../../../../components/Buttons/styles';
+import Select from '../../../../components/Form/Select';
 
 // Styles
-import { Container } from "./styles";
+import { Container } from './styles';
 
-export default function Desktop({ product }) {
+export default function Desktop({ title, price, img }) {
   return (
     <Container>
       <div className="head">
@@ -22,18 +22,18 @@ export default function Desktop({ product }) {
 
       <div className="body">
         <div>
-          <img src={product} alt="produto" />
-          <span className="title">Nome do produto</span>
+          <img src={img} alt="produto" />
+          <span className="title">{title}</span>
         </div>
 
         <div>
-          <span className="price">R$50,00</span>
+          <span className="price">R${price}</span>
         </div>
 
         <div>
-          <Select mini cart options={["1", "2", "3", "4", "5"]} />
+          <Select mini cart options={['1', '2', '3', '4', '5']} />
 
-          <button className="remove_item">
+          <button type="button" className="remove_item">
             <i className="fas fa-times" />
             Remover item
           </button>

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 // Components
-import DividingLine from "../../../components/DividingLine";
-import DeliveryOptions from "./DeliveryOptions";
-import CepNumber from "./CepNumber";
+import DividingLine from '../../../components/DividingLine';
+import DeliveryOptions from './DeliveryOptions';
+import CepNumber from './CepNumber';
 
 // Styles
-import { Container } from "./styles";
+import { Container } from './styles';
 
 export default function DeliveryInfo() {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -14,7 +14,7 @@ export default function DeliveryInfo() {
   function handleWidth() {
     setWindowWidth(window.outerWidth);
 
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
       setWindowWidth(window.outerWidth);
     });
   }
@@ -25,8 +25,6 @@ export default function DeliveryInfo() {
 
   return (
     <Container>
-      <DividingLine margin="var(--m_lg)" />
-
       <div className="wrapper">
         <DeliveryOptions />
 

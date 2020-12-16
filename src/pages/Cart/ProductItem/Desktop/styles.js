@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Breakpoint } from "../../../../helpers/mixins";
+import styled from 'styled-components';
+import { Breakpoint } from '../../../../helpers/mixins';
 
 export const Container = styled.div`
   .head,
@@ -36,6 +36,10 @@ export const Container = styled.div`
     i {
       margin-right: var(--m_mini);
     }
+  }
+
+  .title {
+    text-transform: capitalize;
   }
 
   .subtotal {

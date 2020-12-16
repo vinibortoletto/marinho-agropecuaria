@@ -25,15 +25,17 @@ export default function ProductDetails() {
   }
 
   function renderProductDetails() {
-    const { title, price, description } = selectedProduct[0].fields;
-    const img = selectedProduct[0].fields.img.fields.file.url;
+    return selectedProduct.map((product, index) => {
+      const { title, price, description } = product.fields;
+      const img = product.fields.img.fields.file.url;
 
-    return (
-      <div className="gallery_and_details_wrapper">
-        <Gallery img={img} />
-        <Details title={title} price={price} description={description} />
-      </div>
-    );
+      return (
+        <div key={index} className="gallery_and_details_wrapper">
+          <Gallery img={img} />
+          <Details title={title} price={price} description={description} />
+        </div>
+      );
+    });
   }
 
   useEffect(() => {
@@ -45,7 +47,7 @@ export default function ProductDetails() {
       <p className="breadcrumb">{tag}</p>
 
       <div className="content">
-        {selectedProduct.length > 0 && renderProductDetails()}
+        {renderProductDetails()}
         <RelatedProducts />
       </div>
     </Container>
