@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { saveProducts, getLocalProducts } from './Storage';
 
-import { addProductToCart } from './Context/Cart';
-
 const ProductContext = React.createContext(null);
 
 function ProductProvider({ children }) {
@@ -17,7 +15,6 @@ function ProductProvider({ children }) {
   function findSelectedProduct(id) {
     const newSelectedProduct = [];
     newSelectedProduct.push(products.find((product) => product.sys.id === id));
-
     setSelectedProduct(newSelectedProduct);
     localStorage.setItem('selectedProduct', JSON.stringify(newSelectedProduct));
   }
@@ -30,11 +27,11 @@ function ProductProvider({ children }) {
     const newProducts = oldProducts || sortedProducts;
 
     // Ascending
-    if (option === 'Menor preço') {
+    if (option === 'menor preço') {
       newProducts.sort((a, b) => parseFloat(a.fields.price) - parseFloat(b.fields.price));
     }
     // Descending
-    else if (option === 'Maior preço') {
+    else if (option === 'maior preço') {
       newProducts.sort((a, b) => parseFloat(b.fields.price) - parseFloat(a.fields.price));
     }
     // By rating
@@ -71,11 +68,6 @@ function ProductProvider({ children }) {
     if (localSelectedProduct && localSelectedProduct.length > 0) {
       setSelectedProduct(localSelectedProduct);
     }
-
-    // const localSelectedProduct = JSON.parse(localStorage.getItem('selectedProduct'));
-    // if (localSelectedProduct) {
-    //   setSelectedProduct(localSelectedProduct);
-    // }
   }, []);
 
   // Save products/sortedProducts to localStorage
@@ -94,7 +86,6 @@ function ProductProvider({ children }) {
 
         cart,
         setCart,
-        addProductToCart,
 
         currentPage,
         getCurrentPage,
