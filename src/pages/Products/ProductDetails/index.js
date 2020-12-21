@@ -28,7 +28,6 @@ export default function ProductDetails() {
     return selectedProduct.map((product, index) => {
       const { title, price, description } = product.fields;
       const img = product.fields.img.fields.file.url;
-
       return (
         <div key={index} className="gallery_and_details_wrapper">
           <Gallery img={img} />
@@ -40,7 +39,7 @@ export default function ProductDetails() {
 
   useEffect(() => {
     getTag();
-  }, [context, selectedProduct]);
+  }, [selectedProduct]);
 
   return (
     <Container>

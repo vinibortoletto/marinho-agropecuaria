@@ -3,39 +3,53 @@ import { Link } from 'react-router-dom';
 
 import { ProductContext } from '../../../../../helpers/Context';
 
-import { ButtonSquare, ButtonBullet } from '../../../../../components/Buttons/styles';
+import { ButtonSquare } from '../../../../../components/Buttons/styles';
 import { Container } from './styles';
 
 export default function Buttons() {
   const context = useContext(ProductContext);
-  const { addProductToCart, setCart, selectedProduct } = context;
+  const { setCart, selectedProduct, cart } = context;
 
-  function changeBtnText() {
-    const addToCartBtn = document.querySelector('.add_to_cart button');
-    addToCartBtn.innerText = 'Produto adicionado!';
+  function addSelectedProductToCart() {
+    const newCart = cart;
+    const newSelectedProduct = selectedProduct;
 
-    setTimeout(() => {
-      addToCartBtn.innerText = 'Adicionar ao carrinho';
-    }, 2000);
+    // if (newCart.length === 0) {
+    //   newSelectedProduct[0].fields.amount = 1;
+    //   newCart.push(...newSelectedProduct);
+    // } else {
+    //   const hasDuplicatedProduct = newCart.find(
+    //     (product) => product.fields.title === newSelectedProduct[0].fields.title,
+    //   );
 
-    addProductToCart(setCart, selectedProduct);
+    //   if (hasDuplicatedProduct) {
+    //     newSelectedProduct[0].fields.amount += 1;
+    //   } else {
+    //     newSelectedProduct[0].fields.amount = 1;
+    //     newCart.push(...newSelectedProduct);
+    //   }
+    // }
+
+    const productAlreadyInCart = newCart.find(
+      (product) => product.fields.title === newSelectedProduct[0].fields.title,
+    );
+
+    if (newCart.length === 0 || !productAlreadyInCart) {
+      newSelectedProduct[0].fields.amount = 1;
+      newCart.push(...newSelectedProduct);
+    }
+
+    setCart(newCart);
+    localStorage.setItem('cart', JSON.stringify(newCart));
   }
 
   return (
     <Container>
-      <div className="add_to_cart">
-        <ButtonSquare onClick={changeBtnText}>Adicionar ao carrinho</ButtonSquare>
-      </div>
-      <div className="add_to_cart_and_go">
-        <Link to="/carrinho">
-          <ButtonBullet
-            id="add_to_cart_and_go"
-            onClick={() => addProductToCart(setCart, selectedProduct)}
-          >
-            Adicionar e ver carrinho
-          </ButtonBullet>
-        </Link>
-      </div>
+      <Link to="/carrinho">
+        <div className="add_to_cart">
+          <ButtonSquare onClick={addSelectedProductToCart}>Adicionar ao carrinho</ButtonSquare>
+        </div>
+      </Link>
     </Container>
   );
 }

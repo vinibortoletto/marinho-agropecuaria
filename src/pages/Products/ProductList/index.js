@@ -107,7 +107,7 @@ export default function ProductList() {
   return (
     <Container>
       <div className="products_list">
-        {context.sortedProducts.length < 1 ? showBackupCards() : showProductCards()}
+        {sortedProducts.length < 1 ? showBackupCards() : showProductCards()}
       </div>
 
       <div className="button_container">

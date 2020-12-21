@@ -25,25 +25,6 @@ export const Container = styled.div`
     justify-self: left;
   }
 
-  /* .select_container {
-    button {
-      width: 4rem;
-      color: var(--d_green);
-      border-color: var(--d_green);
-      border-radius: var(--br_sm);
-      padding: 0 var(--m_sm);
-
-      i {
-        margin-left: var(--m_mini);
-      }
-    }
-  }
-
-  .sort_options {
-    width: 4rem;
-    transform: translateY(-10%);
-  } */
-
   .title {
     font-weight: bold;
     text-transform: capitalize;
@@ -73,9 +54,40 @@ export const Container = styled.div`
     }
   }
 
+  .quantity {
+    align-self: center;
+
+    p {
+      margin-bottom: 0.5rem;
+      margin-right: 0.5rem;
+
+      display: inline-block;
+    }
+
+    div {
+      display: inline-block;
+    }
+
+    button {
+      height: 1.5rem;
+      width: 1.5rem;
+
+      color: var(--l_gold);
+      background: var(--l_green);
+      font-size: 1rem;
+      font-weight: bolder;
+      border-radius: 0.2rem;
+    }
+
+    .amount {
+      font-weight: bold;
+      padding: 0 0.5rem;
+    }
+  }
+
   @media ${Breakpoint('1000')} {
     .product_info {
-      grid-template-columns: 30% 60% 10%;
+      grid-template-columns: 30% 50% 20%;
     }
   }
 `;

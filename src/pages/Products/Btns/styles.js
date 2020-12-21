@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { FlexCenter, Breakpoint } from "../../../helpers/mixins";
+import styled from 'styled-components';
+import { FlexCenter, Breakpoint } from '../../../helpers/mixins';
 
 export const Container = styled.section`
   ${FlexCenter};
@@ -22,7 +22,7 @@ export const Container = styled.section`
     }
   }
 
-  @media ${Breakpoint("600")} {
+  @media ${Breakpoint('600')} {
     flex-direction: row;
     justify-content: flex-end;
 
@@ -31,9 +31,23 @@ export const Container = styled.section`
     }
   }
 
-  @media ${Breakpoint("1200")} {
+  @media ${Breakpoint('1200')} {
     .bnt_advanced_search {
       display: none;
+    }
+  }
+
+  select {
+    background: var(--l_gold);
+    border-color: var(--d_green);
+    border-radius: 10rem;
+    color: var(--d_green);
+    padding: 0 var(--m_md);
+    height: 2.5rem;
+    margin-bottom: var(--m_mini);
+
+    option {
+      background: var(--l_gold);
     }
   }
 `;
