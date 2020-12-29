@@ -44,7 +44,6 @@ export default function ProductItem({ title, price, amount, img, id }) {
 
       if (product.fields.amount === 0) {
         newCart.pop(product);
-        window.location.reload(true);
       }
     });
 
@@ -53,15 +52,11 @@ export default function ProductItem({ title, price, amount, img, id }) {
   }
 
   function removeProduct() {
-    const newCart = cart;
-
-    newCart.map((product) => {
-      return product.sys.id === id && newCart.pop(product);
-    });
+    let newCart = [...cart];
+    newCart = newCart.filter((item) => item.sys.id !== id);
 
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart));
-    window.location.reload(true);
   }
 
   useEffect(() => {
