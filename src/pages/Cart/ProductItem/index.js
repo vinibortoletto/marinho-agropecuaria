@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+
 import { ProductContext } from '../../../helpers/Context';
 
 // Components
@@ -35,10 +36,27 @@ export default function ProductItem({ title, price, amount, img, id }) {
         product.fields.amount -= 1;
         setProductAmout(product.fields.amount);
       }
+
+      if (product.fields.amount === 0) {
+        newCart.pop(product);
+        window.location.reload(true);
+      }
     });
 
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart));
+  }
+
+  function removeProduct() {
+    const newCart = cart;
+
+    newCart.map((product) => {
+      return product.sys.id === id && newCart.pop(product);
+    });
+
+    setCart(newCart);
+    localStorage.setItem('cart', JSON.stringify(newCart));
+    window.location.reload(true);
   }
 
   return (
@@ -51,7 +69,7 @@ export default function ProductItem({ title, price, amount, img, id }) {
           <div className="product_content">
             <h1 className="title">{title}</h1>
             <h2 className="price">Valor unit.: R${price}</h2>
-            <button type="button" className="remove_item">
+            <button onClick={removeProduct} type="button" className="remove_item">
               <i className="fas fa-times" />
               Remover item
             </button>
@@ -60,12 +78,12 @@ export default function ProductItem({ title, price, amount, img, id }) {
           <div className="quantity">
             <p>Qtd: </p>
             <div>
-              <button className="increase_btn" onClick={increaseProductAmount} type="button">
-                +
-              </button>
-              <span className="amount">{productAmout}</span>
               <button className="decrease_btn" onClick={decreaseProductAmount} type="button">
                 -
+              </button>
+              <span className="amount">{productAmout}</span>
+              <button className="increase_btn" onClick={increaseProductAmount} type="button">
+                +
               </button>
             </div>
           </div>
