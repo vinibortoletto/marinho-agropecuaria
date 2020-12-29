@@ -23,38 +23,45 @@ export default function OrderSummary() {
     let newSubtotal = 0;
     let newTax = 0;
 
-    cart.forEach((product) => {
-      const { price, amount } = product.fields;
+    if (cart.length > 0) {
+      cart.forEach((product) => {
+        const { price, amount } = product.fields;
 
-      // Total amount of products
-      newTotalAmount += amount;
-      setTotalAmount(newTotalAmount);
+        // Total amount of products
+        newTotalAmount += amount;
+        setTotalAmount(newTotalAmount);
 
-      // Subtotal
-      newSubtotal += price * amount;
-      setSubtotal(newSubtotal.toFixed(2));
+        // Subtotal
+        newSubtotal += price * amount;
+        setSubtotal(newSubtotal.toFixed(2));
 
-      // Tax
-      newTax = 0.05 * newSubtotal;
-      setTax(newTax.toFixed(2));
+        // Tax
+        newTax = 0.05 * newSubtotal;
+        setTax(newTax.toFixed(2));
 
-      // Total
-      const newTotal = (newSubtotal + newTax).toFixed(2);
-      setTotal(newTotal);
+        // Total
+        const newTotal = (newSubtotal + newTax).toFixed(2);
+        setTotal(newTotal);
 
-      // Number of installments
-      if (newTotal <= 50) {
-        setNumOfInstallments(2);
-      } else if (newTotal <= 100) {
-        setNumOfInstallments(4);
-      } else if (newTotal <= 200) {
-        setNumOfInstallments(6);
-      } else if (newTotal <= 600) {
-        setNumOfInstallments(8);
-      } else {
-        setNumOfInstallments(12);
-      }
-    });
+        // Number of installments
+        if (newTotal <= 50) {
+          setNumOfInstallments(2);
+        } else if (newTotal <= 100) {
+          setNumOfInstallments(4);
+        } else if (newTotal <= 200) {
+          setNumOfInstallments(6);
+        } else if (newTotal <= 600) {
+          setNumOfInstallments(8);
+        } else {
+          setNumOfInstallments(12);
+        }
+      });
+    } else {
+      setTotalAmount(0);
+      setSubtotal(0);
+      setTax(0);
+      setTotal(0);
+    }
   }
 
   useEffect(() => {
