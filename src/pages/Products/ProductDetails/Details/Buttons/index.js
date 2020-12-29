@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ProductContext } from '../../../../../helpers/Context';
@@ -13,22 +13,6 @@ export default function Buttons() {
   function addSelectedProductToCart() {
     const newCart = cart;
     const newSelectedProduct = selectedProduct;
-
-    // if (newCart.length === 0) {
-    //   newSelectedProduct[0].fields.amount = 1;
-    //   newCart.push(...newSelectedProduct);
-    // } else {
-    //   const hasDuplicatedProduct = newCart.find(
-    //     (product) => product.fields.title === newSelectedProduct[0].fields.title,
-    //   );
-
-    //   if (hasDuplicatedProduct) {
-    //     newSelectedProduct[0].fields.amount += 1;
-    //   } else {
-    //     newSelectedProduct[0].fields.amount = 1;
-    //     newCart.push(...newSelectedProduct);
-    //   }
-    // }
 
     const productAlreadyInCart = newCart.find(
       (product) => product.fields.title === newSelectedProduct[0].fields.title,

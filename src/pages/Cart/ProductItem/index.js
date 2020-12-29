@@ -10,32 +10,33 @@ import { Container } from './styles';
 
 export default function ProductItem({ title, price, amount, img, id }) {
   const context = useContext(ProductContext);
+
   const { cart, setCart } = context;
   const [productAmount, setProductAmount] = useState(amount);
   const [subtotal, setSubtotal] = useState(0);
 
   function updateSubtotal() {
-    setSubtotal(price * productAmount);
+    setSubtotal((price * productAmount).toFixed(2));
   }
 
   function increaseProductAmount() {
-    const newCart = cart;
+    const newCart = [...cart];
 
-    newCart.map((product) => {
+    newCart.forEach((product) => {
       if (product.sys.id === id) {
         product.fields.amount += 1;
         setProductAmount(product.fields.amount);
       }
     });
 
-    setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart));
+    setCart(newCart);
   }
 
   function decreaseProductAmount() {
-    const newCart = cart;
+    const newCart = [...cart];
 
-    newCart.map((product) => {
+    newCart.forEach((product) => {
       if (product.sys.id === id && product.fields.amount > 0) {
         product.fields.amount -= 1;
         setProductAmount(product.fields.amount);
@@ -47,8 +48,8 @@ export default function ProductItem({ title, price, amount, img, id }) {
       }
     });
 
-    setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart));
+    setCart(newCart);
   }
 
   function removeProduct() {

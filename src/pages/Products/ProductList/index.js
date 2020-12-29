@@ -97,13 +97,6 @@ export default function ProductList() {
     context.getCurrentPage(page);
   }, [location]);
 
-  useEffect(() => {
-    // const sortOptions = document.querySelector('.sort_options');
-    // handleSortProducts(sortOptions, sortedProducts);
-    // console.log('called');
-    // TODO: products should be sorted on mount
-  }, []);
-
   return (
     <Container>
       <div className="products_list">
