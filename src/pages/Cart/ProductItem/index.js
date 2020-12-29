@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 
 import { ProductContext } from '../../../helpers/Context';
 
@@ -11,7 +11,12 @@ import { Container } from './styles';
 export default function ProductItem({ title, price, amount, img, id }) {
   const context = useContext(ProductContext);
   const { cart, setCart } = context;
-  const [productAmout, setProductAmout] = useState(amount);
+  const [productAmount, setProductAmount] = useState(amount);
+  const [subtotal, setSubtotal] = useState(0);
+
+  function updateSubtotal() {
+    setSubtotal(price * productAmount);
+  }
 
   function increaseProductAmount() {
     const newCart = cart;
@@ -19,12 +24,11 @@ export default function ProductItem({ title, price, amount, img, id }) {
     newCart.map((product) => {
       if (product.sys.id === id) {
         product.fields.amount += 1;
-        setProductAmout(product.fields.amount);
+        setProductAmount(product.fields.amount);
       }
     });
 
     setCart(newCart);
-
     localStorage.setItem('cart', JSON.stringify(newCart));
   }
 
@@ -34,7 +38,7 @@ export default function ProductItem({ title, price, amount, img, id }) {
     newCart.map((product) => {
       if (product.sys.id === id && product.fields.amount > 0) {
         product.fields.amount -= 1;
-        setProductAmout(product.fields.amount);
+        setProductAmount(product.fields.amount);
       }
 
       if (product.fields.amount === 0) {
@@ -59,6 +63,10 @@ export default function ProductItem({ title, price, amount, img, id }) {
     window.location.reload(true);
   }
 
+  useEffect(() => {
+    updateSubtotal();
+  }, [productAmount]);
+
   return (
     <Container>
       <div>
@@ -81,7 +89,7 @@ export default function ProductItem({ title, price, amount, img, id }) {
               <button className="decrease_btn" onClick={decreaseProductAmount} type="button">
                 -
               </button>
-              <span className="amount">{productAmout}</span>
+              <span className="amount">{productAmount}</span>
               <button className="increase_btn" onClick={increaseProductAmount} type="button">
                 +
               </button>
@@ -92,7 +100,7 @@ export default function ProductItem({ title, price, amount, img, id }) {
       </div>
 
       <h3 className="subtotal">
-        <span>Subtotal:</span> R$50,00
+        <span>Subtotal:</span> R${subtotal}
       </h3>
     </Container>
   );

@@ -22,7 +22,15 @@ export default function Cart() {
       const { id } = product.sys;
 
       return (
-        <ProductItem key={index} title={title} price={price} amount={amount} img={img} id={id} />
+        <ProductItem
+          key={index}
+          title={title}
+          price={price}
+          amount={amount}
+          subtotal={price * amount}
+          img={img}
+          id={id}
+        />
       );
     });
   }
