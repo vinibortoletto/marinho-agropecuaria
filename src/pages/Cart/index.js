@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { ProductContext } from '../../helpers/Context';
 
 // Components
@@ -26,12 +27,26 @@ export default function Cart() {
     });
   }
 
+  function displayBackupCard() {
+    return (
+      <div className="empty_cart">
+        <p>Seu carrinho está vazio.</p>
+
+        <Link to="produtos">
+          <button type="button">Click para ver mais produtos</button>
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <Container>
       <Title>Carrinho</Title>
 
       <div className="content">
-        <div className="product_list">{displayCartProducts()}</div>
+        <div className="product_list">
+          {cart.length > 0 ? displayCartProducts() : displayBackupCard()}
+        </div>
 
         <div className="delivery_info_box">
           <DeliveryInfo />
