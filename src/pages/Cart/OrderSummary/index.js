@@ -10,37 +10,31 @@ import { Container } from './styles';
 
 export default function OrderSummary() {
   const context = useContext(ProductContext);
-  const { cart } = context;
-
-  const [totalAmount, setTotalAmount] = useState(0);
-  const [subtotal, setSubtotal] = useState(0);
-  const [tax, setTax] = useState(0);
+  const { cart, setCart, tax, setTax, subtotal, setSubtotal, deliveryOption } = context;
+  const [totalAmountOfProducts, setTotalAmountOfProducts] = useState(0);
   const [total, setTotal] = useState(0);
   const [numOfInstallments, setNumOfInstallments] = useState(0);
+  const [buttonContent, setButtonContent] = useState('Finalizar compra');
+  const [errorMsgContent, setErrorMsgContent] = useState('');
 
   function updateOrderSummary() {
-    let newTotalAmount = 0;
+    let newTotalAmountOfProducts = 0;
     let newSubtotal = 0;
-    let newTax = 0;
 
     if (cart.length > 0) {
       cart.forEach((product) => {
         const { price, amount } = product.fields;
 
         // Total amount of products
-        newTotalAmount += amount;
-        setTotalAmount(newTotalAmount);
+        newTotalAmountOfProducts += amount;
+        setTotalAmountOfProducts(newTotalAmountOfProducts);
 
         // Subtotal
         newSubtotal += price * amount;
         setSubtotal(newSubtotal.toFixed(2));
 
-        // Tax
-        newTax = 0.05 * newSubtotal;
-        setTax(newTax.toFixed(2));
-
         // Total
-        const newTotal = (newSubtotal + newTax).toFixed(2);
+        const newTotal = newSubtotal + parseFloat(tax);
         setTotal(newTotal);
 
         // Number of installments
@@ -57,16 +51,71 @@ export default function OrderSummary() {
         }
       });
     } else {
-      setTotalAmount(0);
+      setTotalAmountOfProducts(0);
       setSubtotal(0);
       setTax(0);
       setTotal(0);
     }
   }
 
+  function buyProduct() {
+    const btn = document.querySelector('.buyProduct_btn');
+
+    btn.setAttribute('disabled', true);
+    btn.style.background = '#a9a9a9';
+
+    setButtonContent('Finalizando compra...');
+    setTimeout(() => {
+      setButtonContent('Compra finalizada!');
+
+      setTimeout(() => {
+        // Reset "buyProduct" button
+        btn.removeAttribute('disabled');
+        btn.style.background = '#00a79d';
+        setButtonContent('Finalizar compra');
+
+        // Reset cart
+        setTotalAmountOfProducts(0);
+        setSubtotal(0);
+        setTax(0);
+        setTotal(0);
+
+        localStorage.setItem('cart', JSON.stringify([]));
+        setCart([]);
+      }, 1500);
+    }, 1500);
+  }
+
   useEffect(() => {
+    const btn = document.querySelector('.buyProduct_btn');
+    const errorMsg = document.querySelector('.error_msg');
+
+    // Change error message
+    if (cart.length === 0) {
+      setErrorMsgContent('Carrinho vazio');
+    } else if (deliveryOption === 'homeDelivery') {
+      setErrorMsgContent('Digite seu CEP');
+    } else {
+      setErrorMsgContent('');
+    }
+
+    // Disable/enable buyProduct button -- Show/hide error message
+    if (deliveryOption === 'homeDelivery' && tax !== 0 && cart.length > 0) {
+      btn.removeAttribute('disabled');
+      btn.style.background = '#00a79d';
+      errorMsg.style.display = 'none';
+    } else if (deliveryOption === 'storeDelivery' && cart.length > 0) {
+      btn.removeAttribute('disabled');
+      btn.style.background = '#00a79d';
+      errorMsg.style.display = 'none';
+    } else {
+      errorMsg.style.display = 'block';
+      btn.setAttribute('disabled', true);
+      btn.style.background = '#a9a9a9';
+    }
+
     updateOrderSummary();
-  }, [cart]);
+  }, [cart, tax, deliveryOption]);
 
   return (
     <Container>
@@ -75,7 +124,7 @@ export default function OrderSummary() {
 
         <div>
           <div className="product_amount">
-            <span className="title">{totalAmount} produtos</span>
+            <span className="title">{totalAmountOfProducts} produtos</span>
             <span className="price">R${subtotal}</span>
           </div>
 
@@ -97,7 +146,11 @@ export default function OrderSummary() {
       </div>
 
       <div>
-        <ButtonBullet>Finalizar pedido</ButtonBullet>
+        <ButtonBullet className="buyProduct_btn" onClick={buyProduct}>
+          {buttonContent}
+        </ButtonBullet>
+
+        <p className="error_msg">{errorMsgContent}</p>
       </div>
     </Container>
   );

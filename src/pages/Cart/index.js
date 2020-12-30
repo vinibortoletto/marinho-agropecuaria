@@ -38,11 +38,13 @@ export default function Cart() {
   function displayBackupCard() {
     return (
       <div className="empty_cart">
-        <p>Seu carrinho está vazio.</p>
+        <div>
+          <p>Seu carrinho está vazio.</p>
 
-        <Link to="produtos">
-          <button type="button">Click para ver mais produtos</button>
-        </Link>
+          <Link to="produtos">
+            <button type="button">Click para ver mais produtos</button>
+          </Link>
+        </div>
       </div>
     );
   }

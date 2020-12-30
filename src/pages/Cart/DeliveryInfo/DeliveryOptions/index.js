@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
+import { ProductContext } from '../../../../helpers/Context';
 
 // Components
 import Radio from '../../../../components/Form/Radio';
@@ -7,7 +8,8 @@ import Radio from '../../../../components/Form/Radio';
 import { Container } from './styles';
 
 export default function DeliveryOptions() {
-  const [deliveryOption, setDeliveryOption] = useState('homeDelivery');
+  const context = useContext(ProductContext);
+  const { deliveryOption, setDeliveryOption } = context;
 
   function handleChange(e) {
     const radioValue = e.target.value;

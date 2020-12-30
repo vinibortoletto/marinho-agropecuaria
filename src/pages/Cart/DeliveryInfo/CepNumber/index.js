@@ -1,18 +1,45 @@
-import React, { useState } from "react";
-import InputMask from "react-input-mask";
+import React, { useState, useContext } from 'react';
+import InputMask from 'react-input-mask';
+import { ProductContext } from '../../../../helpers/Context';
 
 // Components
-import { ButtonSquare } from "../../../../components/Buttons/styles";
+import { ButtonSquare } from '../../../../components/Buttons/styles';
 
 // Styles
-import { Container } from "./styles";
+import { Container } from './styles';
 
 export default function CepNumber() {
+  const context = useContext(ProductContext);
+  const { setTax, subtotal } = context;
   const [cepNumber, setCepNumber] = useState(0);
+  const [buttonContent, setButtonContent] = useState('Calcular');
 
-  function handleTaxCalc() {
-    //get total value of products
-    //multiply by 0.1 to get a random tax value
+  function calculateTax() {
+    const errorMsg = document.querySelector('.cepNumber span');
+    const btn = document.querySelector('.cepNumber button');
+
+    if (cepNumber.length > 8) {
+      btn.setAttribute('disabled', true);
+      btn.style.background = '#a9a9a9';
+
+      setButtonContent('Calculando...');
+      setTimeout(() => {
+        setButtonContent('Calculado');
+        let newTax = 0.05 * subtotal;
+        newTax = newTax.toFixed(2);
+        setTax(newTax);
+
+        setTimeout(() => {
+          btn.removeAttribute('disabled');
+          btn.style.background = '#00a79d';
+          setButtonContent('Calcular');
+        }, 1500);
+      }, 1500);
+
+      errorMsg.style.display = 'none';
+    } else {
+      errorMsg.style.display = 'block';
+    }
   }
 
   return (
@@ -31,14 +58,13 @@ export default function CepNumber() {
             }}
           />
 
-          <ButtonSquare mini onClick={handleTaxCalc}>
-            Calcular
+          <ButtonSquare mini onClick={calculateTax}>
+            {buttonContent}
           </ButtonSquare>
         </div>
 
-        <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/">
-          Não sei meu CEP
-        </a>
+        <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/">Não sei meu CEP</a>
+        <span>Digite um CEP válido</span>
       </div>
     </Container>
   );

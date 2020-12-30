@@ -11,6 +11,9 @@ function ProductProvider({ children }) {
   const [currentPage, setCurrentPage] = useState();
 
   const [cart, setCart] = useState([]);
+  const [subtotal, setSubtotal] = useState(0);
+  const [tax, setTax] = useState(0);
+  const [deliveryOption, setDeliveryOption] = useState('homeDelivery');
 
   function findSelectedProduct(id) {
     const newSelectedProduct = [];
@@ -86,6 +89,12 @@ function ProductProvider({ children }) {
 
         cart,
         setCart,
+        subtotal,
+        setSubtotal,
+        tax,
+        setTax,
+        deliveryOption,
+        setDeliveryOption,
 
         currentPage,
         getCurrentPage,
