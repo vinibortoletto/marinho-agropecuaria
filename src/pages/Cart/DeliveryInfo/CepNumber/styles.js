@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { FlexCenter } from "../../../../helpers/mixins";
+import styled from 'styled-components';
+import { FlexCenter } from '../../../../helpers/mixins';
 
 export const Container = styled.div`
   ${FlexCenter};
@@ -29,6 +29,13 @@ export const Container = styled.div`
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  span {
+    font-size: var(--fz_mini);
+    color: crimson;
+    font-style: italic;
+    display: none;
   }
 
   /* When deliveryOption is set to store, cepNumber becomes mute  */

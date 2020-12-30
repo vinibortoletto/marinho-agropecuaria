@@ -2,9 +2,6 @@ import styled from 'styled-components';
 import { Breakpoint } from '../../../helpers/mixins';
 
 export const Container = styled.div`
-  max-width: 25rem;
-  margin: auto;
-
   .order_summary {
     position: relative;
     padding: var(--m_md);
@@ -59,6 +56,15 @@ export const Container = styled.div`
 
   button {
     font-weight: bold;
+  }
+
+  .error_msg {
+    color: crimson;
+    font-size: var(--fz_sm);
+    font-style: italic;
+    text-align: right;
+    margin-top: 0.5rem;
+    display: none;
   }
 
   @media ${Breakpoint('1000')} {
