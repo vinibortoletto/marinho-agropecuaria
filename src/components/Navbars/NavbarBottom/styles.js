@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { Size, FlexCenter, Breakpoint } from "../../../helpers/mixins";
+import styled from 'styled-components';
+import { Breakpoint, FlexCenter, Size } from '../../../helpers/mixins';
 
 export const Navbar = styled.nav`
-  ${Size("100%", "5rem")};
+  ${Size('100%', '5rem')};
 
   position: fixed;
   bottom: 0;
@@ -10,8 +10,37 @@ export const Navbar = styled.nav`
   z-index: 10;
 
   background-color: var(--d_green);
-  color: var(--l_gold);
   box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.3);
+
+  a,
+  button {
+    height: 100%;
+    width: 100%;
+  }
+
+  button {
+    position: relative;
+    color: var(--l_gold);
+  }
+
+  .counter {
+    width: 1.3rem;
+    height: 1.3rem;
+    font-size: var(--fz_sm);
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    left: 89px;
+    top: 13px;
+    border-radius: var(--br_sm);
+
+    background: var(--d_gold);
+    color: var(--d_green);
+  }
 
   ul {
     height: 100%;
@@ -22,7 +51,7 @@ export const Navbar = styled.nav`
     grid-template-columns: 1fr 1fr 1fr;
 
     li {
-      ${Size("100%")};
+      ${Size('100%')};
       ${FlexCenter};
       flex-direction: column;
 
@@ -44,7 +73,7 @@ export const Navbar = styled.nav`
     }
   }
 
-  @media ${Breakpoint("900")} {
+  @media ${Breakpoint('900')} {
     display: none;
   }
 `;
