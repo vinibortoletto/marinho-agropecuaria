@@ -1,16 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductContext } from '../../../helpers/Context';
+import Categories from './Categories';
 import { Navbar } from './styles';
 
 export default function NavbarBottom() {
   const [cartLength, setCartLength] = useState(0);
   const context = useContext(ProductContext);
   const { cart } = context;
+  const [showProductCategories, setShowProductCategories] = useState('none');
 
   useEffect(() => {
     setCartLength(cart.length);
   }, [cart]);
+
+  function toggleShowProductCategories() {
+    showProductCategories === 'grid'
+      ? setShowProductCategories('none')
+      : setShowProductCategories('grid');
+  }
 
   return (
     <Navbar className="navbar_bottom">
@@ -23,10 +31,12 @@ export default function NavbarBottom() {
         </li>
 
         <li>
-          <button type="button">
+          <button onClick={toggleShowProductCategories} type="button">
             <i className="far fa-list-alt" />
             <p>Produtos</p>
           </button>
+
+          <Categories show={showProductCategories} />
         </li>
 
         <li>
