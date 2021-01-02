@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { FlexCenter, Size, Breakpoint } from "../../../helpers/mixins";
+import styled from 'styled-components';
+import { FlexCenter, Size, Breakpoint } from '../../../helpers/mixins';
 
 export const Navbar = styled.nav`
   ${FlexCenter};
@@ -20,14 +20,14 @@ export const Navbar = styled.nav`
     transition: 0.2s ease-in-out;
 
     &:hover {
-      background: rgba(0, 167, 157, 0.1);
+      background: var(--hover);
     }
 
     ${FlexCenter()};
     flex-direction: column;
 
     .img {
-      ${Size("2.7rem", "1.7rem")};
+      ${Size('2.7rem', '1.7rem')};
       object-fit: contain;
       transition: 0.2s ease-in-out;
     }
@@ -43,7 +43,7 @@ export const Navbar = styled.nav`
   &.shrink {
     .category_container {
       img {
-        ${Size("2.5rem", "1.5rem")};
+        ${Size('2.5rem', '1.5rem')};
       }
 
       p {
@@ -53,16 +53,16 @@ export const Navbar = styled.nav`
   }
 
   display: none;
-  @media ${Breakpoint("900")} {
+  @media ${Breakpoint('900')} {
     display: flex;
   }
 
-  @media ${Breakpoint("1100")} {
+  @media ${Breakpoint('1100')} {
     .category_container {
       padding: var(--m_sm) var(--m_md);
 
       .img {
-        /* ${Size("3rem", "2rem")}; */
+        /* ${Size('3rem', '2rem')}; */
       }
     }
 

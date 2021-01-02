@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  /* display: ${(props) => props.show}; */
-
   width: 90%;
   background: var(--d_green);
   color: var(--l_gold);
@@ -28,5 +26,30 @@ export const Container = styled.div`
   p {
     margin-top: 0.7rem;
     text-transform: capitalize;
+  }
+
+  /* Box arrow */
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-bottom: -30px;
+    z-index: 1;
+
+    border: solid 15px transparent;
+    border-right-color: var(--d_green);
+    transform: rotate(-90deg) translateY(-50%);
+  }
+
+  /* Hides/shows product categories on click */
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease-out;
+
+  &.show {
+    opacity: 1;
+    pointer-events: all;
   }
 `;

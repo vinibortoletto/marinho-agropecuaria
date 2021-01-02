@@ -12,7 +12,7 @@ import houseIcon from '../../../../images/categories/house.svg';
 import gardenIcon from '../../../../images/categories/garden.svg';
 import infoIcon from '../../../../images/categories/info.svg';
 
-export default function Categories({ show }) {
+export default function Categories() {
   const categoriesData = [
     {
       img: dogIcon,
@@ -71,7 +71,7 @@ export default function Categories({ show }) {
   ];
 
   return (
-    <Container show={show}>
+    <Container className="navbar_categories_mobile">
       {categoriesData.map((category, index) => {
         return (
           <Link
@@ -80,7 +80,7 @@ export default function Categories({ show }) {
           >
             <div id={category.path} className="category_container">
               <img className="img" src={category.img} alt={category.alt} />
-              <p>{category.name}</p>
+              <p>{category.name === 'atendimento' ? 'atend.' : category.name}</p>
             </div>
           </Link>
         );

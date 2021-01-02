@@ -21,6 +21,11 @@ export const Navbar = styled.nav`
   button {
     position: relative;
     color: var(--l_gold);
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      background: var(--hover);
+    }
   }
 
   .counter {

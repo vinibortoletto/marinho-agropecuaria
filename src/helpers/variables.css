@@ -5,10 +5,11 @@
   --l_green: #00a79d;
   --d_gold: #f5c181;
   --l_gold: #fef5e5;
+  --hover: rgba(0, 167, 157, 0.1);
 
   /* Font Family */
-  --ff_special: "Poppins", sans-serif;
-  --ff_dft: "Open Sans", sans-serif;
+  --ff_special: 'Poppins', sans-serif;
+  --ff_dft: 'Open Sans', sans-serif;
 
   /* Font Size */
   --fz_mini: 0.8rem;

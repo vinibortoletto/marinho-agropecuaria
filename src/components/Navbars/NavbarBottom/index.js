@@ -8,16 +8,19 @@ export default function NavbarBottom() {
   const [cartLength, setCartLength] = useState(0);
   const context = useContext(ProductContext);
   const { cart } = context;
-  const [showProductCategories, setShowProductCategories] = useState('none');
 
   useEffect(() => {
     setCartLength(cart.length);
   }, [cart]);
 
   function toggleShowProductCategories() {
-    showProductCategories === 'grid'
-      ? setShowProductCategories('none')
-      : setShowProductCategories('grid');
+    const navbarCategoriesMobileElmt = document.querySelector('.navbar_categories_mobile');
+
+    if (navbarCategoriesMobileElmt.classList.contains('show')) {
+      navbarCategoriesMobileElmt.classList.remove('show');
+    } else {
+      navbarCategoriesMobileElmt.classList.add('show');
+    }
   }
 
   return (
@@ -36,7 +39,7 @@ export default function NavbarBottom() {
             <p>Produtos</p>
           </button>
 
-          <Categories show={showProductCategories} />
+          <Categories />
         </li>
 
         <li>
