@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container } from './styles';
-import dogIcon from '../../../../images/categories/dog.svg';
-import catIcon from '../../../../images/categories/cat.svg';
-import fishIcon from '../../../../images/categories/fish.svg';
-import reptileIcon from '../../../../images/categories/reptile.svg';
-import birdIcon from '../../../../images/categories/bird.svg';
-import rodentIcon from '../../../../images/categories/rodent.svg';
-import houseIcon from '../../../../images/categories/house.svg';
-import gardenIcon from '../../../../images/categories/garden.svg';
-import infoIcon from '../../../../images/categories/info.svg';
+import dogIcon from '../../../../images/categories/bottom/dog.svg';
+import catIcon from '../../../../images/categories/bottom/cat.svg';
+import fishIcon from '../../../../images/categories/bottom/fish.svg';
+import reptileIcon from '../../../../images/categories/bottom/reptile.svg';
+import birdIcon from '../../../../images/categories/bottom/bird.svg';
+import rodentIcon from '../../../../images/categories/bottom/rodent.svg';
+import houseIcon from '../../../../images/categories/bottom/house.svg';
+import gardenIcon from '../../../../images/categories/bottom/garden.svg';
+import infoIcon from '../../../../images/categories/bottom/info.svg';
 
 export default function Categories() {
   const categoriesData = [

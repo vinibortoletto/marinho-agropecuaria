@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import { ProductContext } from '../../../helpers/Context';
 
 // Images
-import dogIcon from '../../../images/categories/dog.svg';
-import catIcon from '../../../images/categories/cat.svg';
-import fishIcon from '../../../images/categories/fish.svg';
-import reptileIcon from '../../../images/categories/reptile.svg';
-import birdIcon from '../../../images/categories/bird.svg';
-import rodentIcon from '../../../images/categories/rodent.svg';
-import houseIcon from '../../../images/categories/house.svg';
-import gardenIcon from '../../../images/categories/garden.svg';
-import infoIcon from '../../../images/categories/info.svg';
+import dogIcon from '../../../images/categories/top/dog.svg';
+import catIcon from '../../../images/categories/top/cat.svg';
+import fishIcon from '../../../images/categories/top/fish.svg';
+import reptileIcon from '../../../images/categories/top/reptile.svg';
+import birdIcon from '../../../images/categories/top/bird.svg';
+import rodentIcon from '../../../images/categories/top/rodent.svg';
+import houseIcon from '../../../images/categories/top/house.svg';
+import gardenIcon from '../../../images/categories/top/garden.svg';
+import infoIcon from '../../../images/categories/top/info.svg';
 
 // Styles
 import { Navbar } from './styles';
