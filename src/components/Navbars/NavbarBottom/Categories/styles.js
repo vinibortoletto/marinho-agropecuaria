@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 90%;
-  background: var(--d_green);
-  color: var(--l_gold);
+  background: var(--l_gold);
   border-radius: var(--br_sm);
 
   position: fixed;
   top: 12rem;
+  z-index: 2;
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -20,7 +20,6 @@ export const Container = styled.div`
   img {
     width: 2.7rem;
     height: 1.7rem;
-    background: var(--d_green);
   }
 
   p {
@@ -39,7 +38,7 @@ export const Container = styled.div`
     z-index: 1;
 
     border: solid 15px transparent;
-    border-right-color: var(--d_green);
+    border-right-color: var(--l_gold);
     transform: rotate(-90deg) translateY(-50%);
   }
 

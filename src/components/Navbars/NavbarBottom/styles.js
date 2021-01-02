@@ -78,6 +78,37 @@ export const Navbar = styled.nav`
     }
   }
 
+  .box_shadow {
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.2s ease-out;
+
+     */
+
+    width: 100%;
+    height: calc(100% - 5rem);
+    background: rgba(0, 0, 0, 0.3);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.2s ease-out;
+
+    &.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
   @media ${Breakpoint('900')} {
     display: none;
   }
