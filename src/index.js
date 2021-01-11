@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-
-// Router
 import { BrowserRouter as Router } from 'react-router-dom';
 import RestoreScroll from './helpers/RestoreScroll';
+
+import App from './App';
 
 // Context
 import { ProductProvider } from './helpers/Context';

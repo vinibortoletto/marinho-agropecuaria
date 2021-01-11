@@ -1,40 +1,65 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ProductContext } from '../../../helpers/Context';
 import Categories from './Categories';
+import Search from './Search';
 import { Navbar } from './styles';
 
 export default function NavbarBottom() {
   const location = useLocation();
 
-  const [cartLength, setCartLength] = useState(0);
   const context = useContext(ProductContext);
   const { cart } = context;
 
-  useEffect(() => {
-    setCartLength(cart.length);
-  }, [cart]);
+  function toggleShowCategories() {
+    const categoriesElmt = document.querySelector('.navbar_categories_mobile');
+    const searchElmt = document.querySelector('.navbar_search_mobile');
 
-  function toggleShowProductCategories() {
-    const navbarCategoriesMobileElmt = document.querySelector('.navbar_categories_mobile');
     const boxShadow = document.querySelector('.navbar_bottom .box_shadow');
 
-    if (navbarCategoriesMobileElmt.classList.contains('show')) {
-      navbarCategoriesMobileElmt.classList.remove('show');
+    if (categoriesElmt.classList.contains('show')) {
+      categoriesElmt.classList.remove('show');
       boxShadow.classList.remove('show');
     } else {
-      navbarCategoriesMobileElmt.classList.add('show');
+      categoriesElmt.classList.add('show');
       boxShadow.classList.add('show');
     }
+
+    searchElmt.classList.contains('show') &&
+      searchElmt.classList.remove('show');
+  }
+
+  function toggleShowSearch() {
+    // Show "search" elmt
+    const searchElmt = document.querySelector('.navbar_search_mobile');
+    const boxShadow = document.querySelector('.navbar_bottom .box_shadow');
+
+    if (searchElmt.classList.contains('show')) {
+      searchElmt.classList.remove('show');
+      boxShadow.classList.remove('show');
+    } else {
+      searchElmt.classList.add('show');
+      boxShadow.classList.add('show');
+    }
+
+    // Set focus to input
+    const searchInputElmt = searchElmt.querySelector('input');
+    searchInputElmt.focus();
+
+    // Hide "categories" elmt if open
+    const categoriesElmt = document.querySelector('.navbar_categories_mobile');
+    categoriesElmt.classList.contains('show') &&
+      categoriesElmt.classList.remove('show');
   }
 
   // Close product categories (if open) when router changes
   useEffect(() => {
-    const navbarCategoriesMobileElmt = document.querySelector('.navbar_categories_mobile');
+    const categoriesElmt = document.querySelector('.navbar_categories_mobile');
+
     const boxShadow = document.querySelector('.navbar_bottom .box_shadow');
 
-    if (navbarCategoriesMobileElmt.classList.contains('show')) {
-      navbarCategoriesMobileElmt.classList.remove('show');
+    if (categoriesElmt.classList.contains('show')) {
+      categoriesElmt.classList.remove('show');
       boxShadow.classList.remove('show');
     }
   }, [location]);
@@ -44,14 +69,20 @@ export default function NavbarBottom() {
       <div className="box_shadow" />
       <ul>
         <li>
-          <button type="button">
+          <button onClick={toggleShowSearch} type="button" id="search_btn">
             <i className="fas fa-search" />
             <p>Pesquisar</p>
           </button>
+
+          <Search toggleShowSearch={toggleShowSearch} />
         </li>
 
         <li>
-          <button onClick={toggleShowProductCategories} type="button">
+          <button
+            onClick={toggleShowCategories}
+            type="button"
+            id="categories_btn"
+          >
             <i className="far fa-list-alt" />
             <p>Produtos</p>
           </button>
@@ -61,14 +92,14 @@ export default function NavbarBottom() {
 
         <li>
           <Link to="/carrinho">
-            <button type="button">
-              <div>
-                <i className="fas fa-shopping-cart" />
+            <button type="button" id="cart_btn">
+              <div className="cart_icon_container">
+                <i className="cart_icon fas fa-shopping-cart" />
                 <div className="counter">
-                  <span>{cartLength}</span>
+                  <span>{cart.length}</span>
                 </div>
+                <p>Carrinho</p>
               </div>
-              <p>Carrinho</p>
             </button>
           </Link>
         </li>

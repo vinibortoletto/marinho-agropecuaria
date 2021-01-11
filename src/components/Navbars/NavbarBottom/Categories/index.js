@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container } from './styles';
 import dogIcon from '../../../../images/categories/bottom/dog.svg';
 import catIcon from '../../../../images/categories/bottom/cat.svg';
 import fishIcon from '../../../../images/categories/bottom/fish.svg';
@@ -11,6 +10,8 @@ import rodentIcon from '../../../../images/categories/bottom/rodent.svg';
 import houseIcon from '../../../../images/categories/bottom/house.svg';
 import gardenIcon from '../../../../images/categories/bottom/garden.svg';
 import infoIcon from '../../../../images/categories/bottom/info.svg';
+
+import { Container } from './styles';
 
 export default function Categories() {
   const categoriesData = [

@@ -8,12 +8,14 @@ function ProductProvider({ children }) {
   const [sortedProducts, setSortedProducts] = useState([]);
 
   const [selectedProduct, setSelectedProduct] = useState([]);
-  const [currentPage, setCurrentPage] = useState();
+  const [currentPage, setCurrentPage] = useState('');
 
   const [cart, setCart] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [deliveryOption, setDeliveryOption] = useState('homeDelivery');
+
+  const [searchContent, setSearchContent] = useState('');
 
   function findSelectedProduct(id) {
     const newSelectedProduct = [];
@@ -31,11 +33,15 @@ function ProductProvider({ children }) {
 
     // Ascending
     if (option === 'menor preço') {
-      newProducts.sort((a, b) => parseFloat(a.fields.price) - parseFloat(b.fields.price));
+      newProducts.sort(
+        (a, b) => parseFloat(a.fields.price) - parseFloat(b.fields.price),
+      );
     }
     // Descending
     else if (option === 'maior preço') {
-      newProducts.sort((a, b) => parseFloat(b.fields.price) - parseFloat(a.fields.price));
+      newProducts.sort(
+        (a, b) => parseFloat(b.fields.price) - parseFloat(a.fields.price),
+      );
     }
     // By rating
     else {
@@ -67,7 +73,9 @@ function ProductProvider({ children }) {
   useEffect(() => {
     getLocalProducts(setProducts, setSortedProducts);
 
-    const localSelectedProduct = JSON.parse(localStorage.getItem('selectedProduct'));
+    const localSelectedProduct = JSON.parse(
+      localStorage.getItem('selectedProduct'),
+    );
     if (localSelectedProduct && localSelectedProduct.length > 0) {
       setSelectedProduct(localSelectedProduct);
     }
@@ -105,6 +113,9 @@ function ProductProvider({ children }) {
 
         getSortOption,
         saveSortOption,
+
+        searchContent,
+        setSearchContent,
       }}
     >
       {children}

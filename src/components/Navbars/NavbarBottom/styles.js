@@ -19,13 +19,22 @@ export const Navbar = styled.nav`
   }
 
   button {
-    position: relative;
     color: var(--l_gold);
     transition: 0.2s ease-in-out;
 
     &:hover {
       background: var(--hover);
     }
+  }
+
+  #cart_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cart_icon_container {
+    position: relative;
   }
 
   .counter {
@@ -39,10 +48,10 @@ export const Navbar = styled.nav`
     align-items: center;
 
     position: absolute;
-    left: 89px;
-    top: 13px;
-    border-radius: var(--br_sm);
+    top: -10px;
+    right: 0;
 
+    border-radius: var(--br_sm);
     background: var(--d_gold);
     color: var(--d_green);
   }
@@ -79,17 +88,6 @@ export const Navbar = styled.nav`
   }
 
   .box_shadow {
-    /* position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.2s ease-out;
-
-     */
-
     width: 100%;
     height: calc(100% - 5rem);
     background: rgba(0, 0, 0, 0.3);
