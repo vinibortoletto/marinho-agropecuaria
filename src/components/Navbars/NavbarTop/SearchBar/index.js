@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-
-import { Container } from "./styles";
+import React from 'react';
+import { useSearch } from '../../../../helpers/Context/SearchContext';
+import { Container } from './styles';
 
 export default function SearchBar() {
-  const [active, setActive] = useState(false);
-
-  function handleInputActive(action) {
-    action === "click" ? setActive(true) : setActive(false);
-  }
+  const { goToProductsPage, searchProducts } = useSearch();
 
   return (
-    <Container active={active} className="searchbar">
+    <Container className="searchbar">
+      <label htmlFor="search_products">Pesquise um produto</label>
+
       <input
-        onClick={() => handleInputActive("click")}
-        onBlur={() => handleInputActive()}
-        type="text"
-        placeholder="O que você está procurando?"
+        id="search_products"
+        onChange={searchProducts}
+        onKeyDown={goToProductsPage}
+        type="search"
+        placeholder="Ex.: Ração de gato"
+        aria-label="Pesquise produtos do site"
       />
       <i className="fas fa-search" />
     </Container>

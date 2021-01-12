@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
-import { Reset } from "./reset";
-import { Breakpoint } from "./mixins";
+import { createGlobalStyle } from 'styled-components';
+import { Reset } from './reset';
+import { Breakpoint } from './mixins';
 
 export const GlobalStyles = createGlobalStyle`
   ${Reset};
@@ -36,21 +36,32 @@ export const GlobalStyles = createGlobalStyle`
     color: var(--d_green);
     opacity: 0.5;
   }
+ 
+  label[for=search_products] {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
 
 
-  @media ${Breakpoint("1200")} {
+  @media ${Breakpoint('1200')} {
     body {
       padding: 0 var(--sp_md);
     }
   }
 
-  @media ${Breakpoint("1500")} {
+  @media ${Breakpoint('1500')} {
     .content {
       padding: 0 var(--sp_sm);
     }
   }
 
-  @media ${Breakpoint("2000")} {
+  @media ${Breakpoint('2000')} {
     body {
       padding: 0 var(--sp_lg);
     }

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { FlexCenter, Breakpoint } from "../../../../helpers/mixins";
+import styled from 'styled-components';
+import { FlexCenter, Breakpoint } from '../../../../helpers/mixins';
 
 export const Container = styled.div`
   width: 100%;
@@ -16,12 +16,8 @@ export const Container = styled.div`
     font-weight: bold;
   }
 
-  i {
-    opacity: ${props => (props.active ? "1" : ".5")};
-  }
-
   display: none;
-  @media ${Breakpoint("900")} {
+  @media ${Breakpoint('900')} {
     display: flex;
   }
 `;

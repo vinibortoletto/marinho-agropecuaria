@@ -1,15 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ProductContext } from '../../../helpers/Context';
 
 // Styles
 import { ButtonPill } from '../../../components/Buttons/styles';
 import { Styles as Section } from './styles';
 import Banner from '../../../components/Banner';
 
-export default function Hero({ img, title, subtitle, alt, path, id }) {
-  const context = useContext(ProductContext);
-
+export default function Hero({ img, title, subtitle, alt, path }) {
   return (
     <Section className="hero">
       <Banner overlay img={img} alt={alt} />
@@ -23,7 +20,7 @@ export default function Hero({ img, title, subtitle, alt, path, id }) {
 
       <hr />
 
-      <Link to={`produtos/${path}`} onClick={() => context.getCurrentPage(id)}>
+      <Link to={`produtos/${path}`}>
         <ButtonPill>Explorar</ButtonPill>
       </Link>
     </Section>

@@ -82,6 +82,11 @@ export const Navbar = styled.nav`
       margin-bottom: 0.5rem;
     }
 
+    img {
+      width: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
     p {
       font-size: 0.9rem;
     }

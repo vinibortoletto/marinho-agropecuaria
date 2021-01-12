@@ -8,24 +8,17 @@ function ProductProvider({ children }) {
   const [sortedProducts, setSortedProducts] = useState([]);
 
   const [selectedProduct, setSelectedProduct] = useState([]);
-  const [currentPage, setCurrentPage] = useState('');
 
   const [cart, setCart] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [deliveryOption, setDeliveryOption] = useState('homeDelivery');
 
-  const [searchContent, setSearchContent] = useState('');
-
   function findSelectedProduct(id) {
     const newSelectedProduct = [];
     newSelectedProduct.push(products.find((product) => product.sys.id === id));
     setSelectedProduct(newSelectedProduct);
     localStorage.setItem('selectedProduct', JSON.stringify(newSelectedProduct));
-  }
-
-  function getCurrentPage(page) {
-    setCurrentPage(page);
   }
 
   function handleSortProducts(option, oldProducts) {
@@ -72,7 +65,6 @@ function ProductProvider({ children }) {
   // Get products, sortedProducts, selectedProducts
   useEffect(() => {
     getLocalProducts(setProducts, setSortedProducts);
-
     const localSelectedProduct = JSON.parse(
       localStorage.getItem('selectedProduct'),
     );
@@ -104,18 +96,12 @@ function ProductProvider({ children }) {
         deliveryOption,
         setDeliveryOption,
 
-        currentPage,
-        getCurrentPage,
-
         sortedProducts,
         setSortedProducts,
         handleSortProducts,
 
         getSortOption,
         saveSortOption,
-
-        searchContent,
-        setSearchContent,
       }}
     >
       {children}

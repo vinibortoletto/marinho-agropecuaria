@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ButtonSquare } from '../../../components/Buttons/styles';
+import { useSearch } from '../../../helpers/Context/SearchContext';
 // Components
 import ProductCard from '../../../components/ProductCard/index';
 import { ProductContext } from '../../../helpers/Context';
@@ -10,94 +11,79 @@ import { Container } from './styles';
 export default function ProductList() {
   const location = useLocation();
   const context = useContext(ProductContext);
-  const {
-    sortedProducts,
-    searchContent,
-    setSearchContent,
-    currentPage,
-  } = context;
+  const { sortedProducts } = context;
+  const { cleanText, searchContent } = useSearch();
 
-  const [itemsToShow, setItemsToShow] = useState([{}, {}, {}, {}, {}, {}]);
+  const [itemsToShow, setItemsToShow] = useState(3);
 
-  function handleItemsToShow() {
-    const moreProductsBtn = document.getElementById('moreProducts_btn');
-
-    const newItemsToShow = [...itemsToShow, {}, {}, {}];
-    setItemsToShow(newItemsToShow);
-
-    if (location.pathname !== '/produtos') {
-      const filteredProducts = sortedProducts.filter((product) =>
-        product.fields.tags.includes(context.currentPage),
-      );
-
-      newItemsToShow.length >= filteredProducts.length &&
-        (moreProductsBtn.style.display = 'none');
-    } else if (location.pathname === '/produtos') {
-      newItemsToShow.length >= sortedProducts.length &&
-        (moreProductsBtn.style.display = 'none');
-    }
-  }
+  // Get current width
+  useEffect(() => {
+    window.innerWidth >= 818 && setItemsToShow(6);
+  }, []);
 
   function showBackupCards() {
-    return itemsToShow.map((item, index) => <ProductCard key={index} />);
+    const backupCards = [];
+
+    for (let i = 0; i < itemsToShow; i++) {
+      backupCards.push(<ProductCard key={i} />);
+    }
+
+    return [...backupCards];
   }
 
-  useEffect(() => {
-    // Turn string into array
-    let newSearchContent;
-    currentPage.includes(' ') && (newSearchContent = currentPage.split(' '));
-    setSearchContent(newSearchContent);
-  }, [currentPage]);
-
   function showProductCards() {
-    let products;
+    let products = [];
+    let newProducts = [];
 
+    // Check if location is 'products'
     if (
-      location.pathname !== '/produtos' &&
+      location.pathname.includes('/produtos/') &&
       location.pathname !== '/produtos/'
     ) {
-      // Filter product base on categories
-      if (currentPage !== undefined && !currentPage.includes(' ')) {
-        const newProducts = sortedProducts.filter((product) =>
-          product.fields.tags.includes(currentPage),
+      searchContent.map((word) => {
+        const filteredProductsByTags = sortedProducts.filter((product) =>
+          cleanText(product.fields.tags).includes(word),
         );
 
-        products = newProducts;
-      } else {
-        let newProducts = [];
+        const filteredProductsByTitle = sortedProducts.filter((product) =>
+          cleanText(product.fields.title).includes(word),
+        );
 
-        if (searchContent !== undefined && searchContent.length > 0) {
-          searchContent.map((word) => {
-            const filteredProductsByTags = sortedProducts.filter((product) =>
-              product.fields.tags.includes(word),
-            );
+        const filteredProducts = [
+          ...filteredProductsByTags,
+          ...filteredProductsByTitle,
+        ];
 
-            const filteredProductsByTitle = sortedProducts.filter((product) =>
-              product.fields.title.includes(word),
-            );
+        // Remove duplicated products
+        newProducts = filteredProducts.filter((item, pos, self) => {
+          return self.indexOf(item) === pos;
+        });
 
-            const filteredProducts = [
-              ...filteredProductsByTags,
-              ...filteredProductsByTitle,
-            ];
+        return newProducts;
+      });
 
-            newProducts = filteredProducts.filter((item, pos, self) => {
-              return self.indexOf(item) === pos;
-            });
-
-            return newProducts;
-          });
-        }
-
-        products = newProducts;
-      }
+      products = newProducts;
     } else {
       products = sortedProducts;
     }
 
+    // Hide/Show "more products button"
+    const moreProductsBtn = document.getElementById('moreProducts_btn');
+
+    if (moreProductsBtn !== null) {
+      if (itemsToShow > products.length) {
+        moreProductsBtn.style.opacity = '0';
+        moreProductsBtn.style.pointerEvents = 'none';
+      } else {
+        moreProductsBtn.style.opacity = '1';
+        moreProductsBtn.style.pointerEvents = 'all';
+      }
+    }
+
+    // Display products
     return products.map(
       (product, index) =>
-        index < itemsToShow.length && (
+        index < itemsToShow && (
           <Link
             onClick={() => {
               context.findSelectedProduct(product.sys.id);
@@ -117,15 +103,6 @@ export default function ProductList() {
     );
   }
 
-  useEffect(() => {
-    let page = location.pathname.split('produtos/').pop();
-
-    page === 'caes' && (page = 'cães');
-    page === 'repteis' && (page = 'répteis');
-
-    context.getCurrentPage(page);
-  }, [location]);
-
   return (
     <Container>
       <div className="products_list">
@@ -137,7 +114,7 @@ export default function ProductList() {
           mini
           transparent
           onClick={() => {
-            handleItemsToShow();
+            setItemsToShow(itemsToShow + 3);
           }}
           id="moreProducts_btn"
         >

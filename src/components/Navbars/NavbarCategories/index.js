@@ -1,6 +1,6 @@
-import React, { useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { ProductContext } from '../../../helpers/Context';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useSearch } from '../../../helpers/Context/SearchContext';
 
 // Images
 import dogIcon from '../../../images/categories/top/dog.svg';
@@ -17,7 +17,8 @@ import infoIcon from '../../../images/categories/top/info.svg';
 import { Navbar } from './styles';
 
 export default function NavbarCategories() {
-  const context = useContext(ProductContext);
+  const location = useLocation();
+  const { searchContent } = useSearch();
 
   const categories = [
     {
@@ -76,6 +77,7 @@ export default function NavbarCategories() {
     },
   ];
 
+  // Shrink navbar categories on scroll
   useEffect(() => {
     const navbarCategories = document.querySelector('.navbar_categories');
 
@@ -86,14 +88,41 @@ export default function NavbarCategories() {
     };
   }, []);
 
-  function showActiveCategory(id) {
-    let icons = document.querySelectorAll('.category_container');
+  // Toggle category icons opacity
+  useEffect(() => {
+    // const currentWidth = window.width;
 
-    icons.forEach((icon) => {
-      icon.style.opacity = '0.5';
-      icon.id === id && (icon.style.opacity = '1');
-    });
-  }
+    let currentWidth = window.innerWidth;
+
+    if (currentWidth > 900) {
+      const currentPage = location.pathname.toString();
+      const icons = document.querySelectorAll('.category_container');
+
+      if (currentPage.includes('contato') || currentPage.includes('produtos')) {
+        categories.forEach((category) => {
+          if (currentPage.includes(category.path)) {
+            icons.forEach((icon) => {
+              icon.style.opacity = '0.5';
+              currentPage.includes(icon.id) && (icon.style.opacity = '1');
+            });
+          }
+        });
+      } else {
+        icons.forEach((icon) => {
+          icon.style.opacity = '1';
+        });
+      }
+    }
+
+    function getCurrentWidth() {
+      currentWidth = window.innerWidth;
+    }
+
+    window.addEventListener('resize', getCurrentWidth);
+    return () => {
+      window.removeEventListener('resize', getCurrentWidth);
+    };
+  }, [searchContent]);
 
   return (
     <Navbar className="navbar_categories">
@@ -101,11 +130,11 @@ export default function NavbarCategories() {
         return (
           <Link
             key={index}
-            to={category.path === 'contato' ? '/contato' : `/produtos/${category.path}`}
-            onClick={() => {
-              context.getCurrentPage(category.name);
-              showActiveCategory(category.path);
-            }}
+            to={
+              category.path === 'contato'
+                ? '/contato'
+                : `/produtos/${category.path}`
+            }
           >
             <div id={category.path} className="category_container">
               <img className="img" src={category.img} alt={category.alt} />

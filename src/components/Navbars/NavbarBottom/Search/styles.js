@@ -15,17 +15,6 @@ export const Container = styled.div`
   max-width: 25rem;
   box-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
 
-  label {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-
   img {
     width: 2.7rem;
     height: 1.7rem;

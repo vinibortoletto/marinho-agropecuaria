@@ -7,14 +7,17 @@ import App from './App';
 
 // Context
 import { ProductProvider } from './helpers/Context';
+import { SearchProvider } from './helpers/Context/SearchContext';
 
 ReactDOM.render(
-  <ProductProvider>
-    <Router>
-      <RestoreScroll>
-        <App />
-      </RestoreScroll>
-    </Router>
-  </ProductProvider>,
+  <Router>
+    <ProductProvider>
+      <SearchProvider>
+        <RestoreScroll>
+          <App />
+        </RestoreScroll>
+      </SearchProvider>
+    </ProductProvider>
+  </Router>,
   document.getElementById('root'),
 );

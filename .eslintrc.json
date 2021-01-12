@@ -30,6 +30,7 @@
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "no-unused-expressions": "off",
     "react/no-array-index-key": "off",
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "no-param-reassign": "off"
   }
 }

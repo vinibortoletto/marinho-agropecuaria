@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { ProductContext } from '../../../../helpers/Context';
 import { IconSphere } from '../../../IconSphere/styles';
 
@@ -24,12 +25,14 @@ export default function Buttons() {
         </IconSphere>
       </button>
 
-      <button type="button" className="btn_cart">
-        <IconSphere>
-          <i className="fas fa-shopping-cart" />
-          <span className="counter">{cart.length}</span>
-        </IconSphere>
-      </button>
+      <Link to="/carrinho">
+        <button type="button" className="btn_cart">
+          <IconSphere>
+            <i className="fas fa-shopping-cart" />
+            <span className="counter">{cart.length}</span>
+          </IconSphere>
+        </button>
+      </Link>
     </div>
   );
 }
