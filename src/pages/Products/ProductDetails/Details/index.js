@@ -6,17 +6,17 @@ import Stars from '../../../../components/Stars';
 import Description from './Description';
 import Price from './Price';
 import Buttons from './Buttons';
-import FavoriteIcon from './FavoriteIcon';
+import FavoriteIcon from './Favorite/Icon';
 import DividingLine from '../../../../components/DividingLine';
 
 // Styles
 import { Container } from './styles';
 
-export default function Details({ title, price, description }) {
+export default function Details({ title, price, description, id }) {
   return (
     <Container className="product_info">
       <Title title={title} />
-      <FavoriteIcon />
+      <FavoriteIcon id={id} />
       <Stars />
       <Description description={description} />
 

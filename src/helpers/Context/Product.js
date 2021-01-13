@@ -6,13 +6,21 @@ const ProductContext = React.createContext(null);
 function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
-
+  const [favoriteProducts, setFavoriteProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState([]);
 
   const [cart, setCart] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [deliveryOption, setDeliveryOption] = useState('homeDelivery');
+
+  useEffect(() => {
+    const localFavoriteProducts = JSON.parse(
+      localStorage.getItem('favoriteProducts'),
+    );
+
+    localFavoriteProducts && setFavoriteProducts(localFavoriteProducts);
+  }, []);
 
   function findSelectedProduct(id) {
     const newSelectedProduct = [];
@@ -86,6 +94,9 @@ function ProductProvider({ children }) {
 
         selectedProduct,
         findSelectedProduct,
+
+        favoriteProducts,
+        setFavoriteProducts,
 
         cart,
         setCart,

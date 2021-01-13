@@ -28,10 +28,17 @@ export default function ProductDetails() {
     return selectedProduct.map((product, index) => {
       const { title, price, description } = product.fields;
       const img = product.fields.img.fields.file.url;
+      const { id } = product.sys;
+
       return (
         <div key={index} className="gallery_and_details_wrapper">
           <Gallery img={img} />
-          <Details title={title} price={price} description={description} />
+          <Details
+            title={title}
+            price={price}
+            description={description}
+            id={id}
+          />
         </div>
       );
     });

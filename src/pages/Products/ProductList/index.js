@@ -1,30 +1,36 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ButtonSquare } from '../../../components/Buttons/styles';
+
+// Context
 import { useSearch } from '../../../helpers/Context/Search';
+import { ProductContext } from '../../../helpers/Context/Product';
+
 // Components
 import ProductCard from '../../../components/ProductCard/index';
-import { ProductContext } from '../../../helpers/Context/Product';
+import { ButtonSquare } from '../../../components/Buttons/styles';
+import FavoriteBackup from '../ProductDetails/Details/Favorite/Backup';
+
 // Styles
 import { Container } from './styles';
 
 export default function ProductList() {
   const location = useLocation();
   const context = useContext(ProductContext);
-  const { sortedProducts } = context;
+  const { sortedProducts, favoriteProducts } = context;
   const { cleanText, searchContent } = useSearch();
-
-  const [itemsToShow, setItemsToShow] = useState(3);
+  const [numOfProductsToDisplay, setNumOfProductsToDisplay] = useState(3);
 
   // Get current width
   useEffect(() => {
-    window.innerWidth >= 818 ? setItemsToShow(6) : setItemsToShow(3);
+    window.innerWidth >= 818
+      ? setNumOfProductsToDisplay(6)
+      : setNumOfProductsToDisplay(3);
   }, [location]);
 
   function showBackupCards() {
     const backupCards = [];
 
-    for (let i = 0; i < itemsToShow; i++) {
+    for (let i = 0; i < numOfProductsToDisplay; i++) {
       backupCards.push(<ProductCard key={i} />);
     }
 
@@ -38,7 +44,8 @@ export default function ProductList() {
     // Check if location is 'products'
     if (
       location.pathname.includes('/produtos/') &&
-      location.pathname !== '/produtos/'
+      location.pathname !== '/produtos/' &&
+      !location.pathname.includes('favoritos')
     ) {
       searchContent.map((word) => {
         const filteredProductsByTags = sortedProducts.filter((product) =>
@@ -63,6 +70,8 @@ export default function ProductList() {
       });
 
       products = newProducts;
+    } else if (location.pathname.includes('favoritos')) {
+      products = favoriteProducts;
     } else {
       products = sortedProducts;
     }
@@ -71,7 +80,7 @@ export default function ProductList() {
     const moreProductsBtn = document.getElementById('moreProducts_btn');
 
     if (moreProductsBtn !== null) {
-      if (itemsToShow >= products.length) {
+      if (numOfProductsToDisplay >= products.length) {
         moreProductsBtn.style.opacity = '0';
         moreProductsBtn.style.pointerEvents = 'none';
       } else {
@@ -83,7 +92,7 @@ export default function ProductList() {
     // Display products
     return products.map(
       (product, index) =>
-        index < itemsToShow && (
+        index < numOfProductsToDisplay && (
           <Link
             onClick={() => {
               context.findSelectedProduct(product.sys.id);
@@ -103,18 +112,28 @@ export default function ProductList() {
     );
   }
 
+  function handleDisplay() {
+    if (location.pathname.includes('favoritos')) {
+      return favoriteProducts.length > 0 ? (
+        showProductCards()
+      ) : (
+        <FavoriteBackup />
+      );
+    }
+
+    return sortedProducts.length > 0 ? showProductCards() : showBackupCards();
+  }
+
   return (
     <Container>
-      <div className="products_list">
-        {sortedProducts.length === 0 ? showBackupCards() : showProductCards()}
-      </div>
+      <div className="products_list">{handleDisplay()}</div>
 
       <div className="button_container">
         <ButtonSquare
           mini
           transparent
           onClick={() => {
-            setItemsToShow(itemsToShow + 3);
+            setNumOfProductsToDisplay(numOfProductsToDisplay + 3);
           }}
           id="moreProducts_btn"
         >
