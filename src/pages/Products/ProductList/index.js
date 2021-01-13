@@ -18,8 +18,8 @@ export default function ProductList() {
 
   // Get current width
   useEffect(() => {
-    window.innerWidth >= 818 && setItemsToShow(6);
-  }, []);
+    window.innerWidth >= 818 ? setItemsToShow(6) : setItemsToShow(3);
+  }, [location]);
 
   function showBackupCards() {
     const backupCards = [];
@@ -71,7 +71,7 @@ export default function ProductList() {
     const moreProductsBtn = document.getElementById('moreProducts_btn');
 
     if (moreProductsBtn !== null) {
-      if (itemsToShow > products.length) {
+      if (itemsToShow >= products.length) {
         moreProductsBtn.style.opacity = '0';
         moreProductsBtn.style.pointerEvents = 'none';
       } else {
