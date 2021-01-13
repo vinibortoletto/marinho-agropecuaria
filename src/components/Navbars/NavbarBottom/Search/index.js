@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSearch } from '../../../../helpers/Context/SearchContext';
+import { useSearch } from '../../../../helpers/Context/Search';
 import { Container } from './styles';
 
 export default function Search() {

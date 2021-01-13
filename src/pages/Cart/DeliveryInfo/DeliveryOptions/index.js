@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { ProductContext } from '../../../../helpers/Context';
+import { ProductContext } from '../../../../helpers/Context/Product';
 
 // Components
 import Radio from '../../../../components/Form/Radio';

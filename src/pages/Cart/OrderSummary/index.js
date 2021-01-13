@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { ProductContext } from '../../../helpers/Context';
+import { ProductContext } from '../../../helpers/Context/Product';
 
 // Components
 import DividingLine from '../../../components/DividingLine';
@@ -10,7 +10,15 @@ import { Container } from './styles';
 
 export default function OrderSummary() {
   const context = useContext(ProductContext);
-  const { cart, setCart, tax, setTax, subtotal, setSubtotal, deliveryOption } = context;
+  const {
+    cart,
+    setCart,
+    tax,
+    setTax,
+    subtotal,
+    setSubtotal,
+    deliveryOption,
+  } = context;
   const [totalAmountOfProducts, setTotalAmountOfProducts] = useState(0);
   const [total, setTotal] = useState(0);
   const [numOfInstallments, setNumOfInstallments] = useState(0);
@@ -140,7 +148,9 @@ export default function OrderSummary() {
               <span className="title">Total:</span>
               <span className="price">R$ {total}</span>
             </div>
-            <span className="payment_method">em até {numOfInstallments}x sem juros</span>
+            <span className="payment_method">
+              em até {numOfInstallments}x sem juros
+            </span>
           </div>
         </div>
       </div>

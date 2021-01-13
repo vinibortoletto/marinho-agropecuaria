@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import InputMask from 'react-input-mask';
-import { ProductContext } from '../../../../helpers/Context';
+import { ProductContext } from '../../../../helpers/Context/Product';
 
 // Components
 import { ButtonSquare } from '../../../../components/Buttons/styles';
@@ -63,7 +63,9 @@ export default function CepNumber() {
           </ButtonSquare>
         </div>
 
-        <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/">Não sei meu CEP</a>
+        <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/">
+          Não sei meu CEP
+        </a>
         <span>Digite um CEP válido</span>
       </div>
     </Container>

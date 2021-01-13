@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ProductContext } from '../../../../helpers/Context';
+import { ProductContext } from '../../../../helpers/Context/Product';
 
 // Components
 import Radio from '../../../../components/Form/Radio/index';
@@ -26,11 +26,17 @@ export default function Prices() {
         productSection = 'répteis';
       }
 
-      newProducts = products.filter((product) => product.fields.tags.includes(productSection));
-      newProducts = newProducts.filter((product) => product.fields.price <= price);
+      newProducts = products.filter((product) =>
+        product.fields.tags.includes(productSection),
+      );
+      newProducts = newProducts.filter(
+        (product) => product.fields.price <= price,
+      );
     } else {
       newProducts = products;
-      newProducts = newProducts.filter((product) => product.fields.price <= price);
+      newProducts = newProducts.filter(
+        (product) => product.fields.price <= price,
+      );
     }
 
     return newProducts.length;

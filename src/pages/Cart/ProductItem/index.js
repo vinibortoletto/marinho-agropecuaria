@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 
-import { ProductContext } from '../../../helpers/Context';
+import { ProductContext } from '../../../helpers/Context/Product';
 
 // Components
 import DividingLine from '../../../components/DividingLine';
@@ -73,7 +73,11 @@ export default function ProductItem({ title, price, amount, img, id }) {
           <div className="product_content">
             <h1 className="title">{title}</h1>
             <h2 className="price">Valor unit.: R${price}</h2>
-            <button onClick={removeProduct} type="button" className="remove_item">
+            <button
+              onClick={removeProduct}
+              type="button"
+              className="remove_item"
+            >
               <i className="fas fa-times" />
               Remover item
             </button>
@@ -82,11 +86,19 @@ export default function ProductItem({ title, price, amount, img, id }) {
           <div className="quantity">
             <p>Qtd: </p>
             <div>
-              <button className="decrease_btn" onClick={decreaseProductAmount} type="button">
+              <button
+                className="decrease_btn"
+                onClick={decreaseProductAmount}
+                type="button"
+              >
                 -
               </button>
               <span className="amount">{productAmount}</span>
-              <button className="increase_btn" onClick={increaseProductAmount} type="button">
+              <button
+                className="increase_btn"
+                onClick={increaseProductAmount}
+                type="button"
+              >
                 +
               </button>
             </div>

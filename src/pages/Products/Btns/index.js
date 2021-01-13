@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ProductContext } from '../../../helpers/Context';
+import { ProductContext } from '../../../helpers/Context/Product';
 
 // Components
 import { ButtonPill } from '../../../components/Buttons/styles';
@@ -31,11 +31,21 @@ export default function Btns({ handleShowSidebar }) {
 
   return (
     <Container className="btns_container">
-      <ButtonPill onClick={handleShowSidebar} className="bnt_advanced_search" transparent mini>
+      <ButtonPill
+        onClick={handleShowSidebar}
+        className="bnt_advanced_search"
+        transparent
+        mini
+      >
         Busca avançada
       </ButtonPill>
 
-      <select onChange={changeSortOption} value={sortOption} name="sortOptions" id="sortOptions">
+      <select
+        onChange={changeSortOption}
+        value={sortOption}
+        name="sortOptions"
+        id="sortOptions"
+      >
         <option value="mais vendidos">Mais vendidos</option>
         <option value="menor preço">Menor preço</option>
         <option value="maior preço">Maior preço</option>

@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { ProductConsumer, ProductContext } from '../../../../helpers/Context';
+import {
+  ProductConsumer,
+  ProductContext,
+} from '../../../../helpers/Context/Product';
 
 // Components
 import { Title } from '../../../../components/Title/styles';
@@ -66,7 +69,9 @@ export default function RelatedProducts() {
       <h2 className="title">Produtos relacionados</h2>
 
       <div className="content">
-        <div className="products_list">{selectedProduct.length > 0 && renderRelatedProducts()}</div>
+        <div className="products_list">
+          {selectedProduct.length > 0 && renderRelatedProducts()}
+        </div>
       </div>
     </Container>
   );

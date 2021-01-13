@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ProductContext } from '../../../../../helpers/Context';
+import { ProductContext } from '../../../../../helpers/Context/Product';
 
 import { ButtonSquare } from '../../../../../components/Buttons/styles';
 import { Container } from './styles';
@@ -31,7 +31,9 @@ export default function Buttons() {
     <Container>
       <Link to="/carrinho">
         <div className="add_to_cart">
-          <ButtonSquare onClick={addSelectedProductToCart}>Adicionar ao carrinho</ButtonSquare>
+          <ButtonSquare onClick={addSelectedProductToCart}>
+            Adicionar ao carrinho
+          </ButtonSquare>
         </div>
       </Link>
     </Container>

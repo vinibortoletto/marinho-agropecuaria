@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ButtonSquare } from '../../../components/Buttons/styles';
-import { useSearch } from '../../../helpers/Context/SearchContext';
+import { useSearch } from '../../../helpers/Context/Search';
 // Components
 import ProductCard from '../../../components/ProductCard/index';
-import { ProductContext } from '../../../helpers/Context';
+import { ProductContext } from '../../../helpers/Context/Product';
 // Styles
 import { Container } from './styles';
 

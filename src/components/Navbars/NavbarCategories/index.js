@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useSearch } from '../../../helpers/Context/SearchContext';
+import { useSearch } from '../../../helpers/Context/Search';
 
 // Images
 import dogIcon from '../../../images/categories/top/dog.svg';

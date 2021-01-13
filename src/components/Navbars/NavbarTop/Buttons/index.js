@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { ProductContext } from '../../../../helpers/Context';
+import { ProductContext } from '../../../../helpers/Context/Product';
 import { IconSphere } from '../../../IconSphere/styles';
 
 export default function Buttons() {

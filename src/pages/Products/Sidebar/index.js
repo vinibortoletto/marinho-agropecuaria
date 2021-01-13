@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { ProductContext } from '../../../helpers/Context';
+import { ProductContext } from '../../../helpers/Context/Product';
 
 import { Container } from './styles';
 
@@ -40,22 +40,34 @@ export default function Sidebar({ handleCloseSidebar }) {
       if (elmt.name === 'categories') {
         filteredProducts =
           localPrice.length > 0 || localRating.length > 0
-            ? currentProducts.filter((product) => product.fields.tags.includes(dataValue))
-            : oldProducts.filter((product) => product.fields.tags.includes(dataValue));
+            ? currentProducts.filter((product) =>
+                product.fields.tags.includes(dataValue),
+              )
+            : oldProducts.filter((product) =>
+                product.fields.tags.includes(dataValue),
+              );
 
         newProducts.push(...filteredProducts);
       } else if (elmt.name === 'price') {
         filteredProducts =
           localCategories.length > 0 || localRating.length > 0
-            ? currentProducts.filter((product) => product.fields.price <= dataValue)
-            : oldProducts.filter((product) => product.fields.price <= dataValue);
+            ? currentProducts.filter(
+                (product) => product.fields.price <= dataValue,
+              )
+            : oldProducts.filter(
+                (product) => product.fields.price <= dataValue,
+              );
 
         newProducts.push(...filteredProducts);
       } else if (elmt.name === 'rating') {
         filteredProducts =
           localCategories.length > 0 || localPrice.length > 0
-            ? currentProducts.filter((product) => product.fields.rating <= dataValue)
-            : oldProducts.filter((product) => product.fields.rating <= dataValue);
+            ? currentProducts.filter(
+                (product) => product.fields.rating <= dataValue,
+              )
+            : oldProducts.filter(
+                (product) => product.fields.rating <= dataValue,
+              );
 
         newProducts.push(...filteredProducts);
       }
@@ -74,13 +86,17 @@ export default function Sidebar({ handleCloseSidebar }) {
       const localPrice = JSON.parse(localStorage.getItem('price'));
       const localRating = JSON.parse(localStorage.getItem('rating'));
 
-      const newLocalCategories = localCategories.filter((category) => category !== elmt.value);
+      const newLocalCategories = localCategories.filter(
+        (category) => category !== elmt.value,
+      );
       localStorage.setItem('categories', JSON.stringify(newLocalCategories));
 
       // Update products list
       const sortOption = JSON.parse(localStorage.getItem('sortOption'));
       const oldProducts = JSON.parse(localStorage.getItem('products'));
-      const currentProducts = JSON.parse(localStorage.getItem('sortedProducts'));
+      const currentProducts = JSON.parse(
+        localStorage.getItem('sortedProducts'),
+      );
       const newProducts = [];
       let filteredProducts;
 
@@ -88,14 +104,20 @@ export default function Sidebar({ handleCloseSidebar }) {
         newLocalCategories.map((category) => {
           filteredProducts =
             localPrice.length > 0 || localRating.length > 0
-              ? currentProducts.filter((product) => product.fields.tags.includes(category))
-              : oldProducts.filter((product) => product.fields.tags.includes(category));
+              ? currentProducts.filter((product) =>
+                  product.fields.tags.includes(category),
+                )
+              : oldProducts.filter((product) =>
+                  product.fields.tags.includes(category),
+                );
 
           return newProducts.push(...filteredProducts);
         });
       } else {
         filteredProducts =
-          localPrice.length > 0 || localRating.length > 0 ? currentProducts : oldProducts;
+          localPrice.length > 0 || localRating.length > 0
+            ? currentProducts
+            : oldProducts;
         newProducts.push(...filteredProducts);
       }
 

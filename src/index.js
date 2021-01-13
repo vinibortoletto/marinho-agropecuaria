@@ -6,8 +6,8 @@ import RestoreScroll from './helpers/RestoreScroll';
 import App from './App';
 
 // Context
-import { ProductProvider } from './helpers/Context';
-import { SearchProvider } from './helpers/Context/SearchContext';
+import { ProductProvider } from './helpers/Context/Product';
+import { SearchProvider } from './helpers/Context/Search';
 
 ReactDOM.render(
   <Router>
