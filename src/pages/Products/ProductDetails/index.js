@@ -7,7 +7,7 @@ import RelatedProducts from './RelatedProducts/index';
 
 // Styles
 import { Container } from './styles';
-import { ProductContext } from '../../../helpers/Context/Product';
+import { ProductContext } from '../../../contexts/Product';
 
 export default function ProductDetails() {
   const context = useContext(ProductContext);

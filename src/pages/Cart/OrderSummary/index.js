@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { ProductContext } from '../../../helpers/Context/Product';
+import { ProductContext } from '../../../contexts/Product';
 
 // Components
 import DividingLine from '../../../components/DividingLine';

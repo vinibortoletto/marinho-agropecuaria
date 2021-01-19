@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import InputMask from 'react-input-mask';
-import { ProductContext } from '../../../../helpers/Context/Product';
+import { ProductContext } from '../../../../contexts/Product';
 
 // Components
 import { ButtonSquare } from '../../../../components/Buttons/styles';

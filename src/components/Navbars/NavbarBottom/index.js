@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ProductContext } from '../../../helpers/Context/Product';
-import { useSearch } from '../../../helpers/Context/Search';
+import { ProductContext } from '../../../contexts/Product';
+import { useSearch } from '../../../contexts/Search';
 import Categories from './Categories';
 import Search from './Search';
 import { Navbar } from './styles';

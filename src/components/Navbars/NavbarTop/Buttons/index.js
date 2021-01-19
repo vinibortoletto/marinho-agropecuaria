@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ProductContext } from '../../../../helpers/Context/Product';
+import { ProductContext } from '../../../../contexts/Product';
 import { IconSphere } from '../../../IconSphere/styles';
+import { ButtonPill } from '../../../Buttons/styles';
 
 export default function Buttons() {
   const context = useContext(ProductContext);
@@ -14,14 +15,47 @@ export default function Buttons() {
 
   return (
     <div className="btn_container">
-      <button type="button" className="btn_user">
-        <IconSphere>
-          <i className="fas fa-user" />
-        </IconSphere>
-        <p>
-          Olá, faça seu <a href="/">login</a> ou <a href="/">cadastre-se</a>
-        </p>
-      </button>
+      <div className="user_container">
+        <Link to="/login">
+          <button type="button" className="btn_user">
+            <IconSphere>
+              <i className="fas fa-user" />
+            </IconSphere>
+            <p>
+              Olá, faça seu <Link to="/login">login</Link> ou{' '}
+              <Link to="/cadastro">cadastre-se</Link>
+            </p>
+          </button>
+        </Link>
+
+        <div className="hidden_content">
+          <ButtonPill mini id="login_email" type="button">
+            <i className="fas fa-at" />
+            Entar com email
+          </ButtonPill>
+
+          <ButtonPill mini id="login_facebook" type="button">
+            <i className="fab fa-facebook-f" />
+            Entar com Facebook
+          </ButtonPill>
+
+          <ButtonPill mini id="login_google" type="button">
+            <i className="fab fa-google" />
+            Entar com Google
+          </ButtonPill>
+
+          <div className="line" />
+
+          <p>Não possui um conta?</p>
+          <ButtonPill transparent mini id="signup" type="button">
+            Cadastre-se
+          </ButtonPill>
+
+          {/* <div className="signup_container">
+            
+          </div> */}
+        </div>
+      </div>
 
       <Link to="/produtos/favoritos">
         <button type="button" className="btn_favorites">

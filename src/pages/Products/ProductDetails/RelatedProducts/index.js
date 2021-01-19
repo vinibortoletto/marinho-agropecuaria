@@ -1,9 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ProductConsumer,
-  ProductContext,
-} from '../../../../helpers/Context/Product';
+import { ProductConsumer, ProductContext } from '../../../../contexts/Product';
 
 // Components
 import { Title } from '../../../../components/Title/styles';

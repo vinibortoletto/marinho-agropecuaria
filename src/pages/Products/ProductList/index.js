@@ -2,8 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 // Context
-import { useSearch } from '../../../helpers/Context/Search';
-import { ProductContext } from '../../../helpers/Context/Product';
+import { useSearch } from '../../../contexts/Search';
+import { ProductContext } from '../../../contexts/Product';
 
 // Components
 import ProductCard from '../../../components/ProductCard/index';

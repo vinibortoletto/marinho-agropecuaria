@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ProductContext } from '../../../../../helpers/Context/Product';
+import { ProductContext } from '../../../../../contexts/Product';
 
 import { ButtonSquare } from '../../../../../components/Buttons/styles';
 import { Container } from './styles';

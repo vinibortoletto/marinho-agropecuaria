@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { ProductContext } from '../../helpers/Context/Product';
+import { ProductContext } from '../../contexts/Product';
 
 // Components
 import { Title } from '../../components/Title/styles';

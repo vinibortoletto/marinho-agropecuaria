@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { saveProducts, getLocalProducts } from '../Storage';
+import { saveProducts, getLocalProducts } from '../helpers/Storage';
 
 const ProductContext = React.createContext(null);
 

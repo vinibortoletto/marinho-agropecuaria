@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ProductContext } from '../../../../helpers/Context/Product';
+import { ProductContext } from '../../../../contexts/Product';
 
 import { Container } from './styles';
 import { ButtonPill } from '../../../../components/Buttons/styles';
