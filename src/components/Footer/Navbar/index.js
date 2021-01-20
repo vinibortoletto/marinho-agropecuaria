@@ -1,31 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Dependencies
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 
 // Components
-import Input from "../../../components/Form/Fields/index";
-import SubmitButton from "../../../components/Form/Buttons/Submit/index";
+import Input from '../../../components/Form/Fields/index';
+import SubmitButton from '../../../components/Form/Buttons/Submit/index';
 
 // Styles
-import { Container } from "./styles";
+import { Container } from './styles';
 
 export default function Navbar() {
   const initialValues = {
-    email: ""
+    email: '',
   };
-  const requiredMsg = "Campo obrigatório";
+  const requiredMsg = 'Campo obrigatório';
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Email inválido")
-      .required(requiredMsg)
+    email: Yup.string().email('Email inválido').required(requiredMsg),
   });
 
   function handleSubmit(data, { resetForm }) {
-    return new Promise(res => {
+    return new Promise((res) => {
+      console.log(data);
+
       setTimeout(() => {
         resetForm();
         res();
@@ -87,7 +87,7 @@ export default function Navbar() {
                 name="email"
                 type="text"
                 fieldError={
-                  touched.email && errors.email ? "field_error" : null
+                  touched.email && errors.email ? 'field_error' : null
                 }
               />
 

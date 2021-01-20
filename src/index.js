@@ -8,14 +8,17 @@ import App from './App';
 // Context
 import { ProductProvider } from './contexts/Product';
 import { SearchProvider } from './contexts/Search';
+import { AuthProvider } from './contexts/Auth';
 
 ReactDOM.render(
   <Router>
     <ProductProvider>
       <SearchProvider>
-        <RestoreScroll>
-          <App />
-        </RestoreScroll>
+        <AuthProvider>
+          <RestoreScroll>
+            <App />
+          </RestoreScroll>
+        </AuthProvider>
       </SearchProvider>
     </ProductProvider>
   </Router>,

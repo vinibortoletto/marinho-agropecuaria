@@ -21,6 +21,7 @@ import PurchaseTerms from './pages/PurchaseTerms';
 import PageNotFound from './pages/PageNotFound';
 
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 // Styles
 import { GlobalStyles } from './helpers/GlobalStyles';
@@ -53,7 +54,7 @@ export default function App() {
 
           {/* User profile */}
           <Route path="/login" component={Login} />
-          {/* <Route path="/casdastro" component={Signup} /> */}
+          <Route path="/cadastro" component={Signup} />
           {/* <Route path="/area-do-usuario" component={Dashboard} /> */}
 
           {/* Page not found */}

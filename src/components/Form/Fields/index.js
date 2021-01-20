@@ -1,9 +1,9 @@
-import React from "react";
-import { Field } from "formik";
-import InputMask from "react-input-mask";
+import React from 'react';
+import { Field } from 'formik';
+import InputMask from 'react-input-mask';
 
-import { Container } from "./styles";
-import Errors from "../Errors/index";
+import { Container } from './styles';
+import Errors from '../Errors/index';
 
 export default function Input({
   htmlFor,
@@ -17,24 +17,18 @@ export default function Input({
   handleBlur,
   inputType,
 }) {
-  // const housePhoneMask = "";
-  // const cellPhoneMask = "";
-  // const cepMask = "";
-
   function handleTextareaSize() {
-    const textarea = document.getElementById("textarea");
-    textarea.setAttribute("rows", "8");
+    const textarea = document.getElementById('textarea');
+    textarea.setAttribute('rows', '8');
   }
 
   return (
     <Container>
-      {
-        (label = "none" ? (
-          <label htmlFor={htmlFor}></label>
-        ) : (
-          <label htmlFor={htmlFor}>{label}:</label>
-        ))
-      }
+      {label === 'none' ? (
+        <label htmlFor={htmlFor} />
+      ) : (
+        <label htmlFor={htmlFor}>{label}:</label>
+      )}
 
       {useMask ? (
         <InputMask
@@ -50,15 +44,15 @@ export default function Input({
       ) : (
         <Field
           as={inputType && inputType}
-          rows={inputType === "textarea" ? "1" : ""}
+          rows={inputType === 'textarea' ? '1' : ''}
           onFocus={() =>
-            inputType === "textarea" ? handleTextareaSize() : null
+            inputType === 'textarea' ? handleTextareaSize() : null
           }
           name={name}
           type={type}
           placeholder={placeholder}
           className={fieldError}
-          id={inputType === "textarea" ? "textarea" : null}
+          id={inputType === 'textarea' ? 'textarea' : null}
         />
       )}
 

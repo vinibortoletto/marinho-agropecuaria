@@ -21,18 +21,17 @@ export default function Buttons() {
             <IconSphere>
               <i className="fas fa-user" />
             </IconSphere>
-            <p>
-              Olá, faça seu <Link to="/login">login</Link> ou{' '}
-              <Link to="/cadastro">cadastre-se</Link>
-            </p>
+            <p>Olá, faça login ou cadastre-se </p>
           </button>
         </Link>
 
         <div className="hidden_content">
-          <ButtonPill mini id="login_email" type="button">
-            <i className="fas fa-at" />
-            Entar com email
-          </ButtonPill>
+          <Link to="/login">
+            <ButtonPill mini id="login_email" type="button">
+              <i className="fas fa-at" />
+              Entar com email
+            </ButtonPill>
+          </Link>
 
           <ButtonPill mini id="login_facebook" type="button">
             <i className="fab fa-facebook-f" />
@@ -47,13 +46,11 @@ export default function Buttons() {
           <div className="line" />
 
           <p>Não possui um conta?</p>
-          <ButtonPill transparent mini id="signup" type="button">
-            Cadastre-se
-          </ButtonPill>
-
-          {/* <div className="signup_container">
-            
-          </div> */}
+          <Link to="/cadastro">
+            <ButtonPill transparent mini id="signup" type="button">
+              Cadastre-se
+            </ButtonPill>
+          </Link>
         </div>
       </div>
 
