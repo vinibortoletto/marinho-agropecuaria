@@ -7,7 +7,7 @@ import { ButtonPill } from '../../../Buttons/styles';
 import { useAuth } from '../../../../contexts/Auth';
 
 export default function Buttons() {
-  const { currentUser } = useAuth();
+  const { currentUser, loginGoogle, loginFacebook } = useAuth();
   const context = useContext(ProductContext);
   const { cart, favoriteProducts } = context;
   const [favCounter, setFavCounter] = useState(0);
@@ -47,12 +47,22 @@ export default function Buttons() {
             </ButtonPill>
           </Link>
 
-          <ButtonPill mini id="login_facebook" type="button">
+          <ButtonPill
+            onClick={loginFacebook}
+            mini
+            id="login_facebook"
+            type="button"
+          >
             <i className="fab fa-facebook-f" />
             Entar com Facebook
           </ButtonPill>
 
-          <ButtonPill mini id="login_google" type="button">
+          <ButtonPill
+            onClick={loginGoogle}
+            mini
+            id="login_google"
+            type="button"
+          >
             <i className="fab fa-google" />
             Entar com Google
           </ButtonPill>

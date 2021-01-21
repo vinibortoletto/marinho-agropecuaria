@@ -16,7 +16,7 @@ import SubmitButton from '../../components/Form/Buttons/Submit/index';
 import { useAuth } from '../../contexts/Auth';
 
 function Login() {
-  const { login } = useAuth();
+  const { login, loginGoogle, loginFacebook } = useAuth();
   const history = useHistory();
   const [error, setError] = useState('');
   const [width, setWidth] = useState(window.innerWidth);
@@ -68,12 +68,22 @@ function Login() {
           <h2>Faça login usando suas redes sociais</h2>
 
           <div className="buttons">
-            <ButtonPill mini id="login_facebook" type="button">
+            <ButtonPill
+              onClick={loginFacebook}
+              mini
+              id="login_facebook"
+              type="button"
+            >
               <i className="fab fa-facebook-f" />
               Entar com Facebook
             </ButtonPill>
 
-            <ButtonPill mini id="login_google" type="button">
+            <ButtonPill
+              onClick={loginGoogle}
+              mini
+              id="login_google"
+              type="button"
+            >
               <i className="fab fa-google" />
               Entar com Google
             </ButtonPill>

@@ -1,4 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
+import firebase from 'firebase/app';
+import { useHistory } from 'react-router-dom';
 import { auth } from '../helpers/firebase';
 
 const AuthContext = React.createContext();
@@ -8,6 +10,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
+  const history = useHistory();
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -20,6 +23,18 @@ export function AuthProvider({ children }) {
 
   function login(email, password) {
     return auth.signInWithEmailAndPassword(email, password);
+  }
+
+  async function loginGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    await firebase.auth().signInWithPopup(provider);
+    history.push('/');
+  }
+
+  async function loginFacebook() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    await firebase.auth().signInWithPopup(provider);
+    history.push('/');
   }
 
   useEffect(() => {
@@ -35,6 +50,8 @@ export function AuthProvider({ children }) {
     currentUser,
     signup,
     login,
+    loginGoogle,
+    loginFacebook,
   };
 
   return (
