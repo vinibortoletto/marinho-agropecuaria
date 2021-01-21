@@ -7,7 +7,7 @@ import { ButtonPill } from '../../../Buttons/styles';
 import { useAuth } from '../../../../contexts/Auth';
 
 export default function Buttons() {
-  const { currentUser, loginGoogle, loginFacebook } = useAuth();
+  const { currentUser, loginGoogle, loginFacebook, logout } = useAuth();
   const context = useContext(ProductContext);
   const { cart, favoriteProducts } = context;
   const [favCounter, setFavCounter] = useState(0);
@@ -16,30 +16,25 @@ export default function Buttons() {
     setFavCounter(favoriteProducts.length);
   }, [favoriteProducts]);
 
-  return (
-    <div className="btn_container">
-      <div className="user_container">
-        {currentUser ? (
-          <Link to="/area-do-usuario">
-            <button type="button" className="btn_user">
-              <IconSphere>
-                <i className="fas fa-user" />
-              </IconSphere>
-              <p>Olá, {currentUser.displayName} </p>
-            </button>
+  function handleHiddenContent() {
+    let content;
+    if (currentUser) {
+      content = (
+        <>
+          <Link to="/area-do-cliente">
+            <i className="fas fa-user" />
+            Ver perfil
           </Link>
-        ) : (
-          <Link to="/login">
-            <button type="button" className="btn_user">
-              <IconSphere>
-                <i className="fas fa-user" />
-              </IconSphere>
-              <p>Olá, faça login ou cadastre-se </p>
-            </button>
-          </Link>
-        )}
 
-        <div className="hidden_content">
+          <Link onClick={logout} to="/">
+            <i className="fas fa-sign-out-alt" />
+            Sair
+          </Link>
+        </>
+      );
+    } else {
+      content = (
+        <>
           <Link to="/login">
             <ButtonPill mini id="login_email" type="button">
               <i className="fas fa-at" />
@@ -75,6 +70,75 @@ export default function Buttons() {
               Cadastre-se
             </ButtonPill>
           </Link>
+        </>
+      );
+    }
+
+    return content;
+  }
+
+  return (
+    <div className="btn_container">
+      <div className="user_container">
+        {currentUser ? (
+          <Link to="/area-do-usuario">
+            <button type="button" className="btn_user">
+              <IconSphere>
+                <i className="fas fa-user" />
+              </IconSphere>
+              <p>Olá, {currentUser.displayName} </p>
+            </button>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <button type="button" className="btn_user">
+              <IconSphere>
+                <i className="fas fa-user" />
+              </IconSphere>
+              <p>Olá, faça login ou cadastre-se </p>
+            </button>
+          </Link>
+        )}
+
+        <div
+          className={currentUser ? 'hidden_content logged' : 'hidden_content'}
+        >
+          {handleHiddenContent()}
+          {/* <Link to="/login">
+            <ButtonPill mini id="login_email" type="button">
+              <i className="fas fa-at" />
+              Entar com email
+            </ButtonPill>
+          </Link>
+
+          <ButtonPill
+            onClick={loginFacebook}
+            mini
+            id="login_facebook"
+            type="button"
+          >
+            <i className="fab fa-facebook-f" />
+            Entar com Facebook
+          </ButtonPill>
+
+          <ButtonPill
+            onClick={loginGoogle}
+            mini
+            id="login_google"
+            type="button"
+          >
+            <i className="fab fa-google" />
+            Entar com Google
+          </ButtonPill>
+
+          <div className="line" />
+
+          <p>Não possui um conta?</p>
+          <Link to="/cadastro">
+            <ButtonPill transparent mini id="signup" type="button">
+              Cadastre-se
+            </ButtonPill>
+          </Link> */}
         </div>
       </div>
 

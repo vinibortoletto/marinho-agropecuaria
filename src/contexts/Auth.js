@@ -37,6 +37,10 @@ export function AuthProvider({ children }) {
     history.push('/');
   }
 
+  function logout() {
+    return auth.signOut();
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -52,6 +56,7 @@ export function AuthProvider({ children }) {
     login,
     loginGoogle,
     loginFacebook,
+    logout,
   };
 
   return (

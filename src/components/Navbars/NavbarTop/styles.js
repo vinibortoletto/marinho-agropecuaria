@@ -64,6 +64,21 @@ export const Container = styled.nav`
   }
 
   .hidden_content {
+    &.logged {
+      width: auto;
+
+      a {
+        width: 100%;
+
+        &:hover {
+          text-decoration: underline;
+        }
+        &:nth-last-child(1) {
+          margin-top: 1rem;
+        }
+      }
+    }
+
     opacity: 0;
     pointer-events: none;
     transition: 0.2s ease;
