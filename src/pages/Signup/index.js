@@ -1,11 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 // Dependencies
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
-import { ButtonPill } from '../../components/Buttons/styles';
 import { Container } from './styles';
 import { Title } from '../../components/Title/styles';
 
@@ -18,16 +17,17 @@ import { useAuth } from '../../contexts/Auth';
 function Signup() {
   const { signup } = useAuth();
   const history = useHistory();
-  const [signupData, setSignupData] = useState();
   const [error, setError] = useState('test');
 
   const initialValues = {
+    name: '',
     email: '',
     password: '',
     confirmPassword: '',
   };
 
   const validationSchema = Yup.object().shape({
+    name: Yup.string().min(3).required('Campo obrigatório'),
     email: Yup.string().email('Email inválido').required('Campo obrigatório'),
     password: Yup.string()
       .min(6, 'Senha deve conter pelo menos 6 letras ou números')
@@ -41,13 +41,14 @@ function Signup() {
   async function handleSubmit(data, { resetForm }) {
     try {
       setError('');
-      await signup(data.email, data.password);
+      await signup(data.email, data.password, data.name);
 
       return new Promise((res) => {
         setTimeout(() => {
           resetForm();
           res();
           history.push('/');
+          window.location.reload();
         }, 4000);
       });
     } catch {
@@ -68,6 +69,15 @@ function Signup() {
           {({ isSubmitting, errors, touched }) => (
             <Form>
               <Input
+                htmlFor="name"
+                label="name"
+                placeholder="Seu Nome"
+                name="name"
+                type="text"
+                fieldError={touched.name && errors.name ? 'field_error' : null}
+              />
+
+              <Input
                 htmlFor="email"
                 label="email"
                 placeholder="seu@email.com"
@@ -81,7 +91,7 @@ function Signup() {
               <Input
                 htmlFor="password"
                 label="senha"
-                placeholder="digite sua senha"
+                placeholder="Digite sua senha"
                 name="password"
                 type="password"
                 fieldError={
@@ -92,7 +102,7 @@ function Signup() {
               <Input
                 htmlFor="confirmPassword"
                 label="confirmar senha"
-                placeholder="confirme sua senha"
+                placeholder="Confirme sua senha"
                 name="confirmPassword"
                 type="password"
                 fieldError={

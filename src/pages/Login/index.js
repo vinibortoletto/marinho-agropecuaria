@@ -1,40 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
+// Dependencies
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
-import { ButtonPill } from '../../components/Buttons/styles';
 import { Container } from './styles';
 import { Title } from '../../components/Title/styles';
+import { ButtonPill } from '../../components/Buttons/styles';
 
-import Input from '../../components/Form/Fields';
-import SubmitButton from '../../components/Form/Buttons/Submit';
+// Components
+import Input from '../../components/Form/Fields/index';
+import SubmitButton from '../../components/Form/Buttons/Submit/index';
 
 import { useAuth } from '../../contexts/Auth';
 
 function Login() {
-  // const {login} = useAuth()
+  const { login } = useAuth();
+  const history = useHistory();
+  const [error, setError] = useState('');
+  const [width, setWidth] = useState(window.innerWidth);
 
   const initialValues = {
     email: '',
     password: '',
   };
-  const requiredMsg = 'Campo obrigatório';
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email('Email inválido').required(requiredMsg),
-    password: Yup.string().required(requiredMsg),
+    email: Yup.string().email('Email inválido').required('Campo obrigatório'),
+    password: Yup.string()
+      .min(6, 'Senha deve conter pelo menos 6 letras ou números')
+      .required('Campo obrigatório'),
   });
 
-  function handleSubmit(data, { resetForm }) {
-    return new Promise((res) => {
-      setTimeout(() => {
-        resetForm();
-        res();
-      }, 4000);
-    });
+  async function handleSubmit(data, { resetForm }) {
+    try {
+      setError('');
+      await login(data.email, data.password);
+
+      return new Promise((res) => {
+        setTimeout(() => {
+          resetForm();
+          res();
+          history.push('/');
+        }, 4000);
+      });
+    } catch {
+      setError('Erro ao fazer login. Tente novamente.');
+    }
   }
+
+  useEffect(() => {
+    function getWidth() {
+      setWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', getWidth);
+    return () => window.removeEventListener('resize', getWidth);
+  }, []);
 
   return (
     <Container>
@@ -42,63 +65,76 @@ function Login() {
 
       <section>
         <div className="social_container">
-          <ButtonPill mini id="login_facebook" type="button">
-            <i className="fab fa-facebook-f" />
-            Entar com Facebook
-          </ButtonPill>
+          <h2>Faça login usando suas redes sociais</h2>
 
-          <ButtonPill mini id="login_google" type="button">
-            <i className="fab fa-google" />
-            Entar com Google
-          </ButtonPill>
+          <div className="buttons">
+            <ButtonPill mini id="login_facebook" type="button">
+              <i className="fab fa-facebook-f" />
+              Entar com Facebook
+            </ButtonPill>
+
+            <ButtonPill mini id="login_google" type="button">
+              <i className="fab fa-google" />
+              Entar com Google
+            </ButtonPill>
+          </div>
+
+          {width < 1000 && <div className="line" />}
         </div>
 
-        <div className="line" />
+        {width > 1000 && <div className="line_vertical" />}
 
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ isSubmitting, errors, touched }) => (
-            <Form>
-              <Input
-                htmlFor="email"
-                label="email"
-                placeholder="seu@email.com"
-                name="email"
-                type="text"
-                fieldError={
-                  touched.email && errors.email ? 'field_error' : null
-                }
-              />
+        <div className="email_container">
+          <h2>Faça login usando seu email</h2>
 
-              <Input
-                htmlFor="password"
-                label="password"
-                name="password"
-                type="password"
-                fieldError={
-                  touched.password && errors.password ? 'field_error' : null
-                }
-              />
-
-              <div className="btn_container">
-                <SubmitButton
-                  subscribe
-                  isSubmitting={isSubmitting}
-                  errors={errors}
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ isSubmitting, errors, touched }) => (
+              <Form>
+                <Input
+                  htmlFor="email"
+                  label="email"
+                  placeholder="seu@email.com"
+                  name="email"
+                  type="text"
+                  fieldError={
+                    touched.email && errors.email ? 'field_error' : null
+                  }
                 />
-              </div>
-            </Form>
-          )}
-        </Formik>
 
-        <div className="signup_container">
-          <h2>Não possui uma conta?</h2>
-          <Link to="/cadastro">
-            <ButtonPill transparent>Cadastre-se</ButtonPill>
-          </Link>
+                <Input
+                  htmlFor="password"
+                  label="senha"
+                  placeholder="digite sua senha"
+                  name="password"
+                  type="password"
+                  fieldError={
+                    touched.password && errors.password ? 'field_error' : null
+                  }
+                />
+
+                <div className="btn_container">
+                  <SubmitButton
+                    subscribe
+                    isSubmitting={isSubmitting}
+                    login
+                    error={error}
+                  />
+
+                  <div className="error">{error}</div>
+                </div>
+              </Form>
+            )}
+          </Formik>
+
+          <div className="line" />
+
+          <p>
+            Ainda não possui uma conta? <Link to="/cadastro">Cadastre-se</Link>
+          </p>
         </div>
       </section>
     </Container>

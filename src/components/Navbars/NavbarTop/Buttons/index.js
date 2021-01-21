@@ -4,7 +4,10 @@ import { ProductContext } from '../../../../contexts/Product';
 import { IconSphere } from '../../../IconSphere/styles';
 import { ButtonPill } from '../../../Buttons/styles';
 
+import { useAuth } from '../../../../contexts/Auth';
+
 export default function Buttons() {
+  const { currentUser } = useAuth();
   const context = useContext(ProductContext);
   const { cart, favoriteProducts } = context;
   const [favCounter, setFavCounter] = useState(0);
@@ -16,14 +19,25 @@ export default function Buttons() {
   return (
     <div className="btn_container">
       <div className="user_container">
-        <Link to="/login">
-          <button type="button" className="btn_user">
-            <IconSphere>
-              <i className="fas fa-user" />
-            </IconSphere>
-            <p>Olá, faça login ou cadastre-se </p>
-          </button>
-        </Link>
+        {currentUser ? (
+          <Link to="/area-do-usuario">
+            <button type="button" className="btn_user">
+              <IconSphere>
+                <i className="fas fa-user" />
+              </IconSphere>
+              <p>Olá, {currentUser.displayName} </p>
+            </button>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <button type="button" className="btn_user">
+              <IconSphere>
+                <i className="fas fa-user" />
+              </IconSphere>
+              <p>Olá, faça login ou cadastre-se </p>
+            </button>
+          </Link>
+        )}
 
         <div className="hidden_content">
           <Link to="/login">
