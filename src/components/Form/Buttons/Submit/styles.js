@@ -8,6 +8,7 @@ export const Container = styled.div`
     p {
       position: relative;
       z-index: 1;
+      font-weight: bold;
     }
   }
 

@@ -17,7 +17,7 @@ import { useAuth } from '../../contexts/Auth';
 function Signup() {
   const { signup } = useAuth();
   const history = useHistory();
-  const [error, setError] = useState('test');
+  const [error, setError] = useState('');
 
   const initialValues = {
     name: '',

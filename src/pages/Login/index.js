@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 // Dependencies
@@ -19,7 +19,6 @@ function Login() {
   const { login, loginGoogle } = useAuth();
   const history = useHistory();
   const [error, setError] = useState('');
-  const [width, setWidth] = useState(window.innerWidth);
 
   const initialValues = {
     email: '',
@@ -43,21 +42,12 @@ function Login() {
           resetForm();
           res();
           history.push('/');
-        }, 4000);
+        }, 2000);
       });
     } catch {
       setError('Erro ao fazer login. Tente novamente.');
     }
   }
-
-  useEffect(() => {
-    function getWidth() {
-      setWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', getWidth);
-    return () => window.removeEventListener('resize', getWidth);
-  }, []);
 
   return (
     <Container>
@@ -110,10 +100,10 @@ function Login() {
 
                 <div className="btn_container">
                   <SubmitButton
-                    subscribe
                     isSubmitting={isSubmitting}
                     login
                     error={error}
+                    text="Entrar"
                   />
 
                   <div className="error">{error}</div>

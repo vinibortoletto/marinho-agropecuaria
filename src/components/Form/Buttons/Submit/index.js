@@ -3,45 +3,28 @@ import React, { useState, useEffect } from 'react';
 import { Container } from './styles';
 import { ButtonBullet, ButtonPill } from '../../../Buttons/styles';
 
-export default function SubmitButton({
-  isSubmitting,
-  subscribe,
-  cep,
-  error,
-  login,
-  signup,
-}) {
-  const [buttonContent, setButtonContent] = useState('');
-  let btnSubmit;
+export default function SubmitButton({ isSubmitting, subscribe, error, text }) {
+  const [buttonContent, setButtonContent] = useState(text);
 
   function handleAnimation() {
-    if (btnSubmit.hasAttribute('disabled')) {
-      const loadingBg = btnSubmit.firstElementChild;
-      setButtonContent('Aguarde um momento...');
-      loadingBg.classList.add('loading_animation');
+    const btnSubmit = document.querySelectorAll('.submit_btn');
 
-      setTimeout(() => {
-        setButtonContent('Enviar');
-        cep && setButtonContent('Calcular');
-        login && setButtonContent('Entrar');
-        signup && setButtonContent('Cadastrar');
+    btnSubmit.forEach((btn) => {
+      if (btn.hasAttribute('disabled')) {
+        const loadingBg = btn.firstElementChild;
+        setButtonContent('Aguarde...');
+        loadingBg.classList.add('loading_animation');
 
-        loadingBg.classList.remove('loading_animation');
-      }, 2000);
-    }
-  }
-
-  function handleClick(e) {
-    btnSubmit = e.target.parentNode.firstElementChild;
-    setTimeout(handleAnimation, 10);
+        setTimeout(() => {
+          setButtonContent(text);
+          loadingBg.classList.remove('loading_animation');
+        }, 2000);
+      }
+    });
   }
 
   useEffect(() => {
-    setButtonContent('Enviar');
-    cep && setButtonContent('Calcular');
-    login && setButtonContent('Entrar');
-    signup && setButtonContent('Cadastrar');
-
+    setButtonContent(text);
     clearTimeout(handleAnimation);
   }, [error]);
 
@@ -53,8 +36,9 @@ export default function SubmitButton({
           disabled={isSubmitting}
           mini
           type="submit"
-          onClick={handleClick}
+          onClick={() => setTimeout(handleAnimation, 10)}
         >
+          <div className="btn_bg" />
           <div className="loading_bg" />
           <p>{buttonContent}</p>
         </ButtonBullet>
@@ -64,10 +48,11 @@ export default function SubmitButton({
           disabled={isSubmitting}
           mini
           type="submit"
-          onClick={handleClick}
+          onClick={() => setTimeout(handleAnimation, 10)}
         >
-          <p>{buttonContent}</p>
+          <div className="btn_bg" />
           <div className="loading_bg" />
+          <p>{buttonContent}</p>
         </ButtonPill>
       )}
     </Container>

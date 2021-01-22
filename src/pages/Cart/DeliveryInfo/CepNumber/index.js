@@ -4,6 +4,7 @@ import { ProductContext } from '../../../../contexts/Product';
 
 // Components
 import { ButtonSquare } from '../../../../components/Buttons/styles';
+import SubmitButton from '../../../../components/Form/Buttons/Submit/index';
 
 // Styles
 import { Container } from './styles';

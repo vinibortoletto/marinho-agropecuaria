@@ -37,7 +37,7 @@ export const GlobalStyles = createGlobalStyle`
     opacity: 0.5;
   }
  
-  label {
+  label[for=search_products] {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;

@@ -1,36 +1,36 @@
-import React from "react";
+import React from 'react';
 
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import { Container } from "./styles";
-import Input from "../../../components/Form/Fields/index";
-import SubmitButton from "../../../components/Form/Buttons/Submit/index";
-import ResetButton from "../../../components/Form/Buttons/Reset/index";
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import { Container } from './styles';
+import Input from '../../../components/Form/Fields/index';
+import SubmitButton from '../../../components/Form/Buttons/Submit/index';
+import ResetButton from '../../../components/Form/Buttons/Reset/index';
 
 export default function ContactForm() {
   const initialValues = {
-    fullName: "",
-    email: "",
-    housePhone: "",
-    cellPhone: "",
-    message: "",
+    fullName: '',
+    email: '',
+    housePhone: '',
+    cellPhone: '',
+    message: '',
   };
-  const requiredMsg = "Campo obrigatório";
+  const requiredMsg = 'Campo obrigatório';
 
   const validationSchema = Yup.object().shape({
     fullName: Yup.string()
-      .min(3, "Nome deve conter ao menos 3 letras")
+      .min(3, 'Nome deve conter ao menos 3 letras')
       .max(100)
       .required(requiredMsg),
-    email: Yup.string().email("Email inválido").required(requiredMsg),
+    email: Yup.string().email('Email inválido').required(requiredMsg),
     housePhone: Yup.string()
-      .min(14, "Telefone deve conter DDD + 8 números")
+      .min(14, 'Telefone deve conter DDD + 8 números')
       .required(requiredMsg),
     cellPhone: Yup.string()
-      .min(16, "Celular deve conter DDD + 9 números")
+      .min(16, 'Celular deve conter DDD + 9 números')
       .required(requiredMsg),
     message: Yup.string()
-      .min(20, "Elabore um pouco mais sua menssagem")
+      .min(20, 'Elabore um pouco mais sua menssagem')
       .required(requiredMsg),
   });
 
@@ -62,7 +62,7 @@ export default function ContactForm() {
               placeholder="Seu Nome Completo"
               name="fullName"
               type="text"
-              fieldError={touched.fullName && errors.fullName && "field_error"}
+              fieldError={touched.fullName && errors.fullName && 'field_error'}
             />
 
             <Input
@@ -71,7 +71,7 @@ export default function ContactForm() {
               placeholder="seu@email.com"
               name="email"
               type="text"
-              fieldError={touched.email && errors.email ? "field_error" : null}
+              fieldError={touched.email && errors.email ? 'field_error' : null}
             />
 
             <Input
@@ -81,7 +81,7 @@ export default function ContactForm() {
               name="housePhone"
               type="text"
               fieldError={
-                touched.housePhone && errors.housePhone ? "field_error" : null
+                touched.housePhone && errors.housePhone ? 'field_error' : null
               }
               useMask="(99) 9999-9999"
               handleChange={handleChange}
@@ -95,7 +95,7 @@ export default function ContactForm() {
               name="cellPhone"
               type="text"
               fieldError={
-                touched.cellPhone && errors.cellPhone ? "field_error" : null
+                touched.cellPhone && errors.cellPhone ? 'field_error' : null
               }
               useMask="(99) 9 9999-9999"
               handleChange={handleChange}
@@ -105,18 +105,22 @@ export default function ContactForm() {
             <Input
               inputType="textarea"
               htmlFor="message"
-              label="Mensagem:"
+              label="Mensagem"
               placeholder="Olá, gostaria de..."
               name="message"
               type="text"
               fieldError={
-                touched.message && errors.message ? "field_error" : null
+                touched.message && errors.message ? 'field_error' : null
               }
             />
 
             <div className="btn_container">
               <ResetButton resetForm={resetForm} />
-              <SubmitButton isSubmitting={isSubmitting} errors={errors} />
+              <SubmitButton
+                isSubmitting={isSubmitting}
+                errors={errors}
+                text="Enviar"
+              />
             </div>
           </Form>
         )}

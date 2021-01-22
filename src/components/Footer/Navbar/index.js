@@ -24,12 +24,10 @@ export default function Navbar() {
 
   function handleSubmit(data, { resetForm }) {
     return new Promise((res) => {
-      console.log(data);
-
       setTimeout(() => {
         resetForm();
         res();
-      }, 4000);
+      }, 2000);
     });
   }
 
@@ -95,7 +93,7 @@ export default function Navbar() {
                 <SubmitButton
                   subscribe
                   isSubmitting={isSubmitting}
-                  errors={errors}
+                  text="Cadastrar"
                 />
               </div>
             </Form>
