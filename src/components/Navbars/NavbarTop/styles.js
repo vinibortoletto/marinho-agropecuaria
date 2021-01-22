@@ -112,11 +112,6 @@ export const Container = styled.nav`
       margin-bottom: 0.5rem;
     }
 
-    #login_facebook {
-      background-color: #3b5998;
-      margin-bottom: 0.5rem;
-    }
-
     #login_google {
       background-color: #4285f4;
     }

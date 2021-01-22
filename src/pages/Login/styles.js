@@ -4,14 +4,9 @@ export const Container = styled.div`
   section {
     display: grid;
     justify-items: center;
-
-    @media only screen and (min-width: 1000px) {
-      grid-template-columns: 45% 10% 45%;
-    }
   }
 
   h2 {
-    font-weight: bold;
     font-size: var(--fz_md);
     text-align: center;
   }
@@ -28,10 +23,7 @@ export const Container = styled.div`
   .social_container {
     display: grid;
     justify-items: center;
-
-    @media only screen and (min-width: 1000px) {
-      display: block;
-    }
+    margin-bottom: 2rem;
 
     h2 {
       margin-bottom: 2rem;
@@ -52,10 +44,6 @@ export const Container = styled.div`
 
     i {
       margin-right: 1rem;
-    }
-
-    #login_facebook {
-      background-color: #3b5998;
     }
 
     #login_google {

@@ -16,7 +16,7 @@ import SubmitButton from '../../components/Form/Buttons/Submit/index';
 import { useAuth } from '../../contexts/Auth';
 
 function Login() {
-  const { login, loginGoogle, loginFacebook } = useAuth();
+  const { login, loginGoogle } = useAuth();
   const history = useHistory();
   const [error, setError] = useState('');
   const [width, setWidth] = useState(window.innerWidth);
@@ -65,19 +65,7 @@ function Login() {
 
       <section>
         <div className="social_container">
-          <h2>Faça login usando suas redes sociais</h2>
-
           <div className="buttons">
-            <ButtonPill
-              onClick={loginFacebook}
-              mini
-              id="login_facebook"
-              type="button"
-            >
-              <i className="fab fa-facebook-f" />
-              Entar com Facebook
-            </ButtonPill>
-
             <ButtonPill
               onClick={loginGoogle}
               mini
@@ -88,15 +76,9 @@ function Login() {
               Entar com Google
             </ButtonPill>
           </div>
-
-          {width < 1000 && <div className="line" />}
         </div>
 
-        {width > 1000 && <div className="line_vertical" />}
-
         <div className="email_container">
-          <h2>Faça login usando seu email</h2>
-
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}

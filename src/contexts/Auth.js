@@ -31,12 +31,6 @@ export function AuthProvider({ children }) {
     history.push('/');
   }
 
-  async function loginFacebook() {
-    const provider = new firebase.auth.FacebookAuthProvider();
-    await firebase.auth().signInWithPopup(provider);
-    history.push('/');
-  }
-
   function logout() {
     return auth.signOut();
   }
@@ -55,7 +49,7 @@ export function AuthProvider({ children }) {
     signup,
     login,
     loginGoogle,
-    loginFacebook,
+
     logout,
   };
 
