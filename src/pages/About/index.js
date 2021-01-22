@@ -36,6 +36,11 @@ export default function About() {
   useEffect(() => {
     getWidth();
     setBanner();
+
+    return () => {
+      getWidth();
+      setBanner();
+    };
   }, [windowWidth]);
 
   return (
@@ -50,18 +55,20 @@ export default function About() {
 
           <div className="text">
             <p>
-              A <span>Marinho Agropecuária</span> foi fundada em Piracicaba, interior de São Paulo,
-              em 1987.
+              A <span>Marinho Agropecuária</span> foi fundada em Piracicaba,
+              interior de São Paulo, em 1987.
             </p>
 
             <p>
-              Uma singela loja de bairro voltada a suprir as necessidades dos pequenos criadores e
-              donos de animais de médio e grande porte. Com o passar do tempo a loja se tornou uma
-              das maiores agropecuárias da região, tendo hoje em estoque mais de 20 mil produtos
-              variados, sendo alguns deles, peças e suprimentos para piscina, alimentos para
-              animais, ferramentas para jardinagem, dentre outros. Com a pretensão de atender também
-              o público de fora da cidade, no começo de 2013 foi fundada também a loja online, que
-              conta com mais de 2 mil produtos cadastrados e que podem ser enviados para todo o
+              Uma singela loja de bairro voltada a suprir as necessidades dos
+              pequenos criadores e donos de animais de médio e grande porte. Com
+              o passar do tempo a loja se tornou uma das maiores agropecuárias
+              da região, tendo hoje em estoque mais de 20 mil produtos variados,
+              sendo alguns deles, peças e suprimentos para piscina, alimentos
+              para animais, ferramentas para jardinagem, dentre outros. Com a
+              pretensão de atender também o público de fora da cidade, no começo
+              de 2013 foi fundada também a loja online, que conta com mais de 2
+              mil produtos cadastrados e que podem ser enviados para todo o
               país.
             </p>
           </div>
