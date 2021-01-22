@@ -1,5 +1,5 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Switch, Route, useLocation } from 'react-router-dom';
 
 // Shared Components
 import Navbars from './components/Navbars';
@@ -22,17 +22,24 @@ import PageNotFound from './pages/PageNotFound';
 
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Dashboard from './pages/Dashboard';
 
 // Styles
 import { GlobalStyles } from './helpers/GlobalStyles';
 import './helpers/variables.css';
 
 export default function App() {
+  const location = useLocation();
+
   return (
     <>
       <GlobalStyles />
 
-      <Navbars />
+      {location.pathname === '/login' || location.pathname === '/cadastro' ? (
+        <Navbars simple />
+      ) : (
+        <Navbars />
+      )}
 
       <main>
         <Switch>
@@ -55,7 +62,7 @@ export default function App() {
           {/* User profile */}
           <Route path="/login" component={Login} />
           <Route path="/cadastro" component={Signup} />
-          {/* <Route path="/area-do-usuario" component={Dashboard} /> */}
+          <Route path="/area-do-cliente" component={Dashboard} />
 
           {/* Page not found */}
           <Route path="*" exact component={PageNotFound} />

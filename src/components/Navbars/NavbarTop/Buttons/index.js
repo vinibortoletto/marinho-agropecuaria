@@ -23,7 +23,7 @@ export default function Buttons() {
         <>
           <Link to="/area-do-cliente">
             <i className="fas fa-user" />
-            Ver perfil
+            Minha conta
           </Link>
 
           <Link onClick={logout} to="/">
@@ -70,16 +70,18 @@ export default function Buttons() {
   return (
     <div className="btn_container">
       <div className="user_container">
-        <Link to={currentUser ? '/area-do-usuario' : '/login'}>
+        <Link to={currentUser ? '/area-do-cliente' : '/login'}>
           <button type="button" className="btn_user">
             <IconSphere>
               <i className="fas fa-user" />
             </IconSphere>
             <p>
               Olá,
-              {currentUser
-                ? currentUser.displayName
-                : 'faça login ou cadastre-se'}{' '}
+              <span>
+                {currentUser
+                  ? currentUser.displayName
+                  : 'faça login ou cadastre-se'}{' '}
+              </span>
             </p>
           </button>
         </Link>
@@ -87,6 +89,7 @@ export default function Buttons() {
         <div
           className={currentUser ? 'hidden_content logged' : 'hidden_content'}
         >
+          <div className="line strong" />
           {handleHiddenContent()}
         </div>
       </div>

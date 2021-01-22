@@ -117,6 +117,7 @@ function Signup() {
                   subscribe
                   isSubmitting={isSubmitting}
                   errors={errors}
+                  text="Cadastrar"
                 />
 
                 <div className="error">{error}</div>

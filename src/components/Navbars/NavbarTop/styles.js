@@ -32,6 +32,8 @@ export const Container = styled.nav`
     height: 4rem;
     display: flex;
     align-items: center;
+    z-index: 1;
+    position: relative;
 
     &:hover .hidden_content {
       opacity: 1;
@@ -42,14 +44,31 @@ export const Container = styled.nav`
   .btn_user {
     ${FlexCenter()};
 
+    & > div {
+      order: 2;
+      margin-left: 1rem;
+    }
+
     p {
+      text-align: right;
       width: 7rem;
       font-size: var(--fz_mini);
       margin-left: var(--m_mini);
+      order: 1;
 
-      display: none;
-      @media ${Breakpoint('600')} {
-        display: block;
+      span {
+        color: var(--l_green);
+        font-weight: bold;
+      }
+    }
+
+    @media ${Breakpoint('900')} {
+      & > div {
+        order: 1;
+        margin-left: 0;
+      }
+      p {
+        text-align: left;
       }
     }
 
@@ -79,6 +98,7 @@ export const Container = styled.nav`
       }
     }
 
+    z-index: -1;
     opacity: 0;
     pointer-events: none;
     transition: 0.2s ease;
@@ -90,9 +110,14 @@ export const Container = styled.nav`
     flex-wrap: wrap;
 
     position: absolute;
-    top: 3.5rem;
-    right: 12%;
-    padding: var(--m_sm);
+    top: 0.3rem;
+    right: -5%;
+
+    @media ${Breakpoint('900')} {
+      left: -5%;
+    }
+
+    padding: 2.5rem var(--m_sm) var(--m_sm) var(--m_sm);
 
     border-radius: var(--br_sm);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -130,8 +155,12 @@ export const Container = styled.nav`
     .line {
       width: 100%;
       height: 1px;
-      background-color: var(--l_green);
+      background-color: var(--d_green_trans);
       margin: 1rem 0;
+
+      &.strong {
+        height: 2px;
+      }
     }
   }
 
