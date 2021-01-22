@@ -22,7 +22,7 @@ import PageNotFound from './pages/PageNotFound';
 
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Dashboard from './pages/Dashboard';
+// import Dashboard from './pages/Dashboard';
 
 // Styles
 import { GlobalStyles } from './helpers/GlobalStyles';
@@ -62,7 +62,7 @@ export default function App() {
           {/* User profile */}
           <Route path="/login" component={Login} />
           <Route path="/cadastro" component={Signup} />
-          <Route path="/area-do-cliente" component={Dashboard} />
+          {/* <Route path="/minha-conta" component={Dashboard} /> */}
 
           {/* Page not found */}
           <Route path="*" exact component={PageNotFound} />

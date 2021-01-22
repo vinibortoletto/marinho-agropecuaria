@@ -21,11 +21,6 @@ export default function Buttons() {
     if (currentUser) {
       content = (
         <>
-          <Link to="/area-do-cliente">
-            <i className="fas fa-user" />
-            Minha conta
-          </Link>
-
           <Link onClick={logout} to="/">
             <i className="fas fa-sign-out-alt" />
             Sair
@@ -70,7 +65,7 @@ export default function Buttons() {
   return (
     <div className="btn_container">
       <div className="user_container">
-        <Link to={currentUser ? '/area-do-cliente' : '/login'}>
+        <Link to={currentUser ? '/' : '/login'}>
           <button type="button" className="btn_user">
             <IconSphere>
               <i className="fas fa-user" />

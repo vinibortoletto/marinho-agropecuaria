@@ -6,7 +6,7 @@ import { Title } from '../../components/Title/styles';
 function Dashboard() {
   return (
     <Container>
-      <Title>Área do Cliente</Title>
+      <Title>Minha conta</Title>
 
       <section>aa</section>
     </Container>
