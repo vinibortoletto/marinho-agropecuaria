@@ -128,18 +128,20 @@ export default function ProductList() {
     <Container>
       <div className="products_list">{handleDisplay()}</div>
 
-      <div className="button_container">
-        <ButtonSquare
-          mini
-          transparent
-          onClick={() => {
-            setNumOfProductsToDisplay(numOfProductsToDisplay + 3);
-          }}
-          id="moreProducts_btn"
-        >
-          ver mais produtos
-        </ButtonSquare>
-      </div>
+      {!location.pathname.includes('favoritos') && (
+        <div className="button_container">
+          <ButtonSquare
+            mini
+            transparent
+            onClick={() => {
+              setNumOfProductsToDisplay(numOfProductsToDisplay + 3);
+            }}
+            id="moreProducts_btn"
+          >
+            ver mais produtos
+          </ButtonSquare>
+        </div>
+      )}
     </Container>
   );
 }
