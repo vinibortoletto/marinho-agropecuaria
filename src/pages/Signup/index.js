@@ -49,7 +49,7 @@ function Signup() {
           res();
           history.push('/');
           window.location.reload();
-        }, 4000);
+        }, 2000);
       });
     } catch {
       setError('Erro ao criar conta. Tente novamente.');

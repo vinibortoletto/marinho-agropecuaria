@@ -44,17 +44,13 @@ export const Container = styled.nav`
   .btn_user {
     ${FlexCenter()};
 
-    & > div {
-      order: 2;
-      margin-left: 1rem;
-    }
-
     p {
-      text-align: right;
+      text-align: left;
       width: 7rem;
       font-size: var(--fz_mini);
       margin-left: var(--m_mini);
-      order: 1;
+
+      display: none;
 
       span {
         color: var(--l_green);
@@ -63,12 +59,8 @@ export const Container = styled.nav`
     }
 
     @media ${Breakpoint('900')} {
-      & > div {
-        order: 1;
-        margin-left: 0;
-      }
       p {
-        text-align: left;
+        display: block;
       }
     }
 
@@ -84,7 +76,7 @@ export const Container = styled.nav`
 
   .hidden_content {
     &.logged {
-      width: auto;
+      width: 10rem;
 
       a {
         width: 100%;

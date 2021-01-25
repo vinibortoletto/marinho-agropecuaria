@@ -10,6 +10,8 @@ export const GlobalStyles = createGlobalStyle`
     color: var(--d_green);
     font-family: var(--ff_dft);
     padding: 0 var(--sp_sm);
+  
+
   } 
 
   .section_margin {
@@ -18,6 +20,12 @@ export const GlobalStyles = createGlobalStyle`
   
   .content {
     padding: 0 var(--m_sm);
+  }
+
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
 
   input::-webkit-input-placeholder {
@@ -47,6 +55,8 @@ export const GlobalStyles = createGlobalStyle`
     position: absolute;
     width: 1px;
   }
+
+
 
 
   @media ${Breakpoint('1200')} {

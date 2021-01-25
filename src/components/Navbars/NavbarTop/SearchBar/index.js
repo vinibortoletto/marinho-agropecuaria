@@ -1,23 +1,25 @@
 import React from 'react';
 import { useSearch } from '../../../../contexts/Search';
-import { Container } from './styles';
+import { Container as Form } from './styles';
 
 export default function SearchBar() {
   const { goToProductsPage, searchProducts } = useSearch();
 
   return (
-    <Container className="searchbar">
+    <Form onSubmit={goToProductsPage} className="searchbar">
       <label htmlFor="search_products">Pesquise um produto</label>
 
       <input
         id="search_products"
         onChange={searchProducts}
-        onKeyDown={goToProductsPage}
-        type="search"
+        type="text"
         placeholder="Ex.: Ração de gato"
         aria-label="Pesquise produtos do site"
       />
-      <i className="fas fa-search" />
-    </Container>
+
+      <button type="submit">
+        <i className="fas fa-search" />
+      </button>
+    </Form>
   );
 }

@@ -13,6 +13,8 @@ export const Container = styled.div`
 
     button {
       width: 10rem;
+      border-radius: 100rem;
+      text-align: center;
     }
 
     .error {

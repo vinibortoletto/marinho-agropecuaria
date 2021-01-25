@@ -33,8 +33,10 @@ function SearchProvider({ children }) {
   }
 
   function cleanText(text) {
-    const newText = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
+    const newText = text
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
     return newText;
   }
 
@@ -46,7 +48,9 @@ function SearchProvider({ children }) {
   }
 
   function goToProductsPage(e) {
-    if (e.key === 'Enter' && searchContent.length > 0) {
+    e.preventDefault();
+
+    if (searchContent.length > 0) {
       let newSearchContent = searchContent;
 
       // Turn array into string

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FlexCenter, Breakpoint } from '../../../../helpers/mixins';
 
-export const Container = styled.div`
+export const Container = styled.form`
   width: 100%;
   ${FlexCenter()};
   margin: 0 var(--m_sm);

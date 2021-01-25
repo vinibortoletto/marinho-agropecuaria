@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.form`
   width: 90%;
   background: var(--l_gold);
   border-radius: var(--br_sm);
@@ -63,7 +63,12 @@ export const Container = styled.div`
     font-weight: bold;
   }
 
+  button {
+    width: auto !important;
+  }
+
   i {
+    color: var(--d_green);
     font-size: var(--fz_sm) !important;
     transition: 0.2s ease-out;
   }
