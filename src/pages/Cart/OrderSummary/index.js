@@ -39,10 +39,11 @@ export default function OrderSummary() {
 
         // Subtotal
         newSubtotal += price * amount;
-        setSubtotal(newSubtotal.toFixed(2));
+        newSubtotal = Number(newSubtotal.toFixed(2));
+        setSubtotal(newSubtotal);
 
         // Total
-        const newTotal = newSubtotal + parseFloat(tax);
+        const newTotal = newSubtotal + Number(tax);
         setTotal(newTotal);
 
         // Number of installments
