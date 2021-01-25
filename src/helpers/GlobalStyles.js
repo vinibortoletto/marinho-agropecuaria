@@ -22,7 +22,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0 var(--m_sm);
   }
 
-  input {
+  input, select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;

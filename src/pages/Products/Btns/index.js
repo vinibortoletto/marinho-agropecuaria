@@ -40,16 +40,19 @@ export default function Btns({ handleShowSidebar }) {
         Busca avançada
       </ButtonPill>
 
-      <select
-        onChange={changeSortOption}
-        value={sortOption}
-        name="sortOptions"
-        id="sortOptions"
-      >
-        <option value="mais vendidos">Mais vendidos</option>
-        <option value="menor preço">Menor preço</option>
-        <option value="maior preço">Maior preço</option>
-      </select>
+      <div className="select_container">
+        <select
+          onChange={changeSortOption}
+          value={sortOption}
+          name="sortOptions"
+          id="sortOptions"
+        >
+          <option value="mais vendidos">Mais vendidos</option>
+          <option value="menor preço">Menor preço</option>
+          <option value="maior preço">Maior preço</option>
+        </select>
+        <div className="arrow" />
+      </div>
     </Container>
   );
 }

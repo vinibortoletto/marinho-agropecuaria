@@ -37,6 +37,19 @@ export const Container = styled.section`
     }
   }
 
+  .select_container {
+    position: relative;
+
+    &::after {
+      content: '>';
+      position: absolute;
+      top: 50%;
+      font-weight: bold;
+      right: 7%;
+      transform: translateY(-62%) rotate(90deg) scaleX(0.5) scale(1.5);
+    }
+  }
+
   select {
     background: var(--l_gold);
     border-color: var(--d_green);
@@ -45,9 +58,22 @@ export const Container = styled.section`
     padding: 0 var(--m_md);
     height: 2.5rem;
     margin-bottom: var(--m_mini);
+    cursor: pointer;
 
     option {
       background: var(--l_gold);
     }
   }
+
+  /* .arrow {
+    position: absolute;
+    right: 7%;
+    top: 50%;
+    transform: translateY(-100%) rotate(45deg);
+
+    border: solid var(--d_gree n);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  } */
 `;
