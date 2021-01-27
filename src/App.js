@@ -24,6 +24,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import MyAccount from './pages/MyAccount';
 import PrivateRoute from './helpers/PrivateRoute';
+import ForgotPassword from './pages/ForgotPassword';
 
 // Styles
 import { GlobalStyles } from './helpers/GlobalStyles';
@@ -72,6 +73,7 @@ export default function App() {
             ]}
             component={MyAccount}
           />
+          <Route path="/esqueci-minha-senha" component={ForgotPassword} />
 
           {/* Page not found */}
           <Route path="*" exact component={PageNotFound} />

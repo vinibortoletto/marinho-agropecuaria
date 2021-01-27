@@ -14,51 +14,41 @@ import SubmitButton from '../../components/Form/Buttons/Submit/index';
 
 import { useAuth } from '../../contexts/Auth';
 
-function Signup() {
-  const { signup } = useAuth();
+export default function ForgotPassword() {
+  const { resetPassword } = useAuth();
   const history = useHistory();
   const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
 
   const initialValues = {
-    name: '',
     email: '',
-    password: '',
-    confirmPassword: '',
   };
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().min(3).required('Campo obrigatório'),
     email: Yup.string().email('Email inválido').required('Campo obrigatório'),
-    password: Yup.string()
-      .min(6, 'Senha deve conter pelo menos 6 letras ou números')
-      .required('Campo obrigatório'),
-    confirmPassword: Yup.string().oneOf(
-      [Yup.ref('password'), null],
-      'Senhas devem ser iguais',
-    ),
   });
 
   async function handleSubmit(data, { resetForm }) {
     try {
       setError('');
-      await signup(data.email, data.password, data.name);
+      setMessage('');
+      await resetPassword(data.email);
 
       return new Promise((res) => {
         setTimeout(() => {
           resetForm();
           res();
-          history.push('/');
-          window.location.reload();
+          setMessage('Cheque sua caixa de email para mais informações');
         }, 2000);
       });
     } catch {
-      setError('Erro ao criar conta. Tente novamente.');
+      setError('Erro ao enviar email. Tente novamente.');
     }
   }
 
   return (
     <Container>
-      <Title>Cadastre-se</Title>
+      <Title>Redefinir senha</Title>
 
       <section>
         <Formik
@@ -68,15 +58,6 @@ function Signup() {
         >
           {({ isSubmitting, errors, touched }) => (
             <Form>
-              <Input
-                htmlFor="name"
-                label="nome"
-                placeholder="Seu Nome"
-                name="name"
-                type="text"
-                fieldError={touched.name && errors.name ? 'field_error' : null}
-              />
-
               <Input
                 htmlFor="email"
                 label="email"
@@ -88,39 +69,16 @@ function Signup() {
                 }
               />
 
-              <Input
-                htmlFor="password"
-                label="senha"
-                placeholder="Digite sua senha"
-                name="password"
-                type="password"
-                fieldError={
-                  touched.password && errors.password ? 'field_error' : null
-                }
-              />
-
-              <Input
-                htmlFor="confirmPassword"
-                label="confirmar senha"
-                placeholder="Confirme sua senha"
-                name="confirmPassword"
-                type="password"
-                fieldError={
-                  touched.confirmPassword && errors.confirmPassword
-                    ? 'field_error'
-                    : null
-                }
-              />
+              <div className="error">{error}</div>
+              <div className="msg">{message}</div>
 
               <div className="btn_container">
                 <SubmitButton
                   subscribe
                   isSubmitting={isSubmitting}
                   errors={errors}
-                  text="Cadastrar"
+                  text="Redefinir"
                 />
-
-                <div className="error">{error}</div>
               </div>
             </Form>
           )}
@@ -130,12 +88,10 @@ function Signup() {
 
         <div className="login_container">
           <h2>
-            Já possui uma conta? <Link to="/login">Faça login</Link>
+            Ainda não possui uma conta? <Link to="/cadastro">Cadastre-se</Link>
           </h2>
         </div>
       </section>
     </Container>
   );
 }
-
-export default Signup;

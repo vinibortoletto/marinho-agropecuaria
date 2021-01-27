@@ -115,6 +115,9 @@ function Login() {
           <div className="line" />
 
           <p>
+            <Link to="/esqueci-minha-senha">Esqueci minha senha</Link>
+          </p>
+          <p>
             Ainda não possui uma conta? <Link to="/cadastro">Cadastre-se</Link>
           </p>
         </div>
