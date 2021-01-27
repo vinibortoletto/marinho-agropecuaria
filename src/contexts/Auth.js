@@ -39,6 +39,19 @@ export function AuthProvider({ children }) {
     return auth.sendPasswordResetEmail(email);
   }
 
+  function updateDisplayName(name) {
+    const displayName = name;
+    return auth.currentUser.updateProfile({ displayName });
+  }
+
+  function updateEmail(email) {
+    return currentUser.updateEmail(email);
+  }
+
+  function updatePassword(password) {
+    return currentUser.updatePassword(password);
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -55,6 +68,9 @@ export function AuthProvider({ children }) {
     loginGoogle,
     logout,
     resetPassword,
+    updateDisplayName,
+    updateEmail,
+    updatePassword,
   };
 
   return (

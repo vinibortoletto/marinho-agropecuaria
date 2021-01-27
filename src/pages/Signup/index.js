@@ -14,7 +14,7 @@ import SubmitButton from '../../components/Form/Buttons/Submit/index';
 
 import { useAuth } from '../../contexts/Auth';
 
-function Signup() {
+export default function Signup() {
   const { signup } = useAuth();
   const history = useHistory();
   const [error, setError] = useState('');
@@ -137,5 +137,3 @@ function Signup() {
     </Container>
   );
 }
-
-export default Signup;
