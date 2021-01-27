@@ -1,14 +1,11 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-
-import { ProductContext } from '../../../../../contexts/Product';
-
 import { ButtonSquare } from '../../../../../components/Buttons/styles';
+import { useProduct } from '../../../../../contexts/Product';
 import { Container } from './styles';
 
 export default function Buttons() {
-  const context = useContext(ProductContext);
-  const { setCart, selectedProduct, cart } = context;
+  const { setCart, selectedProduct, cart } = useProduct();
 
   function addSelectedProductToCart() {
     const newCart = cart;

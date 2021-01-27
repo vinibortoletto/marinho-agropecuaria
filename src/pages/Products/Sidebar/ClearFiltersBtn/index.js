@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
-import { ProductContext } from '../../../../contexts/Product';
-
-import { Container } from './styles';
+import React from 'react';
 import { ButtonPill } from '../../../../components/Buttons/styles';
+import { useProduct } from '../../../../contexts/Product';
+import { Container } from './styles';
 
 function ClearFiltersBtn() {
-  const context = useContext(ProductContext);
-  const { products, handleSortProducts } = context;
+  const { products, handleSortProducts } = useProduct();
 
   function handleClearFilters() {
     localStorage.setItem('categories', JSON.stringify([]));

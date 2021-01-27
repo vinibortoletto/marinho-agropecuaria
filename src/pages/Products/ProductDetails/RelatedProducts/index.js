@@ -1,38 +1,26 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ProductConsumer, ProductContext } from '../../../../contexts/Product';
-
-// Components
-import { Title } from '../../../../components/Title/styles';
 import ProductCard from '../../../../components/ProductCard/index';
-
+import { useProduct } from '../../../../contexts/Product';
 // Styles
 import { Container } from './styles';
 
 export default function RelatedProducts() {
-  const context = useContext(ProductContext);
-  const selectedProduct = context.selectedProduct;
-  const products = context.products;
+  const { products, selectedProduct, findSelectedProduct } = useProduct();
 
   function renderRelatedProducts() {
-    let selectedProductTags = selectedProduct[0].fields.tags.split(', ')[0];
+    const selectedProductTags = selectedProduct[0].fields.tags.split(', ')[0];
 
-    let relatedProducts = products.filter((product) =>
+    const relatedProducts = products.filter((product) =>
       product.fields.tags.includes(selectedProductTags),
     );
 
     if (relatedProducts.length < 4) {
-      let randomProduct;
+      let randomProduct = products[Math.floor(Math.random() * products.length)];
 
-      function findRandomProduct() {
-        randomProduct = products[Math.floor(Math.random() * products.length)];
-      }
-
-      findRandomProduct();
-
-      relatedProducts.map((product) => {
+      relatedProducts.forEach((product) => {
         while (product.sys.id === randomProduct.sys.id) {
-          findRandomProduct();
+          randomProduct = products[Math.floor(Math.random() * products.length)];
         }
       });
 
@@ -44,7 +32,7 @@ export default function RelatedProducts() {
         index <= 3 && (
           <Link
             onClick={() => {
-              context.findSelectedProduct(product.sys.id);
+              findSelectedProduct(product.sys.id);
             }}
             key={product.sys.id}
             to="/detalhes-do-produto"

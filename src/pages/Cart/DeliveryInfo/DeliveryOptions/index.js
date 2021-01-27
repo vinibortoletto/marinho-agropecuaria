@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { ProductContext } from '../../../../contexts/Product';
+import { useProduct } from '../../../../contexts/Product';
 
 // Components
 import Radio from '../../../../components/Form/Radio';
@@ -8,8 +8,7 @@ import Radio from '../../../../components/Form/Radio';
 import { Container } from './styles';
 
 export default function DeliveryOptions() {
-  const context = useContext(ProductContext);
-  const { deliveryOption, setDeliveryOption } = context;
+  const { deliveryOption, setDeliveryOption } = useProduct();
 
   function handleChange(e) {
     const radioValue = e.target.value;

@@ -1,17 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ProductContext } from '../../../contexts/Product';
-
+import { ButtonSquare } from '../../../components/Buttons/styles';
 // Components
 import ProductCard from '../../../components/ProductCard/index';
-
+import { Title } from '../../../components/Title/styles';
+import { useProduct } from '../../../contexts/Product';
 // Styles
 import { Styles as Section } from './styles';
-import { Title } from '../../../components/Title/styles';
-import { ButtonSquare } from '../../../components/Buttons/styles';
 
 export default function BestSellers() {
-  const context = useContext(ProductContext);
+  const { products, findSelectedProduct } = useProduct();
   const itemsToShow = [{}, {}, {}, {}, {}, {}, {}, {}];
 
   function showBackupCards() {
@@ -19,12 +17,12 @@ export default function BestSellers() {
   }
 
   function showProductCards() {
-    return context.products.map(
+    return products.map(
       (product, index) =>
         index <= 7 && (
           <Link
             onClick={() => {
-              context.findSelectedProduct(product.sys.id);
+              findSelectedProduct(product.sys.id);
             }}
             key={product.sys.id}
             to="/detalhes-do-produto"
@@ -47,7 +45,7 @@ export default function BestSellers() {
 
       <div className="content">
         <div className="product_list">
-          {context.products.length < 1 ? showBackupCards() : showProductCards()}
+          {products.length < 1 ? showBackupCards() : showProductCards()}
         </div>
 
         <div className="btn_container">

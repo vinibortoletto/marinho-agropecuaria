@@ -1,22 +1,23 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
-// Context
-import { useSearch } from '../../../contexts/Search';
-import { ProductContext } from '../../../contexts/Product';
-
+import { ButtonSquare } from '../../../components/Buttons/styles';
 // Components
 import ProductCard from '../../../components/ProductCard/index';
-import { ButtonSquare } from '../../../components/Buttons/styles';
+import { useProduct } from '../../../contexts/Product';
+// Context
+import { useSearch } from '../../../contexts/Search';
 import FavoriteBackup from '../ProductDetails/Details/Favorite/Backup';
-
 // Styles
 import { Container } from './styles';
 
 export default function ProductList() {
   const location = useLocation();
-  const context = useContext(ProductContext);
-  const { sortedProducts, favoriteProducts } = context;
+
+  const {
+    sortedProducts,
+    favoriteProducts,
+    findSelectedProduct,
+  } = useProduct();
   const { cleanText, searchContent } = useSearch();
   const [numOfProductsToDisplay, setNumOfProductsToDisplay] = useState(3);
 
@@ -95,7 +96,7 @@ export default function ProductList() {
         index < numOfProductsToDisplay && (
           <Link
             onClick={() => {
-              context.findSelectedProduct(product.sys.id);
+              findSelectedProduct(product.sys.id);
             }}
             key={product.sys.id}
             to="/detalhes-do-produto"

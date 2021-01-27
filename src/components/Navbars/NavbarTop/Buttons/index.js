@@ -1,15 +1,13 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ProductContext } from '../../../../contexts/Product';
-import { IconSphere } from '../../../IconSphere/styles';
-import { ButtonPill } from '../../../Buttons/styles';
-
 import { useAuth } from '../../../../contexts/Auth';
+import { useProduct } from '../../../../contexts/Product';
+import { ButtonPill } from '../../../Buttons/styles';
+import { IconSphere } from '../../../IconSphere/styles';
 
 export default function Buttons() {
   const { currentUser, loginGoogle, logout } = useAuth();
-  const context = useContext(ProductContext);
-  const { cart, favoriteProducts } = context;
+  const { cart, favoriteProducts } = useProduct();
   const [favCounter, setFavCounter] = useState(0);
 
   useEffect(() => {
@@ -21,6 +19,11 @@ export default function Buttons() {
     if (currentUser) {
       content = (
         <>
+          <Link to="/minha-conta/pedidos">
+            <i className="fas fa-user" />
+            Minha conta
+          </Link>
+
           <Link onClick={logout} to="/">
             <i className="fas fa-sign-out-alt" />
             Sair

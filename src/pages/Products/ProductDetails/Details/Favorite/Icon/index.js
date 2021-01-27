@@ -1,15 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { ProductContext } from '../../../../../../contexts/Product';
-
+import React, { useEffect, useState } from 'react';
 // Components
 import { IconSphere } from '../../../../../../components/IconSphere/styles';
-
+import { useProduct } from '../../../../../../contexts/Product';
 // Styles
 import { Container } from './styles';
 
 export default function FavoriteIcon({ id }) {
-  const context = useContext(ProductContext);
-  const { favoriteProducts, setFavoriteProducts, selectedProduct } = context;
+  const {
+    favoriteProducts,
+    setFavoriteProducts,
+    selectedProduct,
+  } = useProduct();
   const [favIcon, setFavIcon] = useState(false);
 
   function handleClick() {

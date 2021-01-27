@@ -1,17 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import { useProduct } from '../../../contexts/Product';
+import Details from './Details';
 // Components
 import Gallery from './Gallery';
-import Details from './Details';
 import RelatedProducts from './RelatedProducts/index';
-
 // Styles
 import { Container } from './styles';
-import { ProductContext } from '../../../contexts/Product';
 
 export default function ProductDetails() {
-  const context = useContext(ProductContext);
-  const { selectedProduct } = context;
+  const { selectedProduct } = useProduct();
   const [tag, setTag] = useState();
 
   function getTag() {

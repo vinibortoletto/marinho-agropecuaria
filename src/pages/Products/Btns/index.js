@@ -1,16 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { ProductContext } from '../../../contexts/Product';
-
+import React, { useEffect, useState } from 'react';
 // Components
 import { ButtonPill } from '../../../components/Buttons/styles';
-
+import { useProduct } from '../../../contexts/Product';
 // Styles
 import { Container } from './styles';
 
 export default function Btns({ handleShowSidebar }) {
   const [sortOption, setSortOption] = useState('');
-  const context = useContext(ProductContext);
-  const { handleSortProducts } = context;
+
+  const { handleSortProducts } = useProduct();
 
   function changeSortOption(event) {
     setSortOption(event.target.value);

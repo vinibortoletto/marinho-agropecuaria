@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ProductContext } from '../../../contexts/Product';
+import { useProduct } from '../../../contexts/Product';
 import { useSearch } from '../../../contexts/Search';
 import Categories from './Categories';
 import Search from './Search';
@@ -20,9 +20,7 @@ import infoIcon from '../../../images/categories/top/info.svg';
 export default function NavbarBottom() {
   const { toggleShowSearch } = useSearch();
   const location = useLocation();
-
-  const context = useContext(ProductContext);
-  const { cart } = context;
+  const { cart } = useProduct();
 
   const [productIcon, setProductIcon] = useState(null);
 

@@ -1,17 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
-import { ProductContext } from '../../../../contexts/Product';
-
 // Components
 import { ButtonSquare } from '../../../../components/Buttons/styles';
-import SubmitButton from '../../../../components/Form/Buttons/Submit/index';
-
+import { useProduct } from '../../../../contexts/Product';
 // Styles
 import { Container } from './styles';
 
 export default function CepNumber() {
-  const context = useContext(ProductContext);
-  const { setTax, subtotal } = context;
+  const { setTax, subtotal } = useProduct();
   const [cepNumber, setCepNumber] = useState(0);
   const [buttonContent, setButtonContent] = useState('Calcular');
 

@@ -1,19 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ProductContext } from '../../contexts/Product';
-
 // Components
 import { Title } from '../../components/Title/styles';
-import ProductItem from './ProductItem';
+import { useProduct } from '../../contexts/Product';
 import DeliveryInfo from './DeliveryInfo';
 import OrderSummary from './OrderSummary';
-
+import ProductItem from './ProductItem';
 // Styles
 import { Container } from './styles';
 
 export default function Cart() {
-  const context = useContext(ProductContext);
-  const { cart } = context;
+  const { cart } = useProduct();
 
   function displayCartProducts() {
     return cart.map((product, index) => {

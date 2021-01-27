@@ -1,17 +1,12 @@
-import React, { useState, useContext, useEffect } from 'react';
-
-import { ProductContext } from '../../../contexts/Product';
-
+import React, { useEffect, useState } from 'react';
 // Components
 import DividingLine from '../../../components/DividingLine';
-
+import { useProduct } from '../../../contexts/Product';
 // Styles
 import { Container } from './styles';
 
 export default function ProductItem({ title, price, amount, img, id }) {
-  const context = useContext(ProductContext);
-
-  const { cart, setCart } = context;
+  const { cart, setCart } = useProduct();
   const [productAmount, setProductAmount] = useState(amount);
   const [subtotal, setSubtotal] = useState(0);
 

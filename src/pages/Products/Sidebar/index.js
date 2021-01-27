@@ -1,18 +1,15 @@
-import React, { useEffect, useContext } from 'react';
-import { ProductContext } from '../../../contexts/Product';
-
-import { Container } from './styles';
-
+import React, { useEffect } from 'react';
+import { useProduct } from '../../../contexts/Product';
+import Categories from './Categories/index';
+import ClearFiltersBtn from './ClearFiltersBtn/index';
 // Components
 import CloseSideBarBtn from './CloseSideBarBtn/index';
-import ClearFiltersBtn from './ClearFiltersBtn/index';
-import Categories from './Categories/index';
 import Prices from './Prices/index';
 import Rating from './Rating/index';
+import { Container } from './styles';
 
 export default function Sidebar({ handleCloseSidebar }) {
-  const context = useContext(ProductContext);
-  const { setSortedProducts, handleSortProducts } = context;
+  const { setSortedProducts, handleSortProducts } = useProduct();
 
   function handleChecking(elmt) {
     // Update localStorage

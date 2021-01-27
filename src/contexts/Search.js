@@ -3,7 +3,11 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 const SearchContext = React.createContext(null);
 
-function SearchProvider({ children }) {
+export function useSearch() {
+  return useContext(SearchContext);
+}
+
+export function SearchProvider({ children }) {
   const history = useHistory();
   const location = useLocation();
 
@@ -93,27 +97,3 @@ function SearchProvider({ children }) {
     </SearchContext.Provider>
   );
 }
-
-const SearchConsumer = SearchContext.Consumer;
-
-export function useSearch() {
-  const context = useContext(SearchContext);
-  const {
-    goToProductsPage,
-    searchProducts,
-    toggleShowSearch,
-    cleanText,
-    searchContent,
-    setSearchContent,
-  } = context;
-  return {
-    goToProductsPage,
-    searchProducts,
-    toggleShowSearch,
-    cleanText,
-    searchContent,
-    setSearchContent,
-  };
-}
-
-export { SearchProvider, SearchConsumer, SearchContext };

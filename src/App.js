@@ -22,7 +22,8 @@ import PageNotFound from './pages/PageNotFound';
 
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-// import Dashboard from './pages/Dashboard';
+import MyAccount from './pages/MyAccount';
+import PrivateRoute from './helpers/PrivateRoute';
 
 // Styles
 import { GlobalStyles } from './helpers/GlobalStyles';
@@ -62,7 +63,15 @@ export default function App() {
           {/* User profile */}
           <Route path="/login" component={Login} />
           <Route path="/cadastro" component={Signup} />
-          {/* <Route path="/minha-conta" component={Dashboard} /> */}
+          <PrivateRoute
+            path={[
+              '/minha-conta',
+              '/pedidos',
+              '/detalhes-do-pedido',
+              '/cadastro',
+            ]}
+            component={MyAccount}
+          />
 
           {/* Page not found */}
           <Route path="*" exact component={PageNotFound} />

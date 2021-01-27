@@ -1,16 +1,13 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { ProductContext } from '../../../../contexts/Product';
-
 // Components
 import Radio from '../../../../components/Form/Radio/index';
-
+import { useProduct } from '../../../../contexts/Product';
 // Styles
 import { Container } from './styles';
 
 export default function Prices() {
-  const context = useContext(ProductContext);
-  const { products } = context;
+  const { products } = useProduct();
   const location = useLocation();
 
   function handleProductAmount(price) {

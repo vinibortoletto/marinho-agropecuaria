@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { saveProducts, getLocalProducts } from '../helpers/Storage';
 
-const ProductContext = React.createContext(null);
+const ProductContext = React.createContext();
 
-function ProductProvider({ children }) {
+export function useProduct() {
+  return useContext(ProductContext);
+}
+
+export function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
   const [favoriteProducts, setFavoriteProducts] = useState([]);
@@ -13,6 +17,7 @@ function ProductProvider({ children }) {
   const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [deliveryOption, setDeliveryOption] = useState('homeDelivery');
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const localFavoriteProducts = JSON.parse(
@@ -55,6 +60,7 @@ function ProductProvider({ children }) {
   function getSortOption(setDefaultOption) {
     setDefaultOption(JSON.parse(localStorage.getItem('sortOption')));
   }
+
   function saveSortOption(defaultOption) {
     localStorage.setItem('sortOption', JSON.stringify(defaultOption));
   }
@@ -78,6 +84,13 @@ function ProductProvider({ children }) {
     );
     if (localSelectedProduct && localSelectedProduct.length > 0) {
       setSelectedProduct(localSelectedProduct);
+    }
+
+    const localOrders = JSON.parse(localStorage.getItem('orders'));
+    if (localOrders && localOrders.length > 0) {
+      setOrders(localOrders);
+    } else {
+      localStorage.setItem('orders', JSON.stringify([]));
     }
   }, []);
 
@@ -106,6 +119,8 @@ function ProductProvider({ children }) {
         setTax,
         deliveryOption,
         setDeliveryOption,
+        orders,
+        setOrders,
 
         sortedProducts,
         setSortedProducts,
@@ -120,6 +135,6 @@ function ProductProvider({ children }) {
   );
 }
 
-const ProductConsumer = ProductContext.Consumer;
+// const ProductConsumer = ProductContext.Consumer;
 
-export { ProductProvider, ProductConsumer, ProductContext };
+// export { ProductProvider, ProductConsumer, ProductContext };

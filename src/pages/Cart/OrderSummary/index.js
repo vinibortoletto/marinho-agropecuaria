@@ -1,15 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { ProductContext } from '../../../contexts/Product';
-
+import React, { useEffect, useState } from 'react';
+import { ButtonBullet } from '../../../components/Buttons/styles';
 // Components
 import DividingLine from '../../../components/DividingLine';
-import { ButtonBullet } from '../../../components/Buttons/styles';
-
+import { useProduct } from '../../../contexts/Product';
 // Styles
 import { Container } from './styles';
 
 export default function OrderSummary() {
-  const context = useContext(ProductContext);
   const {
     cart,
     setCart,
@@ -18,7 +15,9 @@ export default function OrderSummary() {
     subtotal,
     setSubtotal,
     deliveryOption,
-  } = context;
+    orders,
+    setOrders,
+  } = useProduct();
   const [totalAmountOfProducts, setTotalAmountOfProducts] = useState(0);
   const [total, setTotal] = useState(0);
   const [numOfInstallments, setNumOfInstallments] = useState(0);
@@ -67,6 +66,63 @@ export default function OrderSummary() {
     }
   }
 
+  function saveOrderToLocalStorage() {
+    // let orders = JSON.parse(localStorage.getItem('orders'));
+    // !orders && (orders = []);
+
+    // Get ID
+    const orderId = Math.floor(Math.random() * 10000);
+
+    // Get simple date
+    const date = new Date();
+    const day = `0${date.getDate()}`.slice(-2);
+    const month = `0${date.getMonth() + 1}`.slice(-2);
+    const year = date.getFullYear().toString().substr(2, 2);
+    const orderSimpleDate = `${day}/${month}/${year}`;
+
+    // Get full date
+    function getFullMonth() {
+      let fullMonth;
+      month === '01' && (fullMonth = 'janeiro');
+      month === '02' && (fullMonth = 'fevereiro');
+      month === '03' && (fullMonth = 'março');
+      month === '04' && (fullMonth = 'abril');
+      month === '05' && (fullMonth = 'maio');
+      month === '06' && (fullMonth = 'junho');
+      month === '07' && (fullMonth = 'julho');
+      month === '08' && (fullMonth = 'agosto');
+      month === '09' && (fullMonth = 'setembro');
+      month === '10' && (fullMonth = 'outubro');
+      month === '11' && (fullMonth = 'novembro');
+      month === '12' && (fullMonth = 'dezembro');
+
+      return fullMonth;
+    }
+
+    const orderFullDate = `${day} de ${getFullMonth()} de ${date.getFullYear()}`;
+
+    // Get tax
+    const orderTax = tax;
+
+    // Get total
+    const orderSubtotal = subtotal;
+    const orderTotal = total;
+
+    const newOrder = {
+      id: orderId,
+      simpleDate: orderSimpleDate,
+      fullDate: orderFullDate,
+      products: [...cart],
+      tax: orderTax,
+      subtotal: orderSubtotal,
+      total: orderTotal,
+    };
+
+    const newOrders = [...orders, newOrder];
+    setOrders(newOrders);
+    localStorage.setItem('orders', JSON.stringify(newOrders));
+  }
+
   function buyProduct() {
     const btn = document.querySelector('.buyProduct_btn');
 
@@ -93,6 +149,8 @@ export default function OrderSummary() {
         setCart([]);
       }, 1500);
     }, 1500);
+
+    saveOrderToLocalStorage();
   }
 
   useEffect(() => {
