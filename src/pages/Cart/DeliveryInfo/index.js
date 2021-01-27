@@ -11,16 +11,13 @@ import { Container } from './styles';
 export default function DeliveryInfo() {
   const [windowWidth, setWindowWidth] = useState(0);
 
-  function handleWidth() {
-    setWindowWidth(window.outerWidth);
-
-    window.addEventListener('resize', () => {
-      setWindowWidth(window.outerWidth);
-    });
-  }
-
   useEffect(() => {
-    handleWidth();
+    function getWidth() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', getWidth);
+    return () => window.removeEventListener('resize', getWidth);
   }, []);
 
   return (

@@ -17,28 +17,26 @@ export default function About() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [manBanner, setManBanner] = useState(manBannerSm);
 
-  function getWidth() {
-    window.addEventListener('resize', () => {
-      setWindowWidth(window.innerWidth);
-    });
-  }
-
-  function setBanner() {
-    if (windowWidth <= 500) {
-      setManBanner(manBannerSm);
-    } else if (windowWidth <= 1000 && windowWidth > 500) {
-      setManBanner(manBannerMd);
-    } else {
-      setManBanner(manBannerBg);
-    }
-  }
-
   useEffect(() => {
-    getWidth();
+    function getWidth() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    function setBanner() {
+      if (windowWidth <= 500) {
+        setManBanner(manBannerSm);
+      } else if (windowWidth <= 1000 && windowWidth > 500) {
+        setManBanner(manBannerMd);
+      } else {
+        setManBanner(manBannerBg);
+      }
+    }
+
+    window.addEventListener('resize', getWidth);
     setBanner();
 
     return () => {
-      getWidth();
+      window.removeEventListener('resize', getWidth);
       setBanner();
     };
   }, [windowWidth]);
@@ -50,7 +48,7 @@ export default function About() {
       <section className="content">
         <section>
           <Banner img={manBanner}>
-            <div className="bg_img"></div>
+            <div className="bg_img" />
           </Banner>
 
           <div className="text">

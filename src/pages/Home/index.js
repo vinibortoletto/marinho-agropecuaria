@@ -60,41 +60,39 @@ export default function Home() {
     },
   ];
 
-  function getWidth() {
-    window.addEventListener('resize', () => {
-      setWindowWidth(window.innerWidth);
-    });
-  }
-
-  function setBanners() {
-    if (windowWidth <= 500) {
-      setDogsBanner(dogsBannerSm);
-      setHouseBanner(houseBannerSm);
-      setGardenBanner(gardenBannerSm);
-    } else if (windowWidth <= 1000 && windowWidth > 500) {
-      setDogsBanner(dogsBannerMd);
-      setHouseBanner(houseBannerMd);
-      setGardenBanner(gardenBannerMd);
-    } else {
-      setDogsBanner(dogsBannerBg);
-      setHouseBanner(houseBannerBg);
-      setGardenBanner(gardenBannerBg);
-    }
-  }
-
   useEffect(() => {
-    getWidth();
+    function getWidth() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    function setBanners() {
+      if (windowWidth <= 500) {
+        setDogsBanner(dogsBannerSm);
+        setHouseBanner(houseBannerSm);
+        setGardenBanner(gardenBannerSm);
+      } else if (windowWidth <= 1000 && windowWidth > 500) {
+        setDogsBanner(dogsBannerMd);
+        setHouseBanner(houseBannerMd);
+        setGardenBanner(gardenBannerMd);
+      } else {
+        setDogsBanner(dogsBannerBg);
+        setHouseBanner(houseBannerBg);
+        setGardenBanner(gardenBannerBg);
+      }
+    }
+
+    window.addEventListener('resize', getWidth);
     setBanners();
 
     return () => {
-      getWidth();
+      window.removeEventListener('resize', getWidth);
       setBanners();
     };
   }, [windowWidth]);
 
   return (
     <>
-      <Container className="hero" className="section_margin">
+      <Container className="hero section_margin">
         <Slider
           options={{
             autoPlay: 5000,

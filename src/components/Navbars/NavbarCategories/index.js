@@ -90,8 +90,6 @@ export default function NavbarCategories() {
 
   // Toggle category icons opacity
   useEffect(() => {
-    // const currentWidth = window.width;
-
     let currentWidth = window.innerWidth;
 
     if (currentWidth > 900) {
@@ -114,13 +112,13 @@ export default function NavbarCategories() {
       }
     }
 
-    function getCurrentWidth() {
+    function getWidth() {
       currentWidth = window.innerWidth;
     }
 
-    window.addEventListener('resize', getCurrentWidth);
+    window.addEventListener('resize', getWidth);
     return () => {
-      window.removeEventListener('resize', getCurrentWidth);
+      window.removeEventListener('resize', getWidth);
     };
   }, [searchContent]);
 
