@@ -41,7 +41,7 @@ function Login() {
         setTimeout(() => {
           resetForm();
           res();
-          history.push('/');
+          history.push('/minha-conta');
         }, 2000);
       });
     } catch {

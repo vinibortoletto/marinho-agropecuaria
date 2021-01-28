@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { ButtonBullet } from '../../../components/Buttons/styles';
+import { useAuth } from '../../../contexts/Auth';
 // Components
 import DividingLine from '../../../components/DividingLine';
 import { useProduct } from '../../../contexts/Product';
@@ -7,6 +9,8 @@ import { useProduct } from '../../../contexts/Product';
 import { Container } from './styles';
 
 export default function OrderSummary() {
+  const { currentUser } = useAuth();
+  const history = useHistory();
   const {
     cart,
     setCart,
@@ -67,9 +71,6 @@ export default function OrderSummary() {
   }
 
   function saveOrderToLocalStorage() {
-    // let orders = JSON.parse(localStorage.getItem('orders'));
-    // !orders && (orders = []);
-
     // Get ID
     const orderId = Math.floor(Math.random() * 10000);
 
@@ -123,34 +124,43 @@ export default function OrderSummary() {
     localStorage.setItem('orders', JSON.stringify(newOrders));
   }
 
+  function resetCart() {
+    setTotalAmountOfProducts(0);
+    setSubtotal(0);
+    setTax(0);
+    setTotal(0);
+
+    localStorage.setItem('cart', JSON.stringify([]));
+    setCart([]);
+  }
+
   function buyProduct() {
-    const btn = document.querySelector('.buyProduct_btn');
-
-    btn.setAttribute('disabled', true);
-    btn.style.background = '#a9a9a9';
-
-    setButtonContent('Finalizando compra...');
-    setTimeout(() => {
-      setButtonContent('Compra finalizada!');
-
-      setTimeout(() => {
-        // Reset "buyProduct" button
-        btn.removeAttribute('disabled');
-        btn.style.background = '#00a79d';
-        setButtonContent('Finalizar compra');
-
-        // Reset cart
-        setTotalAmountOfProducts(0);
-        setSubtotal(0);
-        setTax(0);
-        setTotal(0);
-
-        localStorage.setItem('cart', JSON.stringify([]));
-        setCart([]);
-      }, 1500);
-    }, 1500);
-
     saveOrderToLocalStorage();
+
+    if (currentUser) {
+      const btn = document.querySelector('.buyProduct_btn');
+
+      btn.setAttribute('disabled', true);
+      btn.style.background = '#a9a9a9';
+
+      setButtonContent('Finalizando compra...');
+      setTimeout(() => {
+        setButtonContent('Compra finalizada!');
+
+        setTimeout(() => {
+          // Reset "buyProduct" button
+          btn.removeAttribute('disabled');
+          btn.style.background = '#00a79d';
+          setButtonContent('Finalizar compra');
+
+          resetCart();
+          history.push('/minha-conta');
+        }, 1500);
+      }, 1500);
+    } else {
+      history.push('/login');
+      resetCart();
+    }
   }
 
   useEffect(() => {

@@ -28,7 +28,7 @@ export function AuthProvider({ children }) {
   async function loginGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
     await firebase.auth().signInWithPopup(provider);
-    history.push('/');
+    history.push('/minha-conta');
   }
 
   function logout() {
