@@ -68,21 +68,19 @@ export default function Buttons() {
   return (
     <div className="btn_container">
       <div className="user_container">
-        <Link to={currentUser ? '/' : '/login'}>
-          <button type="button" className="btn_user">
-            <IconSphere>
-              <i className="fas fa-user" />
-            </IconSphere>
-            <p>
-              Olá,
-              <span>
-                {currentUser
-                  ? currentUser.displayName
-                  : 'faça login ou cadastre-se'}{' '}
-              </span>
-            </p>
-          </button>
-        </Link>
+        <button type="button" className="btn_user">
+          <IconSphere>
+            <i className="fas fa-user" />
+          </IconSphere>
+          <p>
+            Olá,
+            <span>
+              {currentUser
+                ? currentUser.displayName
+                : 'faça login ou cadastre-se'}{' '}
+            </span>
+          </p>
+        </button>
 
         <div
           className={currentUser ? 'hidden_content logged' : 'hidden_content'}

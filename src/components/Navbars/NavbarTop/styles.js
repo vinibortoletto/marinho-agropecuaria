@@ -22,6 +22,7 @@ export const Container = styled.nav`
   .btn_container {
     ${FlexCenter};
   }
+
   button {
     position: relative;
     color: var(--d_green);
@@ -42,6 +43,7 @@ export const Container = styled.nav`
   }
 
   .btn_user {
+    cursor: auto;
     ${FlexCenter()};
 
     p {
@@ -64,14 +66,14 @@ export const Container = styled.nav`
       }
     }
 
-    a {
+    /* a {
       color: var(--l_green);
       font-weight: bold;
 
       &:hover {
         text-decoration: underline;
       }
-    }
+    } */
   }
 
   .hidden_content {
