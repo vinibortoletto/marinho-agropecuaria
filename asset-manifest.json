@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/marinho-agropecuaria/static/css/main.709c718c.chunk.css",
-    "main.js": "/marinho-agropecuaria/static/js/main.a3849bb7.chunk.js",
-    "main.js.map": "/marinho-agropecuaria/static/js/main.a3849bb7.chunk.js.map",
+    "main.js": "/marinho-agropecuaria/static/js/main.6b8a144f.chunk.js",
+    "main.js.map": "/marinho-agropecuaria/static/js/main.6b8a144f.chunk.js.map",
     "runtime-main.js": "/marinho-agropecuaria/static/js/runtime-main.fff74f8d.js",
     "runtime-main.js.map": "/marinho-agropecuaria/static/js/runtime-main.fff74f8d.js.map",
     "static/css/2.eccc2922.chunk.css": "/marinho-agropecuaria/static/css/2.eccc2922.chunk.css",
-    "static/js/2.adb1096b.chunk.js": "/marinho-agropecuaria/static/js/2.adb1096b.chunk.js",
-    "static/js/2.adb1096b.chunk.js.map": "/marinho-agropecuaria/static/js/2.adb1096b.chunk.js.map",
+    "static/js/2.15af2620.chunk.js": "/marinho-agropecuaria/static/js/2.15af2620.chunk.js",
+    "static/js/2.15af2620.chunk.js.map": "/marinho-agropecuaria/static/js/2.15af2620.chunk.js.map",
     "index.html": "/marinho-agropecuaria/index.html",
-    "precache-manifest.1db968f9798d6a49b368a591bff3e7bc.js": "/marinho-agropecuaria/precache-manifest.1db968f9798d6a49b368a591bff3e7bc.js",
+    "precache-manifest.02ac96d01b941f861fbced4691e251bd.js": "/marinho-agropecuaria/precache-manifest.02ac96d01b941f861fbced4691e251bd.js",
     "service-worker.js": "/marinho-agropecuaria/service-worker.js",
     "static/css/2.eccc2922.chunk.css.map": "/marinho-agropecuaria/static/css/2.eccc2922.chunk.css.map",
     "static/css/main.709c718c.chunk.css.map": "/marinho-agropecuaria/static/css/main.709c718c.chunk.css.map",
-    "static/js/2.adb1096b.chunk.js.LICENSE.txt": "/marinho-agropecuaria/static/js/2.adb1096b.chunk.js.LICENSE.txt",
+    "static/js/2.15af2620.chunk.js.LICENSE.txt": "/marinho-agropecuaria/static/js/2.15af2620.chunk.js.LICENSE.txt",
     "static/media/404.svg": "/marinho-agropecuaria/static/media/404.43f00ad1.svg",
     "static/media/abcomm.png": "/marinho-agropecuaria/static/media/abcomm.64c248e4.png",
     "static/media/bird.svg": "/marinho-agropecuaria/static/media/bird.4601a548.svg",
@@ -47,8 +47,8 @@
   "entrypoints": [
     "static/js/runtime-main.fff74f8d.js",
     "static/css/2.eccc2922.chunk.css",
-    "static/js/2.adb1096b.chunk.js",
+    "static/js/2.15af2620.chunk.js",
     "static/css/main.709c718c.chunk.css",
-    "static/js/main.a3849bb7.chunk.js"
+    "static/js/main.6b8a144f.chunk.js"
   ]
 }

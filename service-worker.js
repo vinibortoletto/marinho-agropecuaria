@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/marinho-agropecuaria/precache-manifest.1db968f9798d6a49b368a591bff3e7bc.js"
+  "/marinho-agropecuaria/precache-manifest.02ac96d01b941f861fbced4691e251bd.js"
 );
 
 self.addEventListener('message', (event) => {
