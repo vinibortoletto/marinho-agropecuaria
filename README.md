@@ -23,6 +23,11 @@
 This project was developed with the following technologies:
 
 -  [React.js](https://reactjs.org/)
+-  [Contentful](https://contentful.com/)
+-  [Firebase](https://firebase.google.com/)
+-  [Flickity](https://flickity.metafizzy.co/)
+-  [Formik](https://formik.org/)
+-  [Styled Components](https://styled-components.com/)
 -  [Figma](https://figma.com/)
 -  [VS Code](https://code.visualstudio.com/)
 
