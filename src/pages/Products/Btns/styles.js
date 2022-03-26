@@ -14,7 +14,7 @@ export const Container = styled.section`
     z-index: 1;
 
     color: var(--d_green);
-    border-color: var(--d_green);
+    border-color: 1px solid var(--d_green);
     background-color: var(--l_gold);
 
     &:nth-child(1) {
@@ -52,28 +52,17 @@ export const Container = styled.section`
 
   select {
     background: var(--l_gold);
-    border-color: var(--d_green);
+    border: 1px solid var(--d_green);
     border-radius: 10rem;
     color: var(--d_green);
     padding: 0 var(--m_md);
     height: 2.5rem;
     margin-bottom: var(--m_mini);
+    font-size: var(--fz_sm);
     cursor: pointer;
 
     option {
       background: var(--l_gold);
     }
   }
-
-  /* .arrow {
-    position: absolute;
-    right: 7%;
-    top: 50%;
-    transform: translateY(-100%) rotate(45deg);
-
-    border: solid var(--d_gree n);
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-  } */
 `;
