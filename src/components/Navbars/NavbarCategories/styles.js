@@ -60,10 +60,6 @@ export const Navbar = styled.nav`
   @media ${Breakpoint('1100')} {
     .category_container {
       padding: var(--m_sm) var(--m_md);
-
-      .img {
-        /* ${Size('3rem', '2rem')}; */
-      }
     }
 
     &.shrink .category_container {

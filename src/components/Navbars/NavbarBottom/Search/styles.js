@@ -6,12 +6,12 @@ export const Container = styled.form`
   border-radius: var(--br_sm);
 
   position: fixed;
-  bottom: 8rem;
+  bottom: 7rem;
   z-index: 2;
   left: 50%;
   transform: translateX(-50%);
 
-  padding: 3rem;
+  padding: 2rem;
   max-width: 25rem;
   box-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
 

@@ -6,14 +6,14 @@ export const Container = styled.div`
   border-radius: var(--br_sm);
 
   position: fixed;
-  bottom: 8rem;
+  bottom: 7rem;
   z-index: 2;
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 3rem;
+  gap: 2rem;
 
-  padding: 3rem;
+  padding: 2rem;
   max-width: 25rem;
   box-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
 
