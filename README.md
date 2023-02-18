@@ -15,7 +15,7 @@
 <p align="center">
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="https://marinho.netlify.app/">Visit app page</a>
+  <a href="https://marinho-agropecuaria.netlify.app/">Visit app page</a>
 </p>
 
 ## :rocket: Technologies
